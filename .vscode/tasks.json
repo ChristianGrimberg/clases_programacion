@@ -10,7 +10,7 @@
             "args": [
                 "-o",
                 "program",
-                "main.c"
+                "Clase02/main.c"
             ],
             "problemMatcher": [
                 "$gcc"

@@ -1,6 +1,6 @@
 # Build Folders and Files
-/bin
-/obj
+*/obj
+*/bin
 *.cbp
 *.layout
 program
