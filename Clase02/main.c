@@ -14,7 +14,6 @@ int main()
     {
         printf("Ingrese el numero %d: ", i+1);
         scanf("%d", &number);
-
         average+=(float)number; /**< First use average like accumulator */
 
         if(i==0)
@@ -22,20 +21,14 @@ int main()
             maxNumber=number;
             minNumber=number;
         }
-        else
-        {
-            if(number>maxNumber)
-            {
-                maxNumber=number;
-            }
-            else if(number<minNumber)
-            {
-                minNumber=number;
-            }
-        }
+        else if(number>maxNumber)
+            maxNumber=number;
+        else if(number<minNumber)
+            minNumber=number;
     }
 
-    average=average/qtyNumbers;
+    if(qtyNumbers!=0)
+        average=average/qtyNumbers;
     printf("\nMinimo: %d\nMaximo: %d\nPromedio: %.2f", minNumber, maxNumber, average);
 
     return 0;
