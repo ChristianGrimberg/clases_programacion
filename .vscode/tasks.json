@@ -9,7 +9,7 @@
             "type": "shell",
             "args": [
                 "-o",
-                "program",
+                "Clase02/program",
                 "Clase02/main.c"
             ],
             "problemMatcher": [
