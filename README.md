@@ -1,9 +1,10 @@
 # Prácticas con ANSI C en Programación y Laboratorio 1 de UTN
 
 ## Clase 1
-Diferencias entre Javascript y ANSI C. Tipos de Datos. Uso de estructuras condicionales y de iteración. Práctica de Máximos y Mínimos y Medios.
+Diferencias entre Javascript y ANSI C. Tipos de Datos. Uso de estructuras condicionales y de iteración. Teoría de Punteros. Práctica de Máximos y Mínimos y Medios. Uso de Arrays.
 
 ## Clase 2
 Repaso de practica de clase anterior. Uso de acumulador y promedio con ANSI C. Casteo entre tipos de datos teniendo en cuenta el concepto de inclusión.
 
-Instalación y uso de Git en entorno local.
+![Git](/img/Git-Logo.png)
+Instalación y uso de Git en entorno local. Comandos básicos de Git. Subida de commits en [Github](https://github.com). Clonacion a repositorio local.
