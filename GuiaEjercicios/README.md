@@ -125,3 +125,38 @@ de mozo 0.
     ```
     N° De Cliente | Total Depósitos | Total Extracciones | Total Comisiones | Total Intereses | Saldo
     ```
+1. Una compañía de aviación tiene 4 destinos (numerados de 1 a 4) con 3 vuelos cada uno (numerados de 1 a 3). Se ingresa la información de las plazas disponibles en cada uno de los 12 vuelos. Posteriormente llegan pedidos de pasajes de los que se ingresa: N° de pedido, N° de destino, N° de vuelo, Cantidad de pasajes requeridos. Si la cantidad de pasajes pedidos es superior a la disponibilidad existente en ese vuelo y para ese destino se rechaza el pedido indicando la leyenda:
+    ```
+    NO HAY CANTIDAD DE PLAZAS
+    DISPONIBLES.
+    ```
+    Se pide informar:
+    * La cantidad de pasajes sobrantes en cada vuelo.
+    * Los N° de pedidos .rechazados con la cantidad de pasajes solicitados.
+1. De los 40 micros de una empresa de corta distancia se registra: N° de micro, Recaudación, Km, recorridos. La carga se realiza a medida que llegan los micros ala terminal. Se pide un listado impreso de todos los micros con su recaudación y los Km. recorridos en toda una jornada de trabajo.
+1. Una fábrica tiene 30 obreros con legajos de 1 a 30. Por cada obrero se registran los movimientos que intervienen en la liquidación informando: N° de legajo, Sueldo básico, Bonificación por antigüedad.
+Se debe calcular el sueldo neto de cada obrero considerando:
+    * Un descuento por jubilación que representa el 16 % del sueldo básico.
+    * Un descuento por obra social que representa el 4,5 % del sueldo básico.
+
+    * Se pide listado como el siguiente:
+    ```
+    N° de legajo | Sueldo básico | Jubilación | Obra social | Antigüedad | Sueldo neto
+    ```
+    * Indicar cuál fue el legajo del o los obreros con mayor bonificación de antigüedad y cual fue esa cantidad.
+    * Listado de todos los obreros ordenado por sueldo neto.
+1. Una empresa comercializa 5 artículos en 3 sucursales. Se debe realizar un programa que presente un menú con las siguientes opciones :
+    * Carga de datos: se registrará la existencia en depósito informando N° de sucursal, N° de artículo y cantidad.
+    * Venta de artículos: se registran las ventas realizadas informando N° de sucursal, N° de artículo y cantidad vendida. Se debe verificar que la cantidad vendida no supere la existencia, informando si la venta no se puede realizar por este motivo.
+    * Existencia de mercaderías: listar por pantalla saldos existentes de mercaderías.
+    * Salir del programa.
+1. En un depósito se almacenan 10 tipos de piezas distintas. Al comenzar el mes se generan 10 registros con la siguiente información: Código de pieza (De 1 a 10), Existencia al comenzar el mes Cada vez que llega un pedido se genera un registro con la siguiente información: Código de la operación (Es siempre 1), Código de pieza Cantidad pedida Si la existencia alcanza se entrega el pedido y se actualiza el saldo. Si no alcanza se rechaza el pedido completo. Cada vez que llega un reaprovisionamiento se genera un registro con la siguiente información: Código de la operación (Es siempre 2) Código de pieza Cantidad recibida y se actualiza el saldo y el total recibido. Se pide emitir un listado ordenado en forma creciente por saldos finales donde se indique:
+    ```
+    Código de pieza | Cantidad inicial | Total recibido | Total entregado | Total rechazado | Saldo
+    ```
+    Se debe permitir al usuario trabajar en cada una de las opciones en forma alternada.
+1. Una empresa periodística publica 8 revistas. Se registra para cada una de ellas: Número de revista ( De 1 a 8) Cantidad de ejemplares vendidos Valor de venta de la revista Monto cobrado por publicidad Gastos de edición. Se pide emitir un listado ordenado de mayor a menor por la ganancia o pérdida con el siguiente formato:
+    ```
+    N° revista | Ejemplares | Recaudado | Cobrado | Gastos | Ganancia o Vendidos | por Ventas | por publicidad | de edición | pérdida
+    ```
+1. Dada una matriz cuadrada A (3,3) armar el juego del TA-TE-TI. Efectuar una rutina de carga de datos, en donde se ingresarán alternativamente X o O y la posición donde se desea guardar dicho valor. Antes de guardar el valor ingresado en la matriz verificar que la posición esté en blanco y fuego del quinto dato ingresado comenzar a verificar si se hizo TA-TE-TI en cualquier dirección posible.
