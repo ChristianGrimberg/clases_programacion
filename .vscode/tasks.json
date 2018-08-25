@@ -4,13 +4,30 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "ANSI C GNU Linux Compiler",
+            "label": "Classroom Compiler",
             "command": "cc",
             "type": "shell",
             "args": [
                 "-o",
                 "Clase02/program",
                 "Clase02/main.c"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Exercices Compiler",
+            "command": "cc",
+            "type": "shell",
+            "args": [
+                "-o",
+                "GuiaEjercicios/program",
+                "GuiaEjercicios/main.c"
             ],
             "problemMatcher": [
                 "$gcc"
