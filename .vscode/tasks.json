@@ -27,6 +27,7 @@
             "args": [
                 "-o",
                 "GuiaEjercicios/program",
+                "GuiaEjercicios/validator.c",
                 "GuiaEjercicios/main.c"
             ],
             "problemMatcher": [
