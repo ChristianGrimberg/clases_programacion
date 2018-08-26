@@ -11,17 +11,30 @@ void clearBuffer(void)
     }
 }
 
-int isNumber(char value[])
+int isIntegerOrDoubleNumber(char value[])
 {
-   int returnValue = 0;
-   int i = 0;
+    int numberType = -1;
+    int i = 0;
+    int coma = 0;
 
-   while(value[i] != '\0')
-   {
-       if(value[i] < '0' || value[i] > '9')
-            returnValue = 1;
-       i++;
-   }
+    while(value[i] != (int)'\0')
+    {
+        if(value[i] >= (int)'0' && value[i] <= (int)'9')
+            numberType = 0;
+        else if(value[i]=='.')
+            coma++;
+        else
+        {
+            numberType = -1;
+            break;
+        }        
+        i++;
+    }
 
-   return returnValue;
+    if(numberType==0 && coma==1)
+        numberType = 1;
+    else if(numberType==0 && coma>1)
+        numberType = -1;    
+
+    return numberType;
 }
