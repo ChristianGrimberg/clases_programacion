@@ -22,7 +22,7 @@
             }
         },
         {
-            "label": "Exercices Compiler",
+            "label": "Exercises Compiler",
             "command": "cc",
             "type": "shell",
             "args": [
