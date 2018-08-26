@@ -9,8 +9,9 @@
             "type": "shell",
             "args": [
                 "-o",
-                "Clase02/program",
-                "Clase02/main.c"
+                "Clases/bin/Debug/Clases",
+                "Clases/clases.c",
+                "Clases/main.c"
             ],
             "problemMatcher": [
                 "$gcc"
@@ -26,8 +27,9 @@
             "type": "shell",
             "args": [
                 "-o",
-                "GuiaEjercicios/program",
+                "GuiaEjercicios/bin/Debug/GuiaEjercicios",
                 "GuiaEjercicios/validator.c",
+                "GuiaEjercicios/exercises.c",
                 "GuiaEjercicios/main.c"
             ],
             "problemMatcher": [

@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1535288740 source:/home/csgrimberg/Repositories/clases_programacion/Clases/clases.c
+	<stdio.h>
+	<stdlib.h>
+	"clases.h"
+
+1535288526 /home/csgrimberg/Repositories/clases_programacion/Clases/clases.h
+
