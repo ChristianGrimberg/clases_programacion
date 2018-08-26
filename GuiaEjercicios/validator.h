@@ -10,4 +10,6 @@
  */
 void clearBuffer(void);
 
+int isNumber(char value[]);
+
 #endif

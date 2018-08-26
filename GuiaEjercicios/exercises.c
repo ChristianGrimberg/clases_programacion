@@ -23,7 +23,7 @@ void exerciseOne(void)
             average+=(float)inputNumber;
         else
         {
-            printf("Error de ingreso. Se termina el programa.\n");
+            printf("Error de ingreso. El programa se termina.\n");
             break;
         }
     }
