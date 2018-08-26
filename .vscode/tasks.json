@@ -10,6 +10,7 @@
             "args": [
                 "-o",
                 "Clases/bin/Debug/Clases",
+                "Clases/clases.h",
                 "Clases/clases.c",
                 "Clases/main.c"
             ],
@@ -28,7 +29,9 @@
             "args": [
                 "-o",
                 "GuiaEjercicios/bin/Debug/GuiaEjercicios",
+                "GuiaEjercicios/validator.h",
                 "GuiaEjercicios/validator.c",
+                "GuiaEjercicios/exercises.h",
                 "GuiaEjercicios/exercises.c",
                 "GuiaEjercicios/main.c"
             ],
