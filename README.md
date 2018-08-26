@@ -8,7 +8,7 @@ cd clases_programacion/
 ## Prácticas en Code::Blocks IDE
 Para trabajar con los proyectos en el IDE de Code::Blocks se deben abrir los archivos de extensión _*.cbp_ ubicados en las carpetas de proyecto [Clases](/Clases) y [GuiaEjercicios](/GuiaEjercicios). Ambos proyectos se encuentran listos para compilar y depurar.
 ## Prácticas en Visual Studio Code
-Para trabajar con los proyectos en el IDE de Visual Studio Code se debe abrir la carpeta raíz del repositorio, ya que el editor no opera con proyectos, sinó directamente con los archivos ubicados por carpeta. Para compilar ambos proyectos se utiliza el atajo de teclado `Ctrl` + `Shift` + `B` invocando las tareas de compilación. Para el caso de los ejercicios en clase se utiliza la tarea _Exercises Compiler_ y para la los ejercicios de la guía se utiliza la tarea _Classroom Compiler_.
+Para trabajar con los proyectos en el IDE de Visual Studio Code se debe abrir la carpeta raíz del repositorio, ya que el editor no opera con proyectos, sinó directamente con los archivos ubicados por carpeta. Para compilar ambos proyectos se utiliza el atajo de teclado `Ctrl` + `Shift` + `B` invocando las tareas de compilación. Para el caso de los ejercicios en clase se utiliza la tarea _Classroom Compiler_ y para la los ejercicios de la guía se utiliza la tarea _Exercises Compiler_.
 
 ![Vscode tasks](/img/tasks-vscode.png)
 
