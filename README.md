@@ -1,11 +1,2 @@
-# Prácticas con ANSI C en Programación y Laboratorio 1 de UTN
-
-## Clase 1
-Diferencias entre Javascript y ANSI C. Tipos de Datos. Uso de estructuras condicionales y de iteración. Teoría de Punteros. Práctica de Máximos y Mínimos y Medios. Uso de Arrays.
-
-## Clase 2
-Repaso de practica de clase anterior. Uso de acumulador y promedio con ANSI C. Casteo entre tipos de datos teniendo en cuenta el concepto de inclusión.
-
-![Git](/img/Git-Logo.png)
-
-Instalación y uso de Git en entorno local. Comandos básicos de Git. Subida de commits en [Github](https://github.com). Clonacion a repositorio local. Creación de archivo README.md.
+# Prácticas en ANSI C del curso de Programación y Laboratorio 1 de UTN
+El presente repositorio se encuentra segmentado por dos proyectos compatibles con los IDE __Code::Blocks__ y __Visual Studio Code__. Ambos proyectos son las prácticas realizadas en las [Clases](/Clases/README.md) de la división 1E del segundo cuatrimestre del año 2018, además de la [Guía de Ejercicios](/GuiaEjercicios/README.md) entregadas en el [Campus Virtual de la UTN FRA](https://www.utnfravirtual.org.ar/).
