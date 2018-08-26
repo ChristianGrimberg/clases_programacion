@@ -12,4 +12,14 @@ Para trabajar con los proyectos en el IDE de Visual Studio Code se debe abrir la
 
 ![Vscode tasks](/img/tasks-vscode.png)
 
+Para la ejecución de los programas compilados desde el Terminal de Visual Studio Code se debe ejecutar lo siguiente:
+
+__Programa Clases:__
+```bash
+./Clases/bin/Debug/Clases
+```
+__Programa Guía de Ejercicios:__
+```bash
+./GuiaEjercicios/bin/Debug/GuiaEjercicios
+```
 > Todas las prácticas fueron realizadas desde el sistema operativo __GNU/Linux__ bajo distribución basada en __Debian__.
