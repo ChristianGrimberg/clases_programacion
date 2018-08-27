@@ -3,7 +3,8 @@
 #include "operations.h"
 #include "validator.h"
 
-int averageOfNumbers(int qtyOfNumbers, double *resultValue)
+
+int acumulateNumbers(int qtyOfNumbers, double *resultValue)
 {
     int returnValue = 1;
     double inputNumber;
@@ -25,7 +26,6 @@ int averageOfNumbers(int qtyOfNumbers, double *resultValue)
 
     if(validateInput==0 && qtyOfNumbers>0)
     {
-        average = average/(double)qtyOfNumbers;
         *resultValue = average;
         returnValue = 0;
     }

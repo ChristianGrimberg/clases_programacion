@@ -16,9 +16,14 @@ int main()
                 /**< Ingresar 5 números y calcular su media. */
                 exercise1();
                 break;
+            case 2:
+                /**< Escribir el programa necesario para calcular
+                 * la suma de dos números. */
+                exercise2();
+                break;
             case 0:
             default:
-                printf("\nOpcion no encontrada. El programa se termina.\n");
+                printf("Opcion no encontrada. El programa se termina.\n");
                 break;
         }
     }

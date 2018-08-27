@@ -10,7 +10,21 @@ void exercise1(void)
     double average;
     int validateInput;
 
-    validateInput = averageOfNumbers(numberQty, &average);    
+    validateInput = acumulateNumbers(numberQty, &average);    
     if(validateInput == 0)
+    {
+        average = average/(double)numberQty;
         printf("El promedio de los numeros ingresados es: %.2lf\n", average);
+    }
+}
+
+void exercise2(void)
+{
+    int numberQty = 2;
+    double sumNumbers;
+    int validateInput;
+
+    validateInput = acumulateNumbers(numberQty, &sumNumbers);
+    if(validateInput == 0)
+        printf("La suma de los numeros ingresados es: %.2lf\n", sumNumbers);
 }
