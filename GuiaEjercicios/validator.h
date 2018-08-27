@@ -17,6 +17,6 @@ void clearBuffer(void);
  *  \return Retorna -1 si no es numerico, 0 si es entero y 1 si es decimal. 
  * 
  */
-int isIntegerOrDoubleNumber(char value[]);
+int isIntegerOrDecimalNumber(char value[]);
 
 #endif

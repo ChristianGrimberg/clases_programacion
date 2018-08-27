@@ -31,6 +31,8 @@
                 "GuiaEjercicios/bin/Debug/GuiaEjercicios",
                 "GuiaEjercicios/validator.h",
                 "GuiaEjercicios/validator.c",
+                "GuiaEjercicios/operations.h",
+                "GuiaEjercicios/operations.c",
                 "GuiaEjercicios/exercises.h",
                 "GuiaEjercicios/exercises.c",
                 "GuiaEjercicios/main.c"

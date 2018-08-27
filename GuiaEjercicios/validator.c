@@ -11,7 +11,7 @@ void clearBuffer(void)
     }
 }
 
-int isIntegerOrDoubleNumber(char value[])
+int isIntegerOrDecimalNumber(char value[])
 {
     int numberType = -1;
     int i = 0;
