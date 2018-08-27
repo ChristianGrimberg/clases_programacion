@@ -1,5 +1,5 @@
 # Prácticas en ANSI C del curso de Programación y Laboratorio 1 de UTN
-El presente repositorio se encuentra segmentado por dos proyectos compatibles con los IDE [__Code::Blocks__](http://www.codeblocks.org/) y [__Visual Studio Code__](https://code.visualstudio.com/). Ambos proyectos son las prácticas realizadas en las [Clases](/Clases/README.md) de la división 1E del segundo cuatrimestre del año 2018, además de la [Guía de Ejercicios](/GuiaEjercicios/README.md) entregadas en el [Campus Virtual de la UTN FRA](https://www.utnfravirtual.org.ar/).
+El presente repositorio se encuentra segmentado por dos proyectos para realizar las prácticas de Programación y Laboratorio 1. Ambos proyectos responden a las consignas requeridas en las [Clases](/Clases/README.md) de la división 1E del segundo cuatrimestre del año 2018, además de la [Guía de Ejercicios](/GuiaEjercicios/README.md) entregadas en el [Campus Virtual de la UTN FRA](https://www.utnfravirtual.org.ar/).
 # Descargar el repositorio en el entorno local
 Para trabajar con el código del repositorio de manera local es recomendable utilizar el versionador de código [__Git__](https://git-scm.com/). Luego de la instalación de esta herramienta, será necesario abrir una ventana del Terminal, y ubicarse en directorio donde se guardará el código para descargarlo. A continuación se debe ejecutar los siguientes comandos:
 ```git
@@ -9,11 +9,11 @@ cd clases_programacion/
 # Utilizar el editor de código de su preferencia
 El repositorio es implementado mediante el uso de los editores de Code::Blocks y Visual Studio IDE, aunque podría utilizar otro de su preferencia teniendo a su cargo la tarea de parametrización. En el caso que elija por alguno de los editores mencionados, deberá tener en cuenta varios factores para contar con el espacio de trabajo configurado y listo para su uso.
 ## Prácticas en Code::Blocks IDE
-Para trabajar con los proyectos en el IDE de Code::Blocks se deben abrir los archivos de extensión _*.cbp_ ubicados en las carpetas de proyecto [Clases](/Clases) y [GuiaEjercicios](/GuiaEjercicios). Ambos proyectos se encuentran listos para compilar y depurar.
+Para trabajar con los proyectos en el IDE de [Code::Blocks](http://www.codeblocks.org/) se deben abrir los archivos de extensión _*.cbp_ ubicados en las carpetas de proyecto [Clases](/Clases) y [GuiaEjercicios](/GuiaEjercicios). Ambos proyectos se encuentran listos para compilar y depurar.
 
 ![CodeBlocks](/img/codeblocks.png)
 ## Prácticas en Visual Studio Code
-Para trabajar con los proyectos en el IDE de Visual Studio Code se debe abrir la carpeta raíz del repositorio, ya que el editor no opera con proyectos, sino directamente con los archivos ubicados por carpeta.
+Para trabajar con los proyectos en el IDE de [Visual Studio Code](https://code.visualstudio.com/) se debe abrir la carpeta raíz del repositorio, ya que el editor no opera con proyectos, sino directamente con los archivos ubicados por carpeta.
 
 ![VsCode](/img/vscode.png)
 
