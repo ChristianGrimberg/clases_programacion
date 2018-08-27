@@ -1,6 +1,8 @@
 #ifndef OPERATIONS_H_INCLUDED
 #define OPERATIONS_H_INCLUDED
 
+void clearScreen(void);
+
 /** \brief
  *  Funcion que acumula una cantidad determinada de numeros ingresados.
  *  \param qtyOfNumbers int Cantidad de numeros que va a solicitar la funcion.

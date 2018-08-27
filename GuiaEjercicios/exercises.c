@@ -28,3 +28,8 @@ void exercise2(void)
     if(validateInput == 0)
         printf("La suma de los numeros ingresados es: %.2lf\n", sumNumbers);
 }
+
+void exercise3(void)
+{
+    
+}

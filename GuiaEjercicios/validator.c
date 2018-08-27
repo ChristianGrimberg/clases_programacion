@@ -7,7 +7,8 @@ void clearBuffer(void)
     char memoryBuffer = '\n';    
     while (getchar() != memoryBuffer)
     {
-        /**< Without implementation to clean memory */
+        /**< Sin implementacion: se recorre la iteracion
+         * mientras exista caracteres residuales en memoria. */
     }
 }
 
@@ -17,10 +18,13 @@ int requestDoubleNumber(char message[], double *resultValue)
     int validateInput;
     int returnValue = 1;
 
-    printf("%s", message);
-    setbuf(stdin, NULL);
-    validateInput = scanf("%lf", &doubleAux);
-    clearBuffer();
+    do
+    {
+        printf("%s", message);
+        setbuf(stdin, NULL);
+        validateInput = scanf("%lf", &doubleAux);
+        clearBuffer();
+    } while(validateInput!=1);
     
     if(validateInput==1)
     {
@@ -37,10 +41,13 @@ int requestIntNumber(char message[], int *resultValue)
     int validateInput;
     int returnValue = 1;
 
-    printf("%s", message);
-    setbuf(stdin, NULL);
-    validateInput = scanf("%d", &intAux);
-    clearBuffer();
+    do
+    {
+        printf("%s", message);
+        setbuf(stdin, NULL);
+        validateInput = scanf("%d", &intAux);
+        clearBuffer();
+    } while(validateInput!=1);
 
     if(validateInput==1)
     {

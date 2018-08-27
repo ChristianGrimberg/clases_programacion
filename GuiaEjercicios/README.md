@@ -4,13 +4,13 @@
 1. Escribir el programa necesario para calcular la suma de dos números. Mostrar el resultado.
 1. Escribir un programa que realice las siguientes acciones:
     * Limpie la pantalla.
-    * Asigne a 2 variables numero1 y numero2 valores distintos de cero.
+    * Asigne a 2 variables `numero1` y `numero2` valores distintos de cero.
     * Efectúe el producto de dichas variables.
-    * Muestre el resultado pos pantalla.
-    * Obtenga el cuadrado de numero1 y lo muestre par pantalla.
+    * Muestre el resultado por pantalla.
+    * Obtenga el cuadrado de `numero1` y lo muestre par pantalla.
 1. Escribir un programa que realice las siguientes acciones:
     * Limpie la pantalla.
-    * Declare 2 variables y les asigne sendos valores.
+    * Declare 2 variables y les asignen dos valores.
     * Realice la resta de dichas variables y muestre por pantalla la leyenda `Resultado positivo` en caso de ser mayor que cero o `Resultado negativo` si es menor que cero.
 1. Escribir el programa necesario para calcular y mostrar el cuadrado de un número. El número debe ser mayor que cero, en caso de error que aparezca el mensaje:
     ```
@@ -20,7 +20,7 @@
 1. Diseñar un programa que calcule la longitud de la circunferencia y el área del círculo de radio dado.
 1. Diseñar un programa que calcule la superficie de un triángulo a partir del ingreso de su base y altura y muestre el resultado.
 ## Acumuladores, presentación en pantalla. Bucles y toma de decisiones
-1. Escribir un programa que realice lea por teclado 20 caracteres. Luego de la lectura indicar cuantas `a` se ingresaron, cuantas `e`, `i`, `o`, `u`.
+9. Escribir un programa que realice lea por teclado 20 caracteres. Luego de la lectura indicar cuantas `a` se ingresaron, cuantas `e`, `i`, `o`, `u`.
 1. Escribir en C un programa que muestre los números impares entre 0 y 100 y que imprima cuantos impares hay.
 1. Hacer el programa que imprima los números pares entre el 1 y el 100.
 1. Hacer el programa que imprima los números del 1 al 100.
@@ -53,7 +53,7 @@ de mozo 0.
 1. Hacer un programa que simule el funcionamiento de un reloj digital y que permita ponerlo en hora.
 1. Se registran de los empleados de una empresa Número de legajo, sueldo y sexo (`1` femenino y `2` masculino). Diseñar en un programa que permita informar cuantas mujeres ganan más de `$500` y cuantos hombres ganan menos de `$400`.
 ## Máximos y Mínimos
-1. Diseñar un programa que lea 4 números e imprima el mayor de los cuatro.
+39. Diseñar un programa que lea 4 números e imprima el mayor de los cuatro.
 1. Se ingresa por consola la cantidad de agua caída, en milímetros día a día durante un mes. Se pide determinar el día de mayor lluvia, el de menor y el promedio.
 1. Hacer un programa que imprima el mayor y el menor de una serie de 5 números que vamos introduciendo por teclado.
 1. De los alumnos de una escuela se registra su apellido y nombre y su altura. Diseñar en un programa que indique el nombre del alumno más alto y su altura (sólo uno es el más alto).
@@ -78,7 +78,7 @@ de mozo 0.
     Ha recorrido 10 Km, en 36 min. 23 seg. Su velocidad promedio fue de 16.49 km/h.
     ```
 ## Ejercicios de Vectores
-1. Leer 10 elementos de un vector de enteros y mostrar su contenido.
+56. Leer 10 elementos de un vector de enteros y mostrar su contenido.
 1. Leer 20 números enteros positivos, indicar cuál es el mayor y en qué orden fue leído (a que elemento pertenece). Mostrar el vector completo.
 1. Leer 20 números enteros positivos. Mostrar el vector tal como fue ingresado y luego mostrar el vector ordenado en forma decreciente.
 1. Una persona desea saber en qué día del mes realizó más gastos en compras, para ello ingresa por teclado día a día lo que gastó por día, cargando un vector definido en memoria. Puede haber varias o ninguna compra para un determinado día. Informar cual fue el día de mayor gasto.
@@ -109,7 +109,7 @@ de mozo 0.
     * Listado ordenado por código de producto.
     * Código del medicamento de precio más bajo.
 ## Ejercicios de vectores y matrices
-1. Inicializar a cero una matriz de 6 filas por 5 columnas. Cargar valores enteros en un elemento determinado, para lo cual se debe informar número de fila y de columna y luego ingresar el valor a cargar. Mostrar la matriz por filas y luego por columnas.
+68. Inicializar a cero una matriz de 6 filas por 5 columnas. Cargar valores enteros en un elemento determinado, para lo cual se debe informar número de fila y de columna y luego ingresar el valor a cargar. Mostrar la matriz por filas y luego por columnas.
 1. Una empresa de colectivos tiene 3 líneas de 12 coches cada una. Por cada viaje el chofer entrega al llegar a la terminal una planilla con el número de coche (de 1 a 12) , número de línea (de 1 a 3) y la recaudación del viaje. Las planillas se entregan sin ningún orden. Se pide informar por pantalla: La recaudación total por línea de colectivo, La recaudación total por coche, La recaudación total general.
 1. Una empresa financiera tiene 100 clientes numerados de 1 a 100. Por cada transacción se registra:
     ```
