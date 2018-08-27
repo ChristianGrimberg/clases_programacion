@@ -11,6 +11,46 @@ void clearBuffer(void)
     }
 }
 
+int requestDoubleNumber(char message[], double *resultValue)
+{
+    double doubleAux;
+    int validateInput;
+    int returnValue = 1;
+
+    printf("%s", message);
+    setbuf(stdin, NULL);
+    validateInput = scanf("%lf", &doubleAux);
+    clearBuffer();
+    
+    if(validateInput==1)
+    {
+        *resultValue = doubleAux;
+        returnValue = 0;
+    }
+    
+    return returnValue;
+}
+
+int requestIntNumber(char message[], int *resultValue)
+{
+    int intAux;
+    int validateInput;
+    int returnValue = 1;
+
+    printf("%s", message);
+    setbuf(stdin, NULL);
+    validateInput = scanf("%d", &intAux);
+    clearBuffer();
+
+    if(validateInput==1)
+    {
+        *resultValue = intAux;
+        returnValue = 0;
+    }
+
+    return returnValue;
+}
+
 int isIntegerOrDecimalNumber(char value[])
 {
     int numberType = -1;

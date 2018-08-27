@@ -13,12 +13,8 @@ int averageOfNumbers(int qtyOfNumbers, double *resultValue)
     
     for(i=0; i<qtyOfNumbers; i++)
     {
-        printf("Ingrese el numero %d: ", i+1);
-        setbuf(stdin, NULL); /**< Se limpia el buffer de entrada del teclado para los distintos SO */
-        validateInput = scanf("%lf", &inputNumber);
-        clearBuffer();
-
-        if(validateInput==1)
+        validateInput = requestDoubleNumber("Ingrese el numero: ", &inputNumber);
+        if(validateInput==0)
             average+=inputNumber;
         else
         {
@@ -27,7 +23,7 @@ int averageOfNumbers(int qtyOfNumbers, double *resultValue)
         }
     }
 
-    if(validateInput==1 && qtyOfNumbers>0)
+    if(validateInput==0 && qtyOfNumbers>0)
     {
         average = average/(double)qtyOfNumbers;
         *resultValue = average;

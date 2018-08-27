@@ -4,12 +4,13 @@
 #include "validator.h"
 #include "operations.h"
 
-void exercise1_1(void)
+void exercise1(void)
 {
     int numberQty = 5;
     double average;
+    int validateInput;
 
-    printf("Ejercicio 1\n");
-    if(averageOfNumbers(numberQty, &average) == 0)
-        printf("\nEl promedio de los numeros ingresados es: %.2lf\n", average);
+    validateInput = averageOfNumbers(numberQty, &average);    
+    if(validateInput == 0)
+        printf("El promedio de los numeros ingresados es: %.2lf\n", average);
 }

@@ -14,7 +14,7 @@ int main()
         {
             case 1:
                 /**< Ingresar 5 números y calcular su media. */
-                exercise1_1();
+                exercise1();
                 break;
             case 0:
             default:
