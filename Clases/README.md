@@ -9,3 +9,13 @@ Repaso de practica de clase anterior. Uso de acumulador y promedio con ANSI C. C
 ![Git](/img/Git-Logo.png)
 
 Instalación y uso de Git en entorno local. Comandos básicos de Git. Subida de commits en [Github](https://github.com). Clonacion a repositorio local. Creación de archivo README.md.
+
+## Clase 3
+¿Porqué y para qué se utilizan las funciones? Uso de los prototipos de una función. Stack: Zona de memoria para alamcenar las funciones, entre otros objetos del programa. Scope/Ámbito de la función. Regla para uso de punteros:
+
+```c
+int edad = 31;
+int* pEdad; /**< Variable puntero que apunta a otra variable. */
+pEdad = &edad; /**< Se obtiene la direccion de memoria de la variable pEdad. */
+```
+
