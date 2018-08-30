@@ -1,4 +1,4 @@
-#include <stdio_ext.h>
+#include <stdio_ext.h> /**< Biblioteca Estandar de Entrada y Salida extendida */
 #include <stdlib.h>
 #include "funciones.h"
 
@@ -38,7 +38,7 @@ int getInt(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje, ch
     {
         for(; reintentos > 0; reintentos--)
         {
-            printf("%s", mensaje);
+            printf(mensaje);
             ingreso = scanf("%d", &edadAux);
             if(ingreso == 1 && edadAux >= minimo && edadAux <= maximo)
             {
@@ -50,7 +50,7 @@ int getInt(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje, ch
             {
                 /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
                 __fpurge(stdin);
-                printf("%s", error);
+                printf(error);
             }
         }
 
