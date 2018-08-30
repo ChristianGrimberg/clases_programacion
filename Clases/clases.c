@@ -45,3 +45,11 @@ void clase03()
     else
         printf("Error de ingreso de edad.");
 }
+
+void clase04()
+{
+    int edad = 0;
+
+    if(getInt(&edad, 3, 0, 199, "Ingrese la edad: ", "Edad fuera de rango: ") == 0)
+        printf("Edad ingresada: %d", edad);
+}

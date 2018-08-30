@@ -5,7 +5,8 @@
 int main()
 {
     //clase02(); /**< Maximos, Minimos y Promedios */
-    clase03();
+    //clase03();
+    clase04();
 
     return 0;
 }

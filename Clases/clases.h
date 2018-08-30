@@ -3,5 +3,6 @@
 
 void clase02(void);
 void clase03(void);
+void clase04(void);
 
 #endif //CLASES_H_INCLUDED
