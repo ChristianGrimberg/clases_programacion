@@ -41,5 +41,7 @@ void clase03()
 
     ingreso = getEdad(&edad);
     if(ingreso == 0)
-        printf("La edad ingresada es: %d", edad);
+        printf("La edad ingresada es: %d.", edad);
+    else
+        printf("Error de ingreso de edad.");
 }
