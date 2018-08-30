@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "clases.h"
+#include "funciones.h"
 
 void clase02(void)
 {
@@ -31,4 +32,14 @@ void clase02(void)
     if(qtyNumbers!=0)
         average=average/qtyNumbers;
     printf("\nMinimo: %d\nMaximo: %d\nPromedio: %.2f\n", minNumber, maxNumber, average);
+}
+
+void clase03()
+{
+    int edad = 0;
+    int ingreso;
+
+    ingreso = getEdad(&edad);
+    if(ingreso == 0)
+        printf("La edad ingresada es: %d", edad);
 }
