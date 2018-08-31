@@ -22,4 +22,13 @@ pEdad = &edad; /**< Se obtiene la direccion de memoria de la variable pEdad. */
 # Clase 4
 Funcion generica para obtener un entero en un rango determinado. Uso de bibliotecas con archivos `source` (extensión `*.c`) y archivos `header` (extensión `*.h`).
 
-> Tips: No se incluyen los archivos `source` en los archivos ya que al agregarlo en mas de un archivo el compilador ve dos veces implementada la función. Al incluir el `header` en un archivo, le trae todos los prototipos de la función al archivo que está incluido. En caso que el `source` utilice una función implementada en si mismo, debe incluirse el `header` en él.
+> Tips: No se incluyen los archivos `source` en los archivos ya que al agregarlo en mas de un archivo el compilador ve dos veces implementada la función. Al incluir el `header` en un archivo, le trae todos los prototipos de la función al archivo que está incluido. En caso que el `source` utilice una función implementada en si mismo, debe incluirse el `header` en él. Uso de modificador `static` para funciones privadas y variables globales privadas en el mismo `source`. Se pueden implementar una variable global privada dentro de una función, y sigue tomándose como variable global como si estuviera fuera de la función, aunque no puede invocarse en otra función.
+
+```c
+int function(void)
+{
+	static int i = 9;
+	i++;
+	return i;
+}
+```
