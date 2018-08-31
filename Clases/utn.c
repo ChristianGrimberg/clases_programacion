@@ -77,6 +77,8 @@ static int getInt(int* number)
         *number = numberAux;
         returnValue = 0;
     }
+    else
+        __fpurge(stdin);
 
     return returnValue;
 }
@@ -91,6 +93,8 @@ static int getFloat(float* decimal)
         *decimal = numberAux;
         returnValue = 0;
     }
+    else
+        __fpurge(stdin);
 
     return returnValue;
 }
