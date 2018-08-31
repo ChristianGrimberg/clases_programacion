@@ -51,7 +51,11 @@ void clase03()
 void clase04()
 {
     int edad = 0;
+    float decimal = 0.0f;
 
     if(utn_getInt(&edad, 3, 0, 199, "Ingrese la edad: ", "Edad fuera de rango: ") == 0)
-        printf("Edad ingresada: %d", edad);
+        printf("Edad ingresada: %d\n", edad);
+
+    if(utn_getFloat(&decimal, 3, 0.0, 100.0, "Ingrese decimal entre 0 y 100: ", "Decimal fuera de rango. ") == 0)
+        printf("Decimal ingresado: %.2f\n", decimal);
 }
