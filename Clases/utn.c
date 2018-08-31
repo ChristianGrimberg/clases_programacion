@@ -1,27 +1,19 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 
-static void funcionInterna(void); /**< Prototipo de funcion privada interno al source */
-
-/**< Implementacion de funcion privada */
-static void funcionInterna(void)
-{}
+static int getInt(int* number); /**< Prototipo de funcion privada interno al source */
 
 int utn_getInt(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje, char* error)
 {
     int edadAux;
     int retorno = -1;
-    int ingreso;
-
-    funcionInterna(); /**< Invocacion de funcion privada en source */
 
     if(maximo > minimo && reintentos > 0)
     {
         for(; reintentos > 0; reintentos--)
         {
             printf(mensaje);
-            ingreso = scanf("%d", &edadAux);
-            if(ingreso == 1 && edadAux >= minimo && edadAux <= maximo)
+            if(getInt(&edadAux) == 0 && edadAux >= minimo && edadAux <= maximo)
             {
                 *pEdad = edadAux;
                 retorno = 0;
@@ -40,4 +32,19 @@ int utn_getInt(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje
     }
 
     return retorno;
+}
+
+/**< Implementacion de funcion privada */
+static int getInt(int* number)
+{
+    int returnValue = -1;
+    int numberAux;
+
+    if(scanf("%d", &numberAux) == 1)
+    {
+        *number = numberAux;
+        returnValue = 0;
+    }
+
+    return returnValue;
 }
