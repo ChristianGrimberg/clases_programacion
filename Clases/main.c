@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "clases.h"
 
+extern int global; /**< Uso de variable global en otro source previamente declarada */
+
 int main()
 {
     //clase02(); /**< Maximos, Minimos y Promedios */

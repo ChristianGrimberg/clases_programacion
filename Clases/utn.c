@@ -1,11 +1,19 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 
+static void funcionInterna(void); /**< Prototipo de funcion privada interno al source */
+
+/**< Implementacion de funcion privada */
+static void funcionInterna(void)
+{}
+
 int utn_getInt(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje, char* error)
 {
     int edadAux;
     int retorno = -1;
     int ingreso;
+
+    funcionInterna(); /**< Invocacion de funcion privada en source */
 
     if(maximo > minimo && reintentos > 0)
     {

@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funciones.h"
+#include "utn.h"
+
+int global; /**< Prueba de uso de variable global en otro archivo */
 
 void clase02(void)
 {
@@ -49,6 +52,6 @@ void clase04()
 {
     int edad = 0;
 
-    if(getInt(&edad, 3, 0, 199, "Ingrese la edad: ", "Edad fuera de rango: ") == 0)
+    if(utn_getInt(&edad, 3, 0, 199, "Ingrese la edad: ", "Edad fuera de rango: ") == 0)
         printf("Edad ingresada: %d", edad);
 }
