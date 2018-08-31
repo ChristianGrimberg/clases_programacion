@@ -5,8 +5,8 @@
 int main()
 {
     //clase02(); /**< Maximos, Minimos y Promedios */
-    //clase03();
-    clase04();
+    //clase03(); /**< Uso de funciones y parametros por referencia */
+    clase04(); /**< Funcion generica para obtener enteros en un rango */
 
     return 0;
 }

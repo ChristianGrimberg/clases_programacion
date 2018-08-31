@@ -10,8 +10,8 @@
             "args": [
                 "-o",
                 "Clases/bin/Debug/Clases",
-                "Clases/clases.h",
                 "Clases/clases.c",
+                "Clases/utn.c",
                 "Clases/main.c"
             ],
             "problemMatcher": [

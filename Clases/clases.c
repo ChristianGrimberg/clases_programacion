@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "clases.h"
 #include "funciones.h"
 
 void clase02(void)
