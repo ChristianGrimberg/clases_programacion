@@ -32,3 +32,28 @@ int function(void)
 	return i;
 }
 ```
+
+# Clase 5
+Uso de arrays. Intro a exploits en C en el stack con funciones y tipos de datos no controlados.
+
+__Segmentos de códigos importantes:__
+
+```c
+int salario[5];
+
+/**< Direccion de inicio de memoria reservada en el stack del array. */
+salario;
+&salario[0];
+
+/**< Direccion de memoria de un elemento del puntero es igual al algebra de punteros. */
+&salario[i];
+salario + i; /**< Algebra de punteros */
+
+/**< Validar negando el condicional es lo mismo que validarlo a cero. */
+if(!utn_getInt(&edades[i], 2, 0, 200, "\nEdad", "\nEdad fuera de rango"))
+if(utn_getInt(&edades[i], 2, 0, 200, "\nEdad", "\nEdad fuera de rango")==0)
+
+/**< Un puntero a array como parametro de ambas formas */
+int mostrarArray(int* pArray, int limite)
+int mostrarArray(int pArray[], int limite)
+```

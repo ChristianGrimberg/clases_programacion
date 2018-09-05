@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "funciones.h"
 #include "utn.h"
+#include "clases.h"
+#define CANTIDAD_EMPLEADOS 5
 
 int global; /**< Prueba de uso de variable global en otro archivo */
 
@@ -59,3 +61,34 @@ void clase04()
     if(utn_getFloat(&decimal, 3, 0.0, 100.0, "Ingrese decimal entre 0 y 100: ", "Decimal fuera de rango. ") == 0)
         printf("Decimal ingresado: %.2f\n", decimal);
 }
+
+void clase05()
+{
+    int edades[CANTIDAD_EMPLEADOS];
+    int i;
+
+    for(i=0; i<CANTIDAD_EMPLEADOS; i++)
+    {
+        /**< Conviene validar si hubo un error */
+        if(utn_getInt(&edades[i], 2, 0, 200, "\nEdad? ", "\nEdad fuera de rango.")==-1)
+        {
+            edades[i] = -1;
+        }
+    }
+    mostrarArray(edades, CANTIDAD_EMPLEADOS);
+    mostrarArray(edades+2, CANTIDAD_EMPLEADOS-2); /**< Slidezing */
+}
+
+int mostrarArray(int* pArray, int limite)
+{
+    int retorno = 0;
+    int i;
+
+    for(i=0; i<limite; i++)
+    {
+        printf("\nIndex: %d, Value: %d, Add: %p.", i, pArray[i], pArray+i);
+    }
+
+    return retorno;
+}
+
