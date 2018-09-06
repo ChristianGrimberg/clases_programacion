@@ -4,6 +4,7 @@
 #include "utn.h"
 #include "clases.h"
 #define CANTIDAD_EMPLEADOS 5
+#define INICIALIZADOR -2
 
 int global; /**< Prueba de uso de variable global en otro archivo */
 
@@ -65,7 +66,13 @@ void clase04()
 void clase05()
 {
     int edades[CANTIDAD_EMPLEADOS];
+    int valorMaximo;
     int i;
+
+    if(initArray(edades, CANTIDAD_EMPLEADOS, INICIALIZADOR)==-1)
+        printf("\nError al inicializar el array.");
+    else
+        mostrarArray(edades, CANTIDAD_EMPLEADOS);
 
     for(i=0; i<CANTIDAD_EMPLEADOS; i++)
     {
@@ -76,7 +83,11 @@ void clase05()
         }
     }
     mostrarArray(edades, CANTIDAD_EMPLEADOS);
-    mostrarArray(edades+2, CANTIDAD_EMPLEADOS-2); /**< Slidezing */
+    //mostrarArray(edades+2, CANTIDAD_EMPLEADOS-2); /**< Slidezing */
+
+    if(!calcularMaximoArray(edades, CANTIDAD_EMPLEADOS, &valorMaximo))
+        printf("\nEdad maxima: %d", valorMaximo);
+
 }
 
 int mostrarArray(int* pArray, int limite)
@@ -92,3 +103,41 @@ int mostrarArray(int* pArray, int limite)
     return retorno;
 }
 
+int calcularMaximoArray(int *pArray, int limite, int *pMaximo)
+{
+    int retorno = -1;
+    int maximo;
+    int i;
+
+    if(pArray!=NULL && limite>0)
+    {
+        retorno = 0;
+        for(i=0; i<limite; i++)
+        {
+            if(i==0)
+                maximo = pArray[i];
+            else if(pArray[i]>maximo)
+                maximo = pArray[i];
+        }
+        *pMaximo = maximo;
+    }
+
+    return retorno;
+}
+
+int initArray(int* pArray, int limite, int valor)
+{
+    int retorno = -1;
+    int i;
+
+    if(pArray!=NULL && limite>0)
+    {
+        retorno = 0;
+        for(i=0; i<limite; i++)
+        {
+            pArray[i] = valor;
+        }
+    }
+
+    return retorno;
+}
