@@ -1,7 +1,7 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
-#define STRING_MAX 64
+#define STRING_TO_INT_64 10
 
 static int getInt(int* number); /**< Prototipo de funcion privada interno al source */
 static int getFloat(float* decimal);
@@ -73,7 +73,7 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
 static int getInt(int* number)
 {
     int returnValue = -1;
-    char stringAux[STRING_MAX];
+    char stringAux[STRING_TO_INT_64];
 
     if(scanf("%s", stringAux) == 1)
     {
