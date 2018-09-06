@@ -92,6 +92,14 @@ void clase05()
 
 }
 
+void clase06()
+{
+    int edad = 0;
+
+    if(utn_getInt(&edad, 3, 0, 199, "Ingrese la edad: ", "Edad fuera de rango: ") == 0)
+        printf("Edad ingresada: %d\n", edad);
+}
+
 int mostrarArray(int* pArray, int limite)
 {
     int retorno = 0;
@@ -105,7 +113,7 @@ int mostrarArray(int* pArray, int limite)
     return retorno;
 }
 
-int calcularMaximoArray(int *pArray, int limite, int *pMaximo)
+int calcularMaximoArray(int* pArray, int limite, int* pMaximo)
 {
     int retorno = -1;
     int maximo;

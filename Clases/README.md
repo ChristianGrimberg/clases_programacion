@@ -57,3 +57,6 @@ if(utn_getInt(&edades[i], 2, 0, 200, "\nEdad", "\nEdad fuera de rango")==0)
 int mostrarArray(int* pArray, int limite)
 int mostrarArray(int pArray[], int limite)
 ```
+
+# Clase 6
+Tipo de dato `char` guarda caracteres numericos convertidos al valor correspondiente de la tabla ASCII.

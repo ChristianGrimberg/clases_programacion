@@ -1,8 +1,11 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
+#include <string.h>
+#define STRING_MAX 64
 
 static int getInt(int* number); /**< Prototipo de funcion privada interno al source */
 static int getFloat(float* decimal);
+static int isNumber(char* stringValue);
 
 int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
 {
@@ -70,12 +73,15 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
 static int getInt(int* number)
 {
     int returnValue = -1;
-    int numberAux;
+    char stringAux[STRING_MAX];
 
-    if(scanf("%d", &numberAux) == 1)
+    if(scanf("%s", stringAux) == 1)
     {
-        *number = numberAux;
-        returnValue = 0;
+        if(isNumber(stringAux) == 0)
+        {
+            *number = atoi(stringAux);
+            returnValue = 0;
+        }
     }
     else
         __fpurge(stdin);
@@ -95,6 +101,24 @@ static int getFloat(float* decimal)
     }
     else
         __fpurge(stdin);
+
+    return returnValue;
+}
+
+static int isNumber(char* stringValue)
+{
+    int returnValue = 0;
+    int i = 0;
+
+    while(stringValue[i] != (int)'\0')
+    {
+        if((int)stringValue[i] < (int)'0' || (int)stringValue[i] > (int)'9')
+        {
+            returnValue = -1;
+            break;
+        }
+        i++;
+    }
 
     return returnValue;
 }
