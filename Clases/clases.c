@@ -7,6 +7,9 @@
 #define INICIALIZADOR -2
 #define true 1
 #define false 0
+#define ASC 0
+#define DESC 1
+#define CANTIDAD_NUMEROS 6
 
 int global; /**< Prueba de uso de variable global en otro archivo */
 
@@ -100,6 +103,39 @@ void clase06()
         printf("Edad ingresada: %d\n", edad);
 }
 
+void clase06_2()
+{
+    int numeros[CANTIDAD_NUMEROS];
+    int i;
+
+    if(initArray(numeros, CANTIDAD_NUMEROS, -2) == -1)
+        printf("Error al inicializar el array.\n");
+    else
+        mostrarArray(numeros, CANTIDAD_NUMEROS);
+
+    for(i = 0; i < CANTIDAD_NUMEROS; i++)
+    {
+        if(utn_getInt(&numeros[i], 2, 0, 10, "\nNumero? ", "\nNumero fuera de rango.")==-1)
+        {
+            numeros[i] = -1;
+        }
+    }
+    printf("\nArray desordenado.");
+    mostrarArray(numeros, CANTIDAD_NUMEROS);
+
+    printf("\nArray ordenado de menor a mayor.");
+    if(bubbleSort(numeros, CANTIDAD_NUMEROS, ASC) == -1)
+        printf("\nError al ordenar de menor a mayor.");
+    else
+        mostrarArray(numeros, CANTIDAD_NUMEROS);
+
+    printf("\nArray ordenado de mayor a menor.");
+    if(bubbleSort(numeros, CANTIDAD_NUMEROS, DESC) == -1)
+        printf("\nError al ordenar de mayor a menor.");
+    else
+        mostrarArray(numeros, CANTIDAD_NUMEROS);
+}
+
 int mostrarArray(int* pArray, int limite)
 {
     int retorno = 0;
@@ -116,7 +152,7 @@ int mostrarArray(int* pArray, int limite)
 int calcularMaximoArray(int* pArray, int limite, int* pMaximo)
 {
     int retorno = -1;
-    int maximo;
+    int maximo = 0;
     int flagPrimerMaximo = false;
     int i;
 
@@ -167,4 +203,40 @@ int initArray(int* pArray, int limite, int valor)
     }
 
     return retorno;
+}
+
+int bubbleSort(int* pArray, int limit, int ascOrDesc)
+{
+    int returnValue = -1;
+    int i;
+    int flagToOrder = 1;
+    int valueAux;
+
+    if(limit > 0 && pArray != NULL && (ascOrDesc == ASC || ascOrDesc == DESC))
+    {
+        while(flagToOrder == 1)
+        {
+            flagToOrder = 0;
+            for(i = 0; i < limit-1; i++)
+            {
+                if(ascOrDesc == ASC && pArray[i] > pArray[i+1])
+                {
+                    valueAux = pArray[i];
+                    pArray[i] = pArray[i+1];
+                    pArray[i+1] = valueAux;
+                    flagToOrder = 1;
+                }
+                else if(ascOrDesc == DESC && pArray[i] < pArray[i+1])
+                {
+                    valueAux = pArray[i];
+                    pArray[i] = pArray[i+1];
+                    pArray[i+1] = valueAux;
+                    flagToOrder = 1;
+                }
+            }
+        }
+        returnValue = 0;
+    }
+
+    return returnValue;
 }

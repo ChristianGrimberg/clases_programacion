@@ -10,7 +10,8 @@ int main()
     //clase03(); /**< Uso de funciones y parametros por referencia. */
     //clase04(); /**< Funcion generica para obtener enteros en un rango. */
     //clase05(); /**< Uso de array, inicializacion, busqueda de mayor. */
-    clase06();
+    //clase06();
+    clase06_2();
 
     return 0;
 }
