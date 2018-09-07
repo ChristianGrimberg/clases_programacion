@@ -219,14 +219,8 @@ int bubbleSort(int* pArray, int limit, int ascOrDesc)
             flagToOrder = 0;
             for(i = 0; i < limit-1; i++)
             {
-                if(ascOrDesc == ASC && pArray[i] > pArray[i+1])
-                {
-                    valueAux = pArray[i];
-                    pArray[i] = pArray[i+1];
-                    pArray[i+1] = valueAux;
-                    flagToOrder = 1;
-                }
-                else if(ascOrDesc == DESC && pArray[i] < pArray[i+1])
+                if((ascOrDesc == ASC && pArray[i] > pArray[i+1])
+                || (ascOrDesc == DESC && pArray[i] < pArray[i+1]))
                 {
                     valueAux = pArray[i];
                     pArray[i] = pArray[i+1];
