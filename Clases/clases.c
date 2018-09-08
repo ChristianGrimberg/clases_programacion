@@ -82,7 +82,7 @@ void clase05()
     for(i=0; i<CANTIDAD_EMPLEADOS; i++)
     {
         /**< Conviene validar si hubo un error */
-        if(utn_getInt(&edades[i], 2, 0, 200, "\nEdad? ", "\nEdad fuera de rango.")==-1)
+        if(utn_getInt(&edades[i], 2, 0, 200, "Edad? ", "Edad fuera de rango.")==-1)
         {
             edades[i] = -1;
         }
@@ -112,15 +112,16 @@ void clase06_2()
         printf("Error al inicializar el array.\n");
     else
         mostrarArray(numeros, CANTIDAD_NUMEROS);
+    printf("\n");
 
     for(i = 0; i < CANTIDAD_NUMEROS; i++)
     {
-        if(utn_getInt(&numeros[i], 2, 0, 10, "\nNumero? ", "\nNumero fuera de rango.")==-1)
+        if(utn_getInt(&numeros[i], 2, 0, 10, "Ingrese un numero: ", "Numero fuera de rango.")==-1)
         {
             numeros[i] = -1;
         }
     }
-    printf("\nArray desordenado.");
+    printf("Array desordenado.");
     mostrarArray(numeros, CANTIDAD_NUMEROS);
 
     printf("\nArray ordenado de menor a mayor.");
@@ -133,7 +134,8 @@ void clase06_2()
     if(bubbleSort(numeros, CANTIDAD_NUMEROS, DESC) == -1)
         printf("\nError al ordenar de mayor a menor.");
     else
-        mostrarArray(numeros, CANTIDAD_NUMEROS);
+        mostrarArray(numeros, CANTIDAD_NUMEROS);    
+    printf("\n");
 }
 
 int mostrarArray(int* pArray, int limite)

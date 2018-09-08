@@ -1,7 +1,8 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
-#define STRING_TO_INT_64 10
+#define STRING_TO_INT_64 11 /**< Caracter lenght of integers max values. */
+#define BUFFER_SCAPE '\n'
 
 static int getInt(int* number); /**< Prototipo de funcion privada interno al source */
 static int getFloat(float* decimal);
@@ -27,7 +28,7 @@ int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensa
             {
                 /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
                 __fpurge(stdin);
-                printf(error);
+                printf("\n%s", error);
             }
         }
 
@@ -74,8 +75,9 @@ static int getInt(int* number)
 {
     int returnValue = -1;
     char stringAux[STRING_TO_INT_64];
+    int stringLength;
 
-    if(scanf("%s", stringAux) == 1)
+    if(fgets(stringAux, STRING_TO_INT_64, stdin) != NULL)
     {
         if(isNumber(stringAux) == 0)
         {
@@ -110,7 +112,7 @@ static int isNumber(char* stringValue)
     int returnValue = 0;
     int i = 0;
 
-    while(stringValue[i] != (int)'\0')
+    while(stringValue[i] != (int)BUFFER_SCAPE)
     {
         if((int)stringValue[i] < (int)'0' || (int)stringValue[i] > (int)'9')
         {
