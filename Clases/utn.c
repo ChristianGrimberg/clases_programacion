@@ -1,16 +1,15 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
-#define STRING_TO_INT_64 11 /**< Caracter lenght of integers max values. */
-#define BUFFER_SCAPE '\n'
+#include "utn.h"
 
 static int getInt(int* number); /**< Prototipo de funcion privada interno al source */
 static int getFloat(float* decimal);
-static int isNumber(char* stringValue);
+static int isNumber(char* stringValue, int sign);
 
 int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
 {
-    int edadAux;
+    int numeroAux;
     int retorno = -1;
 
     if(maximo > minimo && reintentos > 0)
@@ -18,9 +17,9 @@ int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensa
         for(; reintentos > 0; reintentos--)
         {
             printf(mensaje);
-            if(getInt(&edadAux) == 0 && edadAux >= minimo && edadAux <= maximo)
+            if(getInt(&numeroAux) == 0 && numeroAux >= minimo && numeroAux <= maximo)
             {
-                *pNumero = edadAux;
+                *pNumero = numeroAux;
                 retorno = 0;
                 break;
             }
@@ -76,13 +75,18 @@ static int getInt(int* number)
     int returnValue = -1;
     char stringAux[STRING_TO_INT_64];
     int stringLength;
+    int numberAux;
 
     if(fgets(stringAux, STRING_TO_INT_64, stdin) != NULL)
     {
-        if(isNumber(stringAux) == 0)
+        if(isNumber(stringAux, NEGATIVE) == 0)
         {
-            *number = atoi(stringAux);
-            returnValue = 0;
+            numberAux = atoi(stringAux);
+            if(numberAux != INIT_INT_ARRAY)
+            {
+                *number = numberAux;
+                returnValue = 0;returnValue = 0;
+            }
         }
     }
     else
@@ -107,18 +111,15 @@ static int getFloat(float* decimal)
     return returnValue;
 }
 
-static int isNumber(char* stringValue)
+static int isNumber(char* stringValue, int sign)
 {
     int returnValue = 0;
     int i = 0;
 
     while(stringValue[i] != (int)BUFFER_SCAPE)
     {
-        if(i == 0 && stringValue[0] == (int)'-')
-        {
-            i++;
-            continue;
-        }
+        if(i == 0 && stringValue[0] == (int)'-' && sign == NEGATIVE)
+            i = 1;
             
         if((int)stringValue[i] < (int)'0' || (int)stringValue[i] > (int)'9')
         {

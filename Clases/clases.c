@@ -108,7 +108,7 @@ void clase06_2()
     int numeros[CANTIDAD_NUMEROS];
     int i;
 
-    if(initArray(numeros, CANTIDAD_NUMEROS, -2) == -1)
+    if(initArray(numeros, CANTIDAD_NUMEROS, INIT_INT_ARRAY) == -1)
         printf("Error al inicializar el array.\n");
     else
         mostrarArray(numeros, CANTIDAD_NUMEROS);
