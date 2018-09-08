@@ -75,7 +75,6 @@ static int getInt(int* number)
 {
     int returnValue = -1;
     char stringAux[CHARACTERS_INT_64];
-    int stringLength;
     int numberAux;
 
     if(fgets(stringAux, CHARACTERS_INT_64, stdin) != NULL)
@@ -121,7 +120,7 @@ static int isNumber(char* stringValue)
     {
         if(i == 0 && (stringValue[0] == (int)'-' || stringValue[0] == (int)'+'))
             i = 1;
-            
+
         if((int)stringValue[i] < (int)'0' || (int)stringValue[i] > (int)'9')
         {
             returnValue = -1;
@@ -143,9 +142,9 @@ static int isFloat(char* stringValue)
     {
         if(i == 0 && (stringValue[0] == (int)'-' || stringValue[0] == (int)'+'))
             i = 1;
-        
+
         if(stringValue[i] == '.')
-            pointerCounter++; 
+            pointerCounter++;
         else if((int)stringValue[i] < (int)'0' || (int)stringValue[i] > (int)'9' || pointerCounter > 1)
         {
             returnValue = -1;
