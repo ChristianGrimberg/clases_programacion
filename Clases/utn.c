@@ -5,7 +5,8 @@
 
 static int getInt(int* number); /**< Prototipo de funcion privada interno al source */
 static int getFloat(float* decimal);
-static int isNumber(char* stringValue, int sign);
+static int isNumber(char* stringValue);
+static int isFloat(char* stringValue);
 
 int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
 {
@@ -27,7 +28,7 @@ int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensa
             {
                 /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
                 __fpurge(stdin);
-                printf("\n%s", error);
+                printf(error);
             }
         }
 
@@ -73,13 +74,13 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
 static int getInt(int* number)
 {
     int returnValue = -1;
-    char stringAux[STRING_TO_INT_64];
+    char stringAux[CHARACTERS_INT_64];
     int stringLength;
     int numberAux;
 
-    if(fgets(stringAux, STRING_TO_INT_64, stdin) != NULL)
+    if(fgets(stringAux, CHARACTERS_INT_64, stdin) != NULL)
     {
-        if(isNumber(stringAux, NEGATIVE) == 0)
+        if(isNumber(stringAux) == 0)
         {
             numberAux = atoi(stringAux);
             if(numberAux != INIT_INT_ARRAY)
@@ -111,14 +112,14 @@ static int getFloat(float* decimal)
     return returnValue;
 }
 
-static int isNumber(char* stringValue, int sign)
+static int isNumber(char* stringValue)
 {
     int returnValue = 0;
     int i = 0;
 
     while(stringValue[i] != (int)BUFFER_SCAPE)
     {
-        if(i == 0 && stringValue[0] == (int)'-' && sign == NEGATIVE)
+        if(i == 0 && (stringValue[0] == (int)'-' || stringValue[0] == (int)'+'))
             i = 1;
             
         if((int)stringValue[i] < (int)'0' || (int)stringValue[i] > (int)'9')
@@ -127,6 +128,29 @@ static int isNumber(char* stringValue, int sign)
             break;
         }
         i++;
+    }
+
+    return returnValue;
+}
+
+static int isFloat(char* stringValue)
+{
+    int returnValue = 0;
+    int pointerCounter = 0;
+    int i = 0;
+
+    while(stringValue[i] != (int)BUFFER_SCAPE)
+    {
+        if(i == 0 && (stringValue[0] == (int)'-' || stringValue[0] == (int)'+'))
+            i = 1;
+        
+        if(stringValue[i] == '.')
+            pointerCounter++; 
+        else if((int)stringValue[i] < (int)'0' || (int)stringValue[i] > (int)'9' || pointerCounter > 1)
+        {
+            returnValue = -1;
+            break;
+        }
     }
 
     return returnValue;
