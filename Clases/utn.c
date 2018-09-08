@@ -114,6 +114,12 @@ static int isNumber(char* stringValue)
 
     while(stringValue[i] != (int)BUFFER_SCAPE)
     {
+        if(i == 0 && stringValue[0] == (int)'-')
+        {
+            i++;
+            continue;
+        }
+            
         if((int)stringValue[i] < (int)'0' || (int)stringValue[i] > (int)'9')
         {
             returnValue = -1;

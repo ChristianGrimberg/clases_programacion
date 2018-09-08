@@ -116,7 +116,7 @@ void clase06_2()
 
     for(i = 0; i < CANTIDAD_NUMEROS; i++)
     {
-        if(utn_getInt(&numeros[i], 2, 0, 10, "Ingrese un numero: ", "Numero fuera de rango.")==-1)
+        if(utn_getInt(&numeros[i], 2, -10, 10, "Ingrese un numero: ", "Numero fuera de rango.")==-1)
         {
             numeros[i] = -1;
         }
