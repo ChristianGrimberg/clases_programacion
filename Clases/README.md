@@ -54,8 +54,8 @@ if(!utn_getInt(&edades[i], 2, 0, 200, "\nEdad", "\nEdad fuera de rango"))
 if(utn_getInt(&edades[i], 2, 0, 200, "\nEdad", "\nEdad fuera de rango")==0)
 
 /**< Un puntero a array como parametro de ambas formas */
-int mostrarArray(int* pArray, int limite)
-int mostrarArray(int pArray[], int limite)
+int showIntArray(int* pArray, int limite)
+int showIntArray(int pArray[], int limite)
 ```
 
 ## Clase 6

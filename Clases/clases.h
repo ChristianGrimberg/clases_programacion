@@ -7,9 +7,6 @@ void clase04(void);
 void clase05(void);
 void clase06(void);
 void clase06_2(void);
-int mostrarArray(int*, int);
-int calcularMaximoArray(int*, int, int*);
-int initArray(int*, int, int);
-int bubbleSort(int*, int, int);
+void clase06_3(void);
 
 #endif //CLASES_H_INCLUDED

@@ -98,12 +98,20 @@ static int getInt(int* number)
 static int getFloat(float* decimal)
 {
     int returnValue = -1;
+    char stringAux[CHARACTERS_INT_64];
     float numberAux;
 
-    if(scanf("%f", &numberAux) == 1)
+    if(fgets(stringAux, CHARACTERS_FLOAT_64, stdin) != NULL)
     {
-        *decimal = numberAux;
-        returnValue = 0;
+        if(isFloat(stringAux) == 0)
+        {
+            numberAux = atof(stringAux);
+            if(numberAux != INIT_INT_ARRAY)
+            {
+                *decimal = numberAux;
+                returnValue = 0;
+            }        
+        }
     }
     else
         __fpurge(stdin);
@@ -150,7 +158,8 @@ static int isFloat(char* stringValue)
             returnValue = -1;
             break;
         }
+        i++;
     }
-
+    
     return returnValue;
 }
