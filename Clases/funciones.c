@@ -61,7 +61,7 @@ int getEntero(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje,
     return retorno;
 }
 
-int showIntArray(int* pArray, int limit)
+int debugIntArray(int* pArray, int limit)
 {
     int retorno = 0;
     int i;
@@ -74,7 +74,7 @@ int showIntArray(int* pArray, int limit)
     return retorno;
 }
 
-int showFloatArray(float* pArray, int limit)
+int debugFloatArray(float* pArray, int limit)
 {
     int retorno = 0;
     int i;

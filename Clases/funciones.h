@@ -11,8 +11,8 @@
 
 int getEdad(int*);
 int getEntero(int*, int, int, int, char*, char*);
-int showIntArray(int*, int);
-int showFloatArray(float*, int);
+int debugIntArray(int*, int);
+int debugFloatArray(float*, int);
 int getMaxIntArray(int*, int, int*);
 int initIntArrayInt(int*, int, int);
 int initFloatArrayInt(float*, int, int);
