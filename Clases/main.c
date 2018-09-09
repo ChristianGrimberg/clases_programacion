@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "clases.h"
+#include "classroom.h"
 
 extern int global; /**< Uso de variable global en otro source previamente declarada */
 

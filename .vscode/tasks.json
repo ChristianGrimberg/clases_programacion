@@ -9,9 +9,9 @@
             "type": "shell",
             "args": [
                 "-o",
-                "Clases/bin/Debug/Clases",
+                "Clases/bin/Debug/classroom",
                 "Clases/functions.c",
-                "Clases/clases.c",
+                "Clases/classroom.c",
                 "Clases/utn.c",
                 "Clases/main.c"
             ],

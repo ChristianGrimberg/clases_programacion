@@ -31,11 +31,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="clases.c">
+		<Unit filename="classroom.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="clases.h">
+		<Unit filename="classroom.h">
 			<Option target="Debug" />
 		</Unit>
 		<Unit filename="functions.c">

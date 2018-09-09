@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "functions.h"
 #include "utn.h"
-#include "clases.h"
+#include "classroom.h"
 #include "limits.h"
 #include "float.h"
 
