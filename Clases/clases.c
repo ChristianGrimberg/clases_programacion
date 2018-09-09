@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "funciones.h"
+#include "functions.h"
 #include "utn.h"
 #include "clases.h"
 #include "limits.h"

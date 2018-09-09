@@ -1,6 +1,6 @@
 #include <stdio_ext.h> /**< Biblioteca Estandar de Entrada y Salida extendida */
 #include <stdlib.h>
-#include "funciones.h"
+#include "functions.h"
 
 int getEdad(int* pEdad)
 {

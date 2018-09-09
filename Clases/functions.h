@@ -1,5 +1,5 @@
-#ifndef FUNCIONES_H_INCLUDED
-#define FUNCIONES_H_INCLUDED
+#ifndef functions_H_INCLUDED
+#define functions_H_INCLUDED
 
 #define CANTIDAD_EMPLEADOS 5
 #define INITIALIZER -2
@@ -19,4 +19,4 @@ int initFloatArrayInt(float*, int, int);
 int intBubbleSort(int*, int, int);
 int floatBubbleSort(float*, int, int);
 
-#endif // FUNCIONES_H_INCLUDED
+#endif // functions_H_INCLUDED

@@ -38,11 +38,11 @@
 		<Unit filename="clases.h">
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="funciones.c">
+		<Unit filename="functions.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="funciones.h">
+		<Unit filename="functions.h">
 			<Option target="Debug" />
 		</Unit>
 		<Unit filename="main.c">
