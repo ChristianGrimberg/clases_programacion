@@ -15,40 +15,39 @@
 					<Add option="-g" />
 				</Compiler>
 			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/GuiaEjercicios" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="operations.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="operations.h" />
 		<Unit filename="exercises.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="exercises.h" />
+		<Unit filename="exercises.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="operations.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="operations.h">
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="validator.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="validator.h" />
+		<Unit filename="validator.h">
+			<Option target="Debug" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
