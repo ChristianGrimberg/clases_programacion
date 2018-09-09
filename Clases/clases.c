@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funciones.h"
-#include "utn.h"
+#include "inputs.h"
 #include "clases.h"
+#include "limits.h"
+#include "float.h"
 
 int global; /**< Prueba de uso de variable global en otro archivo */
 
@@ -54,10 +56,10 @@ void clase04()
     int edad = 0;
     float decimal = 0.0f;
 
-    if(utn_getInt(&edad, 3, 0, 199, "Ingrese la edad: ", "Edad fuera de rango: ") == 0)
+    if(inputs_getInt(&edad, 3, 0, 199, "Ingrese la edad: ", "Edad fuera de rango: ") == 0)
         printf("Edad ingresada: %d\n", edad);
 
-    if(utn_getFloat(&decimal, 3, 0.0, 100.0, "Ingrese decimal entre 0 y 100: ", "Decimal fuera de rango. ") == 0)
+    if(inputs_getFloat(&decimal, 3, 0.0, 100.0, "Ingrese decimal entre 0 y 100: ", "Decimal fuera de rango. ") == 0)
         printf("Decimal ingresado: %.2f\n", decimal);
 }
 
@@ -75,7 +77,7 @@ void clase05()
     for(i=0; i<CANTIDAD_EMPLEADOS; i++)
     {
         /**< Conviene validar si hubo un error */
-        if(utn_getInt(&edades[i], 2, 0, 200, "Edad? ", "Edad fuera de rango.")==-1)
+        if(inputs_getInt(&edades[i], 2, 0, 200, "Edad? ", "Edad fuera de rango.")==-1)
         {
             edades[i] = -1;
         }
@@ -92,7 +94,7 @@ void clase06()
 {
     int edad = 0;
 
-    if(utn_getInt(&edad, 3, 0, 199, "Ingrese la edad: ", "Edad fuera de rango: ") == 0)
+    if(inputs_getInt(&edad, 3, 0, 199, "Ingrese la edad: ", "Edad fuera de rango: ") == 0)
         printf("Edad ingresada: %d\n", edad);
 }
 
@@ -109,7 +111,7 @@ void clase06_2()
 
     for(i = 0; i < NUMBER_QTY; i++)
     {
-        if(utn_getInt(&numeros[i], 2, -10, 10, "Ingrese un numero: ", "Numero fuera de rango. ") == -1)
+        if(inputs_getInt(&numeros[i], 2, INT_MIN, INT_MAX, "Ingrese un numero: ", "Numero fuera de rango. ") == -1)
         {
             numeros[i] = -100;
         }
@@ -144,7 +146,7 @@ void clase06_3()
 
     for(i = 0; i < NUMBER_QTY; i++)
     {
-        if(utn_getFloat(&decimales[i], 2, -25.0f, 35.0f, "Ingrese un decimal: ", "Decimal fuera de rango. ") == -1)
+        if(inputs_getFloat(&decimales[i], 2, -1000000, 1000000, "Ingrese un decimal: ", "Decimal fuera de rango. ") == -1)
         {
             decimales[i] = -100.0f;
         }

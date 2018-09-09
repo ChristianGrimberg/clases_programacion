@@ -50,8 +50,8 @@ salario;
 salario + i; /**< Algebra de punteros */
 
 /**< Validar negando el condicional es lo mismo que validarlo a cero. */
-if(!utn_getInt(&edades[i], 2, 0, 200, "\nEdad", "\nEdad fuera de rango"))
-if(utn_getInt(&edades[i], 2, 0, 200, "\nEdad", "\nEdad fuera de rango")==0)
+if(!inputs_getInt(&edades[i], 2, 0, 200, "\nEdad", "\nEdad fuera de rango"))
+if(inputs_getInt(&edades[i], 2, 0, 200, "\nEdad", "\nEdad fuera de rango")==0)
 
 /**< Un puntero a array como parametro de ambas formas */
 int debugIntArray(int* pArray, int limite)

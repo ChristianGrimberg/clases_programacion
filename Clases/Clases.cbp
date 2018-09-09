@@ -49,11 +49,11 @@
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="utn.c">
+		<Unit filename="inputs.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="utn.h">
+		<Unit filename="inputs.h">
 			<Option target="Debug" />
 		</Unit>
 		<Extensions>

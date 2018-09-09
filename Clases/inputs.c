@@ -1,14 +1,16 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
-#include "utn.h"
+#include "inputs.h"
+#include "limits.h"
+#include "float.h"
 
 static int getInt(int* number); /**< Prototipo de funcion privada interno al source */
 static int getFloat(float* decimal);
 static int isNumber(char* stringValue);
 static int isFloat(char* stringValue);
 
-int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
+int inputs_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
 {
     int numeroAux;
     int retorno = -1;
@@ -33,13 +35,13 @@ int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensa
         }
 
         if(reintentos == 0)
-            printf("Cantidad de intentos superada.");
+            printf("Cantidad de intentos superada.\n");
     }
 
     return retorno;
 }
 
-int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, char* mensaje, char* error)
+int inputs_getFloat(float* pNumero, int reintentos, float minimo, float maximo, char* mensaje, char* error)
 {
     int retorno = -1;
     float floatAux;
@@ -64,7 +66,7 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
         }
 
         if(reintentos == 0)
-            printf("Cantidad de intentos superada.");
+            printf("Cantidad de intentos superada.\n");
     }
 
     return retorno;
@@ -74,18 +76,21 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
 static int getInt(int* number)
 {
     int returnValue = -1;
-    char stringAux[CHAR_ARQ_INT_64];
+    char stringAux[CHARACTERS_NUMBERS];
+    char stringAtoi[CHARACTERS_NUMBERS];
     int numberAux;
 
-    if(fgets(stringAux, CHAR_ARQ_INT_64, stdin) != NULL)
+    if(fgets(stringAux, CHARACTERS_NUMBERS, stdin) != NULL)
     {
         if(isNumber(stringAux) == 0)
         {
             numberAux = atoi(stringAux);
-            if(numberAux != INIT_INT_ARRAY)
+            /**< Validating conversion functions in interger limits. */
+            sprintf(stringAtoi, "%d\n", numberAux);
+            if(strcmp(stringAux, stringAtoi) == 0)
             {
                 *number = numberAux;
-                returnValue = 0;returnValue = 0;
+                returnValue = 0;
             }
         }
     }
@@ -98,15 +103,18 @@ static int getInt(int* number)
 static int getFloat(float* decimal)
 {
     int returnValue = -1;
-    char stringAux[CHAR_ARQ_INT_64];
+    char stringAux[CHARACTERS_NUMBERS];
     float numberAux;
+    int numberInt;
 
-    if(fgets(stringAux, CHAR_ARQ_FLOAT_64, stdin) != NULL)
+    if(fgets(stringAux, CHARACTERS_NUMBERS, stdin) != NULL)
     {
         if(isFloat(stringAux) == 0)
         {
             numberAux = atof(stringAux);
-            if(numberAux != INIT_INT_ARRAY)
+            /**< Validating conversion functions in float limits. */
+            numberInt = atoi(stringAux);
+            if((int)numberAux == numberInt)
             {
                 *decimal = numberAux;
                 returnValue = 0;
