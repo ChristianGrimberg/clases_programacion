@@ -1,5 +1,5 @@
 # Prácticas en ANSI C del curso de Programación y Laboratorio 1 de UTN FRA
-El presente repositorio se encuentra segmentado por dos proyectos sobre las prácticas de Programación y Laboratorio 1. Ambos responden a las consignas requeridas en las [Clases](/Clases/README.md) de la división 1E del segundo cuatrimestre del año 2018, además de la [Guía de Ejercicios](/GuiaEjercicios/README.md) entregadas en el [Campus Virtual de la UTN FRA](https://www.utnfravirtual.org.ar/).
+El presente repositorio se encuentra segmentado en dos proyectos que constan de las prácticas de Programación y Laboratorio 1 de UTN FRA. Ambos responden a las consignas requeridas en las [Clases](/Clases/README.md) de la división 1E del segundo cuatrimestre del año 2018, además de la [Guía de Ejercicios](/GuiaEjercicios/README.md) entregadas en el [Campus Virtual de la UTN FRA](https://www.utnfravirtual.org.ar/).
 # Descargar el repositorio en el entorno local
 Para trabajar con el código del repositorio de manera local es recomendable utilizar el versionador de código [__Git__](https://git-scm.com/). Luego de la instalación de esta herramienta, será necesario abrir una ventana del Terminal, y ubicarse en directorio donde se guardará el código para descargarlo. A continuación se debe ejecutar los siguientes comandos:
 ```git
