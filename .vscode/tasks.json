@@ -12,7 +12,7 @@
                 "Clases/bin/Debug/Clases",
                 "Clases/funciones.c",
                 "Clases/clases.c",
-                "Clases/inputs.c",
+                "Clases/utn.c",
                 "Clases/main.c"
             ],
             "problemMatcher": [

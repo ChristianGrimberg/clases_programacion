@@ -6,7 +6,7 @@
 #define INIT_INT_ARRAY -50
 #define INIT_FLOAT_ARRAY -100.0f
 
-int inputs_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error);
-int inputs_getFloat(float* pNumero, int reintentos, float minimo, float maximo, char* mensaje, char* error);
+int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error);
+int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, char* mensaje, char* error);
 
 #endif //UTN_H_INCLUDED

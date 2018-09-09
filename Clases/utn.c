@@ -1,7 +1,7 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
-#include "inputs.h"
+#include "utn.h"
 #include "limits.h"
 #include "float.h"
 
@@ -10,7 +10,7 @@ static int getFloat(float* decimal);
 static int isNumber(char* stringValue);
 static int isFloat(char* stringValue);
 
-int inputs_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
+int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
 {
     int numeroAux;
     int retorno = -1;
@@ -41,7 +41,7 @@ int inputs_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* me
     return retorno;
 }
 
-int inputs_getFloat(float* pNumero, int reintentos, float minimo, float maximo, char* mensaje, char* error)
+int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, char* mensaje, char* error)
 {
     int retorno = -1;
     float floatAux;
