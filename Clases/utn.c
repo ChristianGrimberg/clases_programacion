@@ -74,10 +74,10 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
 static int getInt(int* number)
 {
     int returnValue = -1;
-    char stringAux[CHARACTERS_INT_64];
+    char stringAux[CHAR_ARQ_INT_64];
     int numberAux;
 
-    if(fgets(stringAux, CHARACTERS_INT_64, stdin) != NULL)
+    if(fgets(stringAux, CHAR_ARQ_INT_64, stdin) != NULL)
     {
         if(isNumber(stringAux) == 0)
         {
@@ -98,10 +98,10 @@ static int getInt(int* number)
 static int getFloat(float* decimal)
 {
     int returnValue = -1;
-    char stringAux[CHARACTERS_INT_64];
+    char stringAux[CHAR_ARQ_INT_64];
     float numberAux;
 
-    if(fgets(stringAux, CHARACTERS_FLOAT_64, stdin) != NULL)
+    if(fgets(stringAux, CHAR_ARQ_FLOAT_64, stdin) != NULL)
     {
         if(isFloat(stringAux) == 0)
         {
@@ -124,7 +124,7 @@ static int isNumber(char* stringValue)
     int returnValue = 0;
     int i = 0;
 
-    while(stringValue[i] != (int)BUFFER_SCAPE)
+    while(stringValue[i] != (int)EXIT_BUFFER)
     {
         if(i == 0 && (stringValue[0] == (int)'-' || stringValue[0] == (int)'+'))
             i = 1;
@@ -146,7 +146,7 @@ static int isFloat(char* stringValue)
     int pointerCounter = 0;
     int i = 0;
 
-    while(stringValue[i] != (int)BUFFER_SCAPE)
+    while(stringValue[i] != (int)EXIT_BUFFER)
     {
         if(i == 0 && (stringValue[0] == (int)'-' || stringValue[0] == (int)'+'))
             i = 1;

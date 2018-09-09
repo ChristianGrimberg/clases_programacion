@@ -1,9 +1,9 @@
 #ifndef UTN_H_INCLUDED
 #define UTN_H_INCLUDED
 
-#define CHARACTERS_INT_64 32 /**< Lenght of caracters of integer numbers to support max or min values. */
-#define CHARACTERS_FLOAT_64 64
-#define BUFFER_SCAPE '\n'
+#define CHAR_ARQ_INT_64 11 /**< Character length limit in 64-bit architecture interger numbers. */
+#define CHAR_ARQ_FLOAT_64 32 /**< Character length limit in 64-bit architecture float numbers. */
+#define EXIT_BUFFER '\n' /**< Exit buffer of the fgets function. */
 #define INIT_INT_ARRAY -50
 #define INIT_FLOAT_ARRAY -100.0f
 
