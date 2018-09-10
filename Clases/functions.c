@@ -260,7 +260,9 @@ int intInsertionSort(int* pArray, int limit, int ascOrDesc)
         {
             value = pArray[i];
             holeIndex = i;
-            while(holeIndex > 0 && pArray[holeIndex-1] > value)
+            while(holeIndex > 0
+            && (pArray[holeIndex-1] > value && ascOrDesc == ASC)
+            || (pArray[holeIndex-1] < value && ascOrDesc == DESC))
             {
                 pArray[holeIndex] = pArray[holeIndex-1];
                 holeIndex--;
@@ -268,7 +270,7 @@ int intInsertionSort(int* pArray, int limit, int ascOrDesc)
             pArray[holeIndex] = value;
         }        
         returnValue = 0;
-    }    
+    }
 
     return returnValue;
 }

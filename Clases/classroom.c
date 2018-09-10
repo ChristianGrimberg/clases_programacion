@@ -182,8 +182,8 @@ void clase06_4()
     else
         debugIntArray(numeros, NUMBER_QTY, "Array ordenado de menor a mayor.");
     
-    // if(intBubbleSort(numeros, NUMBER_QTY, DESC) == -1)
-    //     printf("\nError al ordenar de mayor a menor.");
-    // else
-    //     debugIntArray(numeros, NUMBER_QTY, "Array ordenado de mayor a menor.");
+    if(intInsertionSort(numeros, NUMBER_QTY, DESC) == -1)
+        printf("\nError al ordenar de mayor a menor.");
+    else
+        debugIntArray(numeros, NUMBER_QTY, "Array ordenado de mayor a menor.");
 }
