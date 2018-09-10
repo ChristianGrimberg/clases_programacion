@@ -111,9 +111,7 @@ void clase06_2()
     for(i = 0; i < NUMBER_QTY; i++)
     {
         if(utn_getInt(&numeros[i], 2, INT_MIN, INT_MAX, "Ingrese un numero: ", "Numero fuera de rango. ") == -1)
-        {
             numeros[i] = -100;
-        }
     }
     debugIntArray(numeros, NUMBER_QTY, "Array desordenado.");
     
@@ -141,9 +139,7 @@ void clase06_3()
     for(i = 0; i < NUMBER_QTY; i++)
     {
         if(utn_getFloat(&decimales[i], 2, -1000000, 1000000, "Ingrese un decimal: ", "Decimal fuera de rango. ") == -1)
-        {
             decimales[i] = -100.0f;
-        }
     }
     debugFloatArray(decimales, NUMBER_QTY, "Array desordenado.");
 
@@ -171,9 +167,7 @@ void clase06_4()
     for(i = 0; i < NUMBER_QTY; i++)
     {
         if(utn_getInt(&numeros[i], 2, INT_MIN, INT_MAX, "Ingrese un numero: ", "Numero fuera de rango. ") == -1)
-        {
             numeros[i] = -100;
-        }
     }
     debugIntArray(numeros, NUMBER_QTY, "Array desordenado.");
     
