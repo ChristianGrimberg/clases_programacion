@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include "functions.h"
 
+static int swapIntArrayElements(int* pArray, int i, int j);
+static int swapFloatArrayElements(float* pArray, int i, int j);
+
 int getEdad(int* pEdad)
 {
     int edadAux;
@@ -11,9 +14,7 @@ int getEdad(int* pEdad)
     do
     {
         printf("Ingrese la edad: ");
-        //setbuf(stdin, NULL);
         ingreso = scanf("%d", &edadAux);
-
         if(ingreso == 1 && edadAux >= 0 && edadAux <= 199)
         {
             *pEdad = edadAux;
@@ -21,8 +22,7 @@ int getEdad(int* pEdad)
             break;
         }
         else
-            /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
-            __fpurge(stdin);
+            __fpurge(stdin); /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
     } while(ingreso != 1);
 
     return retorno;
@@ -159,6 +159,38 @@ int initFloatArrayInt(float* pArray, int limit, int value)
     return returnValue;
 }
 
+static int swapIntArrayElements(int* pArray, int i, int j)
+{
+    int returnValue = -1;
+    int valueAux;
+
+    if(pArray != NULL && sizeof(pArray) > i && sizeof(pArray) > j)
+    {
+        valueAux = pArray[i];
+        pArray[i] = pArray[j];
+        pArray[j] = valueAux;
+        returnValue = 0;
+    }
+
+    return returnValue;
+}
+
+static int swapFloatArrayElements(float* pArray, int i, int j)
+{
+    int returnValue = -1;
+    float valueAux;
+
+    if(pArray != NULL && sizeof(pArray) > i && sizeof(pArray) > j)
+    {
+        valueAux = pArray[i];
+        pArray[i] = pArray[j];
+        pArray[j] = valueAux;
+        returnValue = 0;
+    }
+
+    return returnValue;
+}
+
 int intBubbleSort(int* pArray, int limit, int ascOrDesc)
 {
     int returnValue = -1;
@@ -176,10 +208,8 @@ int intBubbleSort(int* pArray, int limit, int ascOrDesc)
                 if((ascOrDesc == ASC && pArray[i] > pArray[i+1])
                 || (ascOrDesc == DESC && pArray[i] < pArray[i+1]))
                 {
-                    valueAux = pArray[i];
-                    pArray[i] = pArray[i+1];
-                    pArray[i+1] = valueAux;
-                    flagToOrder = 1;
+                    if(swapIntArrayElements(pArray, i, i+1) == 0)
+                        flagToOrder = 1;
                 }
             }
         }
@@ -206,10 +236,8 @@ int floatBubbleSort(float* pArray, int limit, int ascOrDesc)
                 if((ascOrDesc == ASC && pArray[i] > pArray[i+1])
                 || (ascOrDesc == DESC && pArray[i] < pArray[i+1]))
                 {
-                    valueAux = pArray[i];
-                    pArray[i] = pArray[i+1];
-                    pArray[i+1] = valueAux;
-                    flagToOrder = 1;
+                    if(swapFloatArrayElements(pArray, i, i+1) == 0)
+                        flagToOrder = 1;
                 }
             }
         }
