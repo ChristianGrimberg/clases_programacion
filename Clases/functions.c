@@ -61,30 +61,28 @@ int getEntero(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje,
     return retorno;
 }
 
-int debugIntArray(int* pArray, int limit)
+void debugIntArray(int* pArray, int limit, char* message)
 {
-    int retorno = 0;
     int i;
 
+    printf(message);
     for(i=0; i<limit; i++)
     {
         printf("\nIndex: %d, Value: %d, Add: %p.", i, pArray[i], pArray+i);
     }
-
-    return retorno;
+    printf("\n");
 }
 
-int debugFloatArray(float* pArray, int limit)
+void debugFloatArray(float* pArray, int limit, char* message)
 {
-    int retorno = 0;
     int i;
 
+    printf(message);
     for(i=0; i<limit; i++)
     {
         printf("\nIndex: %d, Value: %.2f, Add: %p.", i, pArray[i], pArray+i);
     }
-
-    return retorno;
+    printf("\n");
 }
 
 int getMaxIntArray(int* pArray, int limit, int* pMaximo)
@@ -217,6 +215,32 @@ int floatBubbleSort(float* pArray, int limit, int ascOrDesc)
         }
         returnValue = 0;
     }
+
+    return returnValue;
+}
+
+int intInsertionSort(int* pArray, int limit, int ascOrDesc)
+{
+    int returnValue = -1;
+    int holeIndex = 0;
+    int value = 0;
+    int i;
+
+    if(limit > 0 && pArray != NULL && (ascOrDesc == ASC || ascOrDesc == DESC))
+    {
+        for(i = 1; i < limit; i++)
+        {
+            value = pArray[i];
+            holeIndex = i;
+            while(holeIndex > 0 && pArray[holeIndex-1] > value)
+            {
+                pArray[holeIndex] = pArray[holeIndex-1];
+                holeIndex--;
+            }
+        }
+        pArray[holeIndex] = value;
+        returnValue = 0;
+    }    
 
     return returnValue;
 }

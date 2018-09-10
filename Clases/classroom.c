@@ -72,7 +72,7 @@ void clase05()
     if(initIntArrayInt(edades, CANTIDAD_EMPLEADOS, INITIALIZER)==-1)
         printf("\nError al inicializar el array.");
     else
-        debugIntArray(edades, CANTIDAD_EMPLEADOS);
+        debugIntArray(edades, CANTIDAD_EMPLEADOS, "Array inicializado.");
 
     for(i=0; i<CANTIDAD_EMPLEADOS; i++)
     {
@@ -82,8 +82,8 @@ void clase05()
             edades[i] = -1;
         }
     }
-    debugIntArray(edades, CANTIDAD_EMPLEADOS);
-    //debugIntArray(edades+2, CANTIDAD_EMPLEADOS-2); /**< Slidezing */
+    debugIntArray(edades, CANTIDAD_EMPLEADOS, "Array inicializado.");
+    //debugIntArray(edades+2, CANTIDAD_EMPLEADOS-2, "Array inicializado."); /**< Slidezing */
 
     if(!getMaxIntArray(edades, CANTIDAD_EMPLEADOS, &valorMaximo))
         printf("\nEdad maxima: %d", valorMaximo);
@@ -106,8 +106,7 @@ void clase06_2()
     if(initIntArrayInt(numeros, NUMBER_QTY, INIT_INT_ARRAY) == -1)
         printf("Error al inicializar el array.\n");
     else
-        debugIntArray(numeros, NUMBER_QTY);
-    printf("\n");
+        debugIntArray(numeros, NUMBER_QTY, "Array inicializado.");
 
     for(i = 0; i < NUMBER_QTY; i++)
     {
@@ -116,21 +115,17 @@ void clase06_2()
             numeros[i] = -100;
         }
     }
-    printf("Array desordenado.");
-    debugIntArray(numeros, NUMBER_QTY);
-
-    printf("\nArray ordenado de menor a mayor.");
+    debugIntArray(numeros, NUMBER_QTY, "Array desordenado.");
+    
     if(intBubbleSort(numeros, NUMBER_QTY, ASC) == -1)
         printf("\nError al ordenar de menor a mayor.");
     else
-        debugIntArray(numeros, NUMBER_QTY);
-
-    printf("\nArray ordenado de mayor a menor.");
+        debugIntArray(numeros, NUMBER_QTY, "Array ordenado de menor a mayor.");
+    
     if(intBubbleSort(numeros, NUMBER_QTY, DESC) == -1)
         printf("\nError al ordenar de mayor a menor.");
     else
-        debugIntArray(numeros, NUMBER_QTY);    
-    printf("\n");
+        debugIntArray(numeros, NUMBER_QTY, "Array ordenado de mayor a menor.");
 }
 
 void clase06_3()
@@ -141,8 +136,7 @@ void clase06_3()
     if(initFloatArrayInt(decimales, NUMBER_QTY, INIT_INT_ARRAY) == -1)
         printf("Error al inicializar el array.\n");
     else
-        debugFloatArray(decimales, NUMBER_QTY);
-    printf("\n");
+        debugFloatArray(decimales, NUMBER_QTY, "Array inicializado.");
 
     for(i = 0; i < NUMBER_QTY; i++)
     {
@@ -151,19 +145,45 @@ void clase06_3()
             decimales[i] = -100.0f;
         }
     }
-    printf("Array desordenado.");
-    debugFloatArray(decimales, NUMBER_QTY);
+    debugFloatArray(decimales, NUMBER_QTY, "Array desordenado.");
 
-    printf("\nArray ordenado de menor a mayor.");
     if(floatBubbleSort(decimales, NUMBER_QTY, ASC) == -1)
         printf("\nError al ordenar de menor a mayor.");
     else
-        debugFloatArray(decimales, NUMBER_QTY);
-
-    printf("\nArray ordenado de mayor a menor.");
+        debugFloatArray(decimales, NUMBER_QTY, "Array ordenado de menor a mayor.");
+    
     if(floatBubbleSort(decimales, NUMBER_QTY, DESC) == -1)
         printf("\nError al ordenar de mayor a menor.");
     else
-        debugFloatArray(decimales, NUMBER_QTY);    
-    printf("\n");
+        debugFloatArray(decimales, NUMBER_QTY, "Array ordenado de mayor a menor.");
+}
+
+void clase06_4()
+{
+    int numeros[NUMBER_QTY];
+    int i;
+
+    if(initIntArrayInt(numeros, NUMBER_QTY, INIT_INT_ARRAY) == -1)
+        printf("Error al inicializar el array.\n");
+    else
+        debugIntArray(numeros, NUMBER_QTY, "Array inicializado.");
+
+    for(i = 0; i < NUMBER_QTY; i++)
+    {
+        if(utn_getInt(&numeros[i], 2, INT_MIN, INT_MAX, "Ingrese un numero: ", "Numero fuera de rango. ") == -1)
+        {
+            numeros[i] = -100;
+        }
+    }
+    debugIntArray(numeros, NUMBER_QTY, "Array desordenado.");
+    
+    if(intInsertionSort(numeros, NUMBER_QTY, ASC) == -1)
+        printf("\nError al ordenar de menor a mayor.");
+    else
+        debugIntArray(numeros, NUMBER_QTY, "Array ordenado de menor a mayor.");
+    
+    // if(intBubbleSort(numeros, NUMBER_QTY, DESC) == -1)
+    //     printf("\nError al ordenar de mayor a menor.");
+    // else
+    //     debugIntArray(numeros, NUMBER_QTY, "Array ordenado de mayor a menor.");
 }

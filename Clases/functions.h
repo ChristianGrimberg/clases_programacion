@@ -11,12 +11,13 @@
 
 int getEdad(int*);
 int getEntero(int*, int, int, int, char*, char*);
-int debugIntArray(int*, int);
-int debugFloatArray(float*, int);
+void debugIntArray(int*, int, char*);
+void debugFloatArray(float*, int, char*);
 int getMaxIntArray(int*, int, int*);
 int initIntArrayInt(int*, int, int);
 int initFloatArrayInt(float*, int, int);
 int intBubbleSort(int*, int, int);
 int floatBubbleSort(float*, int, int);
+int intInsertionSort(int*, int, int);
 
 #endif //FUNCTIONS_H_INCLUDED

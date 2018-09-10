@@ -18,7 +18,8 @@ int main()
     //clase05(); /**< Uso de array y busqueda de mayor. */
     //clase06(); /**< Uso de funcion publica para obtener un entero. */
     //clase06_2();  /**< Uso de array de enteros y ordenamiento por Bubble Sort. */ 
-    clase06_3(); /**< Uso de array de flotantes y ordenamiento por Bubble Sort. */ 
+    //clase06_3(); /**< Uso de array de flotantes y ordenamiento por Bubble Sort. */
+    clase06_4();
 
     return 0;
 }
