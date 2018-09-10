@@ -237,8 +237,8 @@ int intInsertionSort(int* pArray, int limit, int ascOrDesc)
                 pArray[holeIndex] = pArray[holeIndex-1];
                 holeIndex--;
             }
-        }
-        pArray[holeIndex] = value;
+            pArray[holeIndex] = value;
+        }        
         returnValue = 0;
     }    
 
