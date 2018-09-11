@@ -2,7 +2,22 @@
 #include <stdlib.h>
 #include "arrayFunctions.h"
 
+/** \brief
+ *  Funcion que realiza un swap de un array de enteros entre los indices indicados.
+ *  \param pArray int* Array de enteros.
+ *  \param i int Indice de entero a cambiar.
+ *  \param j int Indice de entero a cambiar.
+ *  \return 0 si pudo alternar los valores del array de los indices indicados, -1 si hubo un error.
+ */
 static int swapIntArrayElements(int* pArray, int i, int j);
+
+/** \brief
+ *  Funcion que realiza un swap de un array de flotantes entre los indices indicados.
+ *  \param pArray float* Array de flotantes.
+ *  \param i int Indice de flotante a cambiar.
+ *  \param j int Indice de flotante a cambiar.
+ *  \return 0 si pudo alternar los valores del array de los indices indicados, -1 si hubo un error.
+ */
 static int swapFloatArrayElements(float* pArray, int i, int j);
 
 void debugIntArray(int* pArray, int limit, char* message)
@@ -29,11 +44,11 @@ void debugFloatArray(float* pArray, int limit, char* message)
     printf("\n");
 }
 
-int getMaxIntArray(int* pArray, int limit, int* pMaximo)
+int getMaxIntArray(int* pArray, int limit, int* pMaxInt)
 {
-    int retorno = -1;
-    int maximo = 0;
-    int flagPrimerMaximo = false;
+    int returnValue = -1;
+    int maxAux;
+    int flagFirstMax = false;
     int i;
 
     if(pArray != NULL && limit > 0)
@@ -42,29 +57,26 @@ int getMaxIntArray(int* pArray, int limit, int* pMaximo)
         {
             if(pArray[i] != INITIALIZER)
             {
-
-                if(flagPrimerMaximo == true && pArray[i] > maximo)
-                    maximo = pArray[i];
-                else if(flagPrimerMaximo == false)
+                if(flagFirstMax == true && pArray[i] > maxAux)
+                    maxAux = pArray[i];
+                else if(flagFirstMax == false)
                 {
-                    maximo = pArray[i];
-                    flagPrimerMaximo = true;
+                    maxAux = pArray[i];
+                    flagFirstMax = true;
                 }
             }
         }
 
-        if(flagPrimerMaximo == false)
+        if(flagFirstMax == false)
+            returnValue = -2;
+        else if(flagFirstMax == true)
         {
-            retorno = -2;
-        }
-        else if(flagPrimerMaximo == true)
-        {
-            retorno = 0;
-            *pMaximo = maximo;
+            returnValue = 0;
+            *pMaxInt = maxAux;
         }
     }
 
-    return retorno;
+    return returnValue;
 }
 
 int initIntArrayInt(int* pArray, int limit, int value)
