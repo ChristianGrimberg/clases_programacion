@@ -1,12 +1,68 @@
-#include <stdio.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
-#include "functions.h"
+#include "arrayFunctions.h"
 #include "utn.h"
 #include "classroom.h"
 #include "limits.h"
 #include "float.h"
 
 int global; /**< Prueba de uso de variable global en otro archivo */
+
+int getEdad(int* pEdad)
+{
+    int edadAux;
+    int retorno = -1;
+    int ingreso;
+
+    do
+    {
+        printf("Ingrese la edad: ");
+        ingreso = scanf("%d", &edadAux);
+        if(ingreso == 1 && edadAux >= 0 && edadAux <= 199)
+        {
+            *pEdad = edadAux;
+            retorno = 0;
+            break;
+        }
+        else
+            __fpurge(stdin); /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
+    } while(ingreso != 1);
+
+    return retorno;
+}
+
+int getEntero(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje, char* error)
+{
+    int edadAux;
+    int retorno = -1;
+    int ingreso;
+
+    if(maximo > minimo && reintentos > 0)
+    {
+        for(; reintentos > 0; reintentos--)
+        {
+            printf(mensaje);
+            ingreso = scanf("%d", &edadAux);
+            if(ingreso == 1 && edadAux >= minimo && edadAux <= maximo)
+            {
+                *pEdad = edadAux;
+                retorno = 0;
+                break;
+            }
+            else
+            {
+                /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
+                __fpurge(stdin);
+                printf(error);
+            }
+        }
+
+        if(reintentos == 0)
+            printf("Cantidad de intentos superada.");
+    }
+
+    return retorno;
+}
 
 void clase02(void)
 {

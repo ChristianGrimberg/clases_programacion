@@ -9,8 +9,6 @@
 #define DESC 1
 #define NUMBER_QTY 6
 
-int getEdad(int*);
-int getEntero(int*, int, int, int, char*, char*);
 void debugIntArray(int*, int, char*);
 void debugFloatArray(float*, int, char*);
 int getMaxIntArray(int*, int, int*);

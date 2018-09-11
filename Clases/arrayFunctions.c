@@ -1,65 +1,9 @@
 #include <stdio_ext.h> /**< Biblioteca Estandar de Entrada y Salida extendida */
 #include <stdlib.h>
-#include "functions.h"
+#include "arrayFunctions.h"
 
 static int swapIntArrayElements(int* pArray, int i, int j);
 static int swapFloatArrayElements(float* pArray, int i, int j);
-
-int getEdad(int* pEdad)
-{
-    int edadAux;
-    int retorno = -1;
-    int ingreso;
-
-    do
-    {
-        printf("Ingrese la edad: ");
-        ingreso = scanf("%d", &edadAux);
-        if(ingreso == 1 && edadAux >= 0 && edadAux <= 199)
-        {
-            *pEdad = edadAux;
-            retorno = 0;
-            break;
-        }
-        else
-            __fpurge(stdin); /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
-    } while(ingreso != 1);
-
-    return retorno;
-}
-
-int getEntero(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje, char* error)
-{
-    int edadAux;
-    int retorno = -1;
-    int ingreso;
-
-    if(maximo > minimo && reintentos > 0)
-    {
-        for(; reintentos > 0; reintentos--)
-        {
-            printf(mensaje);
-            ingreso = scanf("%d", &edadAux);
-            if(ingreso == 1 && edadAux >= minimo && edadAux <= maximo)
-            {
-                *pEdad = edadAux;
-                retorno = 0;
-                break;
-            }
-            else
-            {
-                /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
-                __fpurge(stdin);
-                printf(error);
-            }
-        }
-
-        if(reintentos == 0)
-            printf("Cantidad de intentos superada.");
-    }
-
-    return retorno;
-}
 
 void debugIntArray(int* pArray, int limit, char* message)
 {
@@ -196,7 +140,6 @@ int intBubbleSort(int* pArray, int limit, int ascOrDesc)
     int returnValue = -1;
     int i;
     int flagToOrder = 1;
-    int valueAux;
 
     if(limit > 0 && pArray != NULL && (ascOrDesc == ASC || ascOrDesc == DESC))
     {
@@ -224,7 +167,6 @@ int floatBubbleSort(float* pArray, int limit, int ascOrDesc)
     int returnValue = -1;
     int i;
     int flagToOrder = 1;
-    float valueAux;
 
     if(limit > 0 && pArray != NULL && (ascOrDesc == ASC || ascOrDesc == DESC))
     {
@@ -260,15 +202,15 @@ int intInsertionSort(int* pArray, int limit, int ascOrDesc)
         {
             value = pArray[i];
             holeIndex = i;
-            while(holeIndex > 0
-            && (pArray[holeIndex-1] > value && ascOrDesc == ASC)
-            || (pArray[holeIndex-1] < value && ascOrDesc == DESC))
+            while((holeIndex > 0)
+            && ((pArray[holeIndex-1] > value && ascOrDesc == ASC)
+            || (pArray[holeIndex-1] < value && ascOrDesc == DESC)))
             {
                 pArray[holeIndex] = pArray[holeIndex-1];
                 holeIndex--;
             }
             pArray[holeIndex] = value;
-        }        
+        }
         returnValue = 0;
     }
 

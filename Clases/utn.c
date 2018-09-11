@@ -5,9 +5,36 @@
 #include "limits.h"
 #include "float.h"
 
-static int getInt(int* number); /**< Prototipo de funcion privada interno al source */
+/** \brief
+ *  Funcion que obtiene y valida un valor entero por ingreso de teclado.
+ *  \param number int* Posicion de memoria a almacenar el entero validado.
+ *  \return Retorna 0 si obtuvo un numero entero, -1 si no es un valor valido.
+ * 
+ */
+static int getInt(int* number);
+
+/** \brief
+ *  Funcion que obtiene y valida un valor flotante por ingreso de teclado.
+ *  \param decimal float* Posicion de memoria a almacenar el decimal validado.
+ *  \return Retorna 0 si obtuvo un numero flotante, -1 si no es un valor valido.
+ * 
+ */
 static int getFloat(float* decimal);
+
+/** \brief
+ *  Funcion que valido si la cadena ingresada es numerica entera o no.
+ *  \param stringValue char* Cadena de caracteres a validar.
+ *  \return 0 si es un entero, -1 si no lo es.
+ * 
+ */
 static int isNumber(char* stringValue);
+
+/** \brief
+ *  Funcion que valido si la cadena ingresada es numerica flotante o no.
+ *  \param stringValue char* Cadena de caracteres a validar.
+ *  \return 0 si es un flotante, -1 si no lo es.
+ * 
+ */
 static int isFloat(char* stringValue);
 
 int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
@@ -59,8 +86,7 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
             }
             else
             {
-                /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
-                __fpurge(stdin);
+                __fpurge(stdin); /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
                 printf(error);
             }
         }
@@ -72,7 +98,6 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
     return retorno;
 }
 
-/**< Implementacion de funcion privada */
 static int getInt(int* number)
 {
     int returnValue = -1;

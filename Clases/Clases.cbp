@@ -26,11 +26,11 @@
 		<Unit filename="classroom.h">
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="functions.c">
+		<Unit filename="arrayFunctions.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="functions.h">
+		<Unit filename="arrayFunctions.h">
 			<Option target="Debug" />
 		</Unit>
 		<Unit filename="main.c">
