@@ -9,7 +9,7 @@
  *  Funcion que obtiene y valida un valor entero por ingreso de teclado.
  *  \param number int* Posicion de memoria a almacenar el entero validado.
  *  \return Retorna 0 si obtuvo un numero entero, -1 si no es un valor valido.
- * 
+ *
  */
 static int getInt(int* number);
 
@@ -17,7 +17,7 @@ static int getInt(int* number);
  *  Funcion que obtiene y valida un valor flotante por ingreso de teclado.
  *  \param decimal float* Posicion de memoria a almacenar el decimal validado.
  *  \return Retorna 0 si obtuvo un numero flotante, -1 si no es un valor valido.
- * 
+ *
  */
 static int getFloat(float* decimal);
 
@@ -25,7 +25,7 @@ static int getFloat(float* decimal);
  *  Funcion que valido si la cadena ingresada es numerica entera o no.
  *  \param stringValue char* Cadena de caracteres a validar.
  *  \return 0 si es un entero, -1 si no lo es.
- * 
+ *
  */
 static int isNumber(char* stringValue);
 
@@ -33,7 +33,7 @@ static int isNumber(char* stringValue);
  *  Funcion que valido si la cadena ingresada es numerica flotante o no.
  *  \param stringValue char* Cadena de caracteres a validar.
  *  \return 0 si es un flotante, -1 si no lo es.
- * 
+ *
  */
 static int isFloat(char* stringValue);
 
@@ -42,7 +42,7 @@ int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensa
     int numeroAux;
     int retorno = -1;
 
-    if(maximo > minimo && reintentos > 0)
+    if(maximo >= minimo && reintentos >= 0 && pNumero != NULL && mensaje != NULL && error != NULL)
     {
         for(; reintentos > 0; reintentos--)
         {
@@ -73,7 +73,7 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
     int retorno = -1;
     float floatAux;
 
-    if(maximo > minimo && reintentos > 0)
+    if(maximo >= minimo && reintentos >= 0 && pNumero != NULL && mensaje != NULL && error != NULL)
     {
         for(; reintentos > 0; reintentos--)
         {
@@ -143,7 +143,7 @@ static int getFloat(float* decimal)
             {
                 *decimal = numberAux;
                 returnValue = 0;
-            }        
+            }
         }
     }
     else
@@ -193,6 +193,6 @@ static int isFloat(char* stringValue)
         }
         i++;
     }
-    
+
     return returnValue;
 }
