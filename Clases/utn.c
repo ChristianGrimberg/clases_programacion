@@ -102,7 +102,7 @@ int utn_getNombre(char* pNombre, int limite, int reintentos, char* mensaje, char
             printf(mensaje);
             if(getString(stringAux, limite) == 0)
             {
-                strcpy(pNombre, stringAux);
+                strncpy(pNombre, stringAux, limite);
                 retorno = 0;
             }
             else
