@@ -245,3 +245,8 @@ void clase07(void)
     if(utn_getNombre(nombre, 26, 0, "Ingrese su nombre: ", "El valor es incorrecto. ") == 0)
         printf("Nombre ingresado: %s\n", nombre);
 }
+
+void clase08(void)
+{
+
+}
