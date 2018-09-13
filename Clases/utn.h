@@ -33,4 +33,6 @@ int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensa
  */
 int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, char* mensaje, char* error);
 
+int utn_getNombre(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError);
+
 #endif //UTN_H_INCLUDED

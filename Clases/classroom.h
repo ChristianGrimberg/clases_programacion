@@ -11,5 +11,6 @@ void clase06(void);
 void clase06_2(void);
 void clase06_3(void);
 void clase06_4(void);
+void clase07(void);
 
 #endif //CLASSROOM_H_INCLUDED

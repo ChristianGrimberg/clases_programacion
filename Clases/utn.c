@@ -21,6 +21,8 @@ static int getInt(int* number);
  */
 static int getFloat(float* decimal);
 
+static int getString(char* inputString, int limit);
+
 /** \brief
  *  Funcion que valido si la cadena ingresada es numerica entera o no.
  *  \param stringValue char* Cadena de caracteres a validar.
@@ -36,8 +38,6 @@ static int isNumber(char* stringValue);
  *
  */
 static int isFloat(char* stringValue);
-
-static int getString(char* inputString);
 
 int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
 {
@@ -89,9 +89,26 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
     return retorno;
 }
 
-int utn_getNombre()
+int utn_getNombre(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError)
 {
     int retorno = -1;
+    char stringAux[STRING_MAX];
+
+    if(pNombre != NULL && mensaje != NULL && mensajeError != NULL && limite > 0 && reintentos >= 0)
+    {
+        do
+        {
+            reintentos--;
+            printf(mensaje);
+            if(getString(stringAux, limite) == 0)
+            {
+                strcpy(pNombre, stringAux);
+                retorno = 0;
+            }
+            else
+                printf(mensajeError);
+        }while(reintentos >= 0);
+    }
 
     return retorno;
 }
@@ -103,7 +120,7 @@ static int getInt(int* number)
     char stringAtoi[CHARACTERS_NUMBERS];
     int numberAux;
 
-    if(getString(stringAux) == 0  && isNumber(stringAux) == 0)
+    if(getString(stringAux, CHARACTERS_NUMBERS) == 0  && isNumber(stringAux) == 0)
     {
         numberAux = atoi(stringAux);
         /**< Validating conversion functions in interger limits. */
@@ -126,7 +143,7 @@ static int getFloat(float* decimal)
     float numberAux;
     int numberInt;
 
-    if(getString(stringAux) == 0 && isFloat(stringAux) == 0)
+    if(getString(stringAux, CHARACTERS_NUMBERS) == 0 && isFloat(stringAux) == 0)
     {
         numberAux = atof(stringAux);
         /**< Validating conversion functions in float limits. */
@@ -141,19 +158,23 @@ static int getFloat(float* decimal)
     return returnValue;
 }
 
-static int getString(char* inputString)
+static int getString(char* inputString, int limit)
 {
     int returnValue = -1;
     char stringAux[STRING_MAX];
 
-    if(inputString != NULL)
+    if(inputString != NULL && limit > 0)
     {
         __fpurge(stdin);
         fgets(stringAux, sizeof(stringAux), stdin);
         if(stringAux[(strlen(stringAux))-1] == '\n')
             stringAux[(strlen(stringAux))-1] = '\0';
-        sprintf(inputString, "%s", stringAux);
-        returnValue = 0;
+        if(strlen(stringAux) <= limit)
+        {
+            sprintf(inputString, "%s", stringAux);
+            returnValue = 0;
+        }
+
     }
 
     return returnValue;

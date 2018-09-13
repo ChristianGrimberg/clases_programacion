@@ -170,12 +170,12 @@ void clase06_2()
             numeros[i] = -100;
     }
     debugIntArray(numeros, NUMBER_QTY, "Array desordenado.");
-    
+
     if(intBubbleSort(numeros, NUMBER_QTY, ASC) == -1)
         printf("\nError al ordenar de menor a mayor.");
     else
         debugIntArray(numeros, NUMBER_QTY, "Array ordenado de menor a mayor.");
-    
+
     if(intBubbleSort(numeros, NUMBER_QTY, DESC) == -1)
         printf("\nError al ordenar de mayor a menor.");
     else
@@ -203,7 +203,7 @@ void clase06_3()
         printf("\nError al ordenar de menor a mayor.");
     else
         debugFloatArray(decimales, NUMBER_QTY, "Array ordenado de menor a mayor.");
-    
+
     if(floatBubbleSort(decimales, NUMBER_QTY, DESC) == -1)
         printf("\nError al ordenar de mayor a menor.");
     else
@@ -226,14 +226,22 @@ void clase06_4()
             numeros[i] = -100;
     }
     debugIntArray(numeros, NUMBER_QTY, "Array desordenado.");
-    
+
     if(intInsertionSort(numeros, NUMBER_QTY, ASC) == -1)
         printf("\nError al ordenar de menor a mayor.");
     else
         debugIntArray(numeros, NUMBER_QTY, "Array ordenado de menor a mayor.");
-    
+
     if(intInsertionSort(numeros, NUMBER_QTY, DESC) == -1)
         printf("\nError al ordenar de mayor a menor.");
     else
         debugIntArray(numeros, NUMBER_QTY, "Array ordenado de mayor a menor.");
+}
+
+void clase07(void)
+{
+    char nombre[STRING_MAX];
+
+    if(utn_getNombre(nombre, 26, 0, "Ingrese su nombre: ", "El valor es incorrecto. ") == 0)
+        printf("Nombre ingresado: %s\n", nombre);
 }

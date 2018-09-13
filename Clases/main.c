@@ -19,7 +19,8 @@ int main()
     //clase06(); /**< Uso de funcion publica para obtener un entero. */
     //clase06_2(); /**< Uso de array de enteros y ordenamiento por Bubble Sort. */
     //clase06_3(); /**< Uso de array de flotantes y ordenamiento por Bubble Sort. */
-    clase06_4(); /**< Uso de array de enteros y ordenamiento por Insertion Sort. */
+    //clase06_4(); /**< Uso de array de enteros y ordenamiento por Insertion Sort. */
+    clase07();
 
     return 0;
 }
