@@ -57,7 +57,7 @@ int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensa
                 break;
             }
             else
-                printf("%s", error);
+                printf(error);
         }while(reintentos >= 0);
     }
 
@@ -124,14 +124,13 @@ static int getInt(int* number)
     {
         numberAux = atoi(stringAux);
         /**< Validating conversion functions in interger limits. */
-        sprintf(stringAtoi, "%d\n", numberAux);
-        if(strcmp(stringAux, stringAtoi) == 0)
+        sprintf(stringAtoi, "%d", numberAux);
+        if(strncmp(stringAux, stringAtoi, sizeof(stringAux)) == 0)
         {
             *number = numberAux;
             returnValue = 0;
         }
     }
-
 
     return returnValue;
 }

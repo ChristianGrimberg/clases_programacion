@@ -222,7 +222,7 @@ void clase06_4()
 
     for(i = 0; i < NUMBER_QTY; i++)
     {
-        if(utn_getInt(&numeros[i], 2, INT_MIN, INT_MAX, "Ingrese un numero: ", "Numero fuera de rango. ") == -1)
+        if(utn_getInt(&numeros[i], 2, -90, 90, "Ingrese un numero desde -90 hasta 90: ", "Numero fuera de rango. ") == -1)
             numeros[i] = -100;
     }
     debugIntArray(numeros, NUMBER_QTY, "Array desordenado.");

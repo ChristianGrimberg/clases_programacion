@@ -204,7 +204,7 @@ int floatBubbleSort(float* pArray, int limit, int ascOrDesc)
 int intInsertionSort(int* pArray, int limit, int ascOrDesc)
 {
     int returnValue = -1;
-    int holeIndex = 0;
+    int j = 0;
     int value = 0;
     int i;
 
@@ -213,15 +213,15 @@ int intInsertionSort(int* pArray, int limit, int ascOrDesc)
         for(i = 1; i < limit; i++)
         {
             value = pArray[i];
-            holeIndex = i;
-            while((holeIndex > 0)
-            && ((pArray[holeIndex-1] > value && ascOrDesc == ASC)
-            || (pArray[holeIndex-1] < value && ascOrDesc == DESC)))
+            j = i;
+            while((j > 0)
+                && ((pArray[j-1] > value && ascOrDesc == ASC)
+                || (pArray[j-1] < value && ascOrDesc == DESC)))
             {
-                pArray[holeIndex] = pArray[holeIndex-1];
-                holeIndex--;
+                pArray[j] = pArray[j-1]; /**< Move values to the right. */
+                j--;
             }
-            pArray[holeIndex] = value;
+            pArray[j] = value; /**< Insertion action. */
         }
         returnValue = 0;
     }

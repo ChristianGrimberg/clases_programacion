@@ -3,8 +3,8 @@
 
 #define CHARACTERS_NUMBERS 64 /**< Character length limit for interger numbers. */
 #define STRING_MAX 4096 /**< . */
-#define EXIT_BUFFER '\n' /**< Exit buffer of the fgets function. */
-#define INIT_INT_ARRAY -50
+#define EXIT_BUFFER '\0' /**< Exit buffer of the fgets function. */
+#define INIT_INT_ARRAY -200
 #define INIT_FLOAT_ARRAY -100.0f
 
 /** \brief
