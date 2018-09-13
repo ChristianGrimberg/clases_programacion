@@ -60,3 +60,6 @@ int debugIntArray(int pArray[], int limite)
 
 ## Clase 6
 Tipo de dato `char` guarda caracteres numericos convertidos al valor correspondiente de la tabla ASCII. Validar el ingreso de datos desde el buffer de entrada de tipo cadena de caracteres para un control seguro del programa.
+
+## Clase 7
+Validaciones con funciones privadas para obtener una cadena de caracteres, numeros flotantes y enteros. Funciones públicas para pedir datos al usuario.

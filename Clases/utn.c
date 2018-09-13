@@ -37,6 +37,8 @@ static int isNumber(char* stringValue);
  */
 static int isFloat(char* stringValue);
 
+static int getString(char* inputString);
+
 int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
 {
     int numeroAux;
@@ -44,8 +46,9 @@ int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensa
 
     if(maximo >= minimo && reintentos >= 0 && pNumero != NULL && mensaje != NULL && error != NULL)
     {
-        for(; reintentos > 0; reintentos--)
+        do
         {
+            reintentos--;
             printf(mensaje);
             if(getInt(&numeroAux) == 0 && numeroAux >= minimo && numeroAux <= maximo)
             {
@@ -54,15 +57,8 @@ int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensa
                 break;
             }
             else
-            {
-                /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
-                __fpurge(stdin);
-                printf(error);
-            }
-        }
-
-        if(reintentos == 0)
-            printf("Cantidad de intentos superada.\n");
+                printf("%s", error);
+        }while(reintentos >= 0);
     }
 
     return retorno;
@@ -75,8 +71,9 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
 
     if(maximo >= minimo && reintentos >= 0 && pNumero != NULL && mensaje != NULL && error != NULL)
     {
-        for(; reintentos > 0; reintentos--)
+        do
         {
+            reintentos--;
             printf(mensaje);
             if(getFloat(&floatAux) == 0 && floatAux >= minimo && floatAux <= maximo)
             {
@@ -85,15 +82,16 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
                 break;
             }
             else
-            {
-                __fpurge(stdin); /**< Funcion extendida en stdio_ext.h para limpiar el buffer de entrada */
-                printf(error);
-            }
-        }
-
-        if(reintentos == 0)
-            printf("Cantidad de intentos superada.\n");
+                printf("%s", error);
+        }while(reintentos >= 0);
     }
+
+    return retorno;
+}
+
+int utn_getNombre()
+{
+    int retorno = -1;
 
     return retorno;
 }
@@ -105,22 +103,18 @@ static int getInt(int* number)
     char stringAtoi[CHARACTERS_NUMBERS];
     int numberAux;
 
-    if(fgets(stringAux, CHARACTERS_NUMBERS, stdin) != NULL)
+    if(getString(stringAux) == 0  && isNumber(stringAux) == 0)
     {
-        if(isNumber(stringAux) == 0)
+        numberAux = atoi(stringAux);
+        /**< Validating conversion functions in interger limits. */
+        sprintf(stringAtoi, "%d\n", numberAux);
+        if(strcmp(stringAux, stringAtoi) == 0)
         {
-            numberAux = atoi(stringAux);
-            /**< Validating conversion functions in interger limits. */
-            sprintf(stringAtoi, "%d\n", numberAux);
-            if(strcmp(stringAux, stringAtoi) == 0)
-            {
-                *number = numberAux;
-                returnValue = 0;
-            }
+            *number = numberAux;
+            returnValue = 0;
         }
     }
-    else
-        __fpurge(stdin);
+
 
     return returnValue;
 }
@@ -132,22 +126,35 @@ static int getFloat(float* decimal)
     float numberAux;
     int numberInt;
 
-    if(fgets(stringAux, CHARACTERS_NUMBERS, stdin) != NULL)
+    if(getString(stringAux) == 0 && isFloat(stringAux) == 0)
     {
-        if(isFloat(stringAux) == 0)
+        numberAux = atof(stringAux);
+        /**< Validating conversion functions in float limits. */
+        numberInt = atoi(stringAux);
+        if((int)numberAux == numberInt)
         {
-            numberAux = atof(stringAux);
-            /**< Validating conversion functions in float limits. */
-            numberInt = atoi(stringAux);
-            if((int)numberAux == numberInt)
-            {
-                *decimal = numberAux;
-                returnValue = 0;
-            }
+            *decimal = numberAux;
+            returnValue = 0;
         }
     }
-    else
+
+    return returnValue;
+}
+
+static int getString(char* inputString)
+{
+    int returnValue = -1;
+    char stringAux[STRING_MAX];
+
+    if(inputString != NULL)
+    {
         __fpurge(stdin);
+        fgets(stringAux, sizeof(stringAux), stdin);
+        if(stringAux[(strlen(stringAux))-1] == '\n')
+            stringAux[(strlen(stringAux))-1] = '\0';
+        sprintf(inputString, "%s", stringAux);
+        returnValue = 0;
+    }
 
     return returnValue;
 }

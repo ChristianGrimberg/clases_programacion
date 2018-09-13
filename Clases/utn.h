@@ -2,6 +2,7 @@
 #define UTN_H_INCLUDED
 
 #define CHARACTERS_NUMBERS 64 /**< Character length limit for interger numbers. */
+#define STRING_MAX 4096 /**< . */
 #define EXIT_BUFFER '\n' /**< Exit buffer of the fgets function. */
 #define INIT_INT_ARRAY -50
 #define INIT_FLOAT_ARRAY -100.0f
@@ -15,7 +16,7 @@
  *  \param mensaje char* Mensaje personalizado que solicita el dato al usuario.
  *  \param error char* Mensaje personalizado en caso de error.
  *  \return Retorna 0 si obtuvo un entero dentro del rango y un -1 si no es un valor valido.
- * 
+ *
  */
 int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error);
 
@@ -28,7 +29,7 @@ int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensa
  *  \param mensaje char* Mensaje personalizado que solicita el dato al usuario.
  *  \param error char* Mensaje personalizado en caso de error.
  *  \return Retorna 0 si obtuvo un flotante dentro del rango y un -1 si no es un valor valido.
- *  
+ *
  */
 int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, char* mensaje, char* error);
 
