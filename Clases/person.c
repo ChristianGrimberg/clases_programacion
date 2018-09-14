@@ -1,20 +1,29 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
+#include <string.h>
 #include "person.h"
 #include "utn.h"
 
 int person_altaPersona(Persona* persona)
 {
     int retorno = -1;
+    char nombreAux[NOMBRE_LIMITE];
+    int edadAux;
+    char dniAux[DNI_LIMITE];
+    float alturaAux;
 
     if(persona != NULL)
     {
-        if(utn_getNombre(persona->nombre, 25, 0, "Ingrese el nombre: ", "Error de ingreso. ") == 0
-            && utn_getInt(&persona->edad, 0, 0, 200, "Ingrese la edad: ", "Error de ingreso. ") == 0
-            && utn_getNombre(persona->dni, 9, 0, "Ingrese el DNI: ", "Error de ingreso. ") == 0
-            && utn_getFloat(&persona->altura, 0, 0, 500, "Ingrese su peso: ", "Error de ingreso. ") == 0)
+        if(utn_getNombre(nombreAux, NOMBRE_LIMITE, REINTENTOS, "Ingrese el nombre: ", "Error de ingreso. ") == 0
+            && utn_getInt(&edadAux, REINTENTOS, 0, 200, "Ingrese la edad: ", "Error de ingreso. ") == 0
+            && utn_getNombre(dniAux, DNI_LIMITE, REINTENTOS, "Ingrese el DNI: ", "Error de ingreso. ") == 0
+            && utn_getFloat(&alturaAux, REINTENTOS, 0, 500, "Ingrese su peso: ", "Error de ingreso. ") == 0)
         {
-            return 0;
+            strncpy(persona->nombre, nombreAux, NOMBRE_LIMITE);
+            persona->edad = edadAux;
+            strncpy(persona->dni, dniAux, DNI_LIMITE);
+            persona->altura = alturaAux;
+            retorno = 0;
         }
     }
     return retorno;

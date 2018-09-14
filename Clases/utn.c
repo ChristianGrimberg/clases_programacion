@@ -104,6 +104,7 @@ int utn_getNombre(char* pNombre, int limite, int reintentos, char* mensaje, char
             {
                 strncpy(pNombre, stringAux, limite);
                 retorno = 0;
+                break;
             }
             else
                 printf(mensajeError);

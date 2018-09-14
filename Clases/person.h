@@ -1,5 +1,8 @@
 #ifndef PERSON_H_INCLUDED
 #define PERSON_H_INCLUDED
+#define NOMBRE_LIMITE 25
+#define DNI_LIMITE 9
+#define REINTENTOS 2
 
 typedef struct
 {
