@@ -1,10 +1,8 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
-#include "arrayFunctions.h"
-#include "utn.h"
+#include <limits.h>
+#include <float.h>
 #include "classroom.h"
-#include "limits.h"
-#include "float.h"
 
 int global; /**< Prueba de uso de variable global en otro archivo */
 
@@ -62,12 +60,6 @@ int getEntero(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje,
     }
 
     return retorno;
-}
-
-void imprimirPersona(Persona* persona)
-{
-    (*persona).edad = 99; /**< Validar si es pasaje por valor en la funcion altera el tipo de dato por fuera. */
-    printf("Nombre: %s\nEdad: %d\nDNI: %s\nAltura: %.2f", persona->nombre, persona->edad, persona->dni, persona->altura);
 }
 
 void clase02(void)
@@ -280,14 +272,10 @@ void clase08(void)
 
 void clase08_2(void)
 {
-    Persona p;
+    Persona persona;
 
-    if(utn_getNombre(p.nombre, 25, 0, "Ingrese el nombre: ", "Error de ingreso. ") == 0
-        && utn_getInt(&p.edad, 0, 0, 200, "Ingrese la edad: ", "Error de ingreso. ") == 0
-        && utn_getNombre(p.dni, 9, 0, "Ingrese el DNI: ", "Error de ingreso. ") == 0
-        && utn_getFloat(&p.altura, 0, 0, 500, "Ingrese su peso: ", "Error de ingreso. ") == 0)
+    if(person_altaPersona(&persona) == 0)
     {
-        imprimirPersona(&p);
-        printf("\nDebug->Nombre: %s, Edad: %d, DNI: %s, Altura: %.2f", p.nombre, p.edad, p.dni, p.altura);
+        person_imprimirPersona(&persona);
     }
 }

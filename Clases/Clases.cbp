@@ -19,31 +19,25 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="classroom.c">
-			<Option compilerVar="CC" />
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="classroom.h">
-			<Option target="Debug" />
-		</Unit>
 		<Unit filename="arrayFunctions.c">
 			<Option compilerVar="CC" />
-			<Option target="Debug" />
 		</Unit>
-		<Unit filename="arrayFunctions.h">
-			<Option target="Debug" />
+		<Unit filename="arrayFunctions.h" />
+		<Unit filename="classroom.c">
+			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="classroom.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
-			<Option target="Debug" />
 		</Unit>
+		<Unit filename="person.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="person.h" />
 		<Unit filename="utn.c">
 			<Option compilerVar="CC" />
-			<Option target="Debug" />
 		</Unit>
-		<Unit filename="utn.h">
-			<Option target="Debug" />
-		</Unit>
+		<Unit filename="utn.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

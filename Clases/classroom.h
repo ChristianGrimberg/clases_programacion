@@ -1,13 +1,8 @@
 #ifndef CLASSROOM_H_INCLUDED
 #define CLASSROOM_H_INCLUDED
-
-typedef struct
-{
-    char nombre[70];
-    int edad;
-    char dni[20];
-    float altura;
-}Persona;
+#include "arrayFunctions.h"
+#include "utn.h"
+#include "person.h"
 
 int getEdad(int*);
 int getEntero(int*, int, int, int, char*, char*);
