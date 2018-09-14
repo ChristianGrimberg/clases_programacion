@@ -10,9 +10,10 @@
             "args": [
                 "-o",
                 "Clases/bin/Debug/Clases",
-                "Clases/arrayFunctions.c",
-                "Clases/classroom.c",
+                "Clases/person.c",              
                 "Clases/utn.c",
+                "Clases/arrayFunctions.c",
+                "Clases/classroom.c",                
                 "Clases/main.c"
             ],
             "problemMatcher": [
