@@ -248,5 +248,34 @@ void clase07(void)
 
 void clase08(void)
 {
+    /*
+    char nombres[2][5];
 
+    nombres[0][0] = 'A';
+    nombres[0][1] = 'B';
+    nombres[0][2] = '\0';
+
+    nombres[1][0] = 'C';
+    nombres[1][1] = 'D';
+    nombres[1][2] = '\0';
+
+    print(&nombres[0]);
+    printf("**");
+    print(&nombres[1]);
+    printf("\n");
+
+    int i;
+    for(i = 0; i < 5; i++)
+    {
+        printf("");
+    }
+    */
+}
+
+void clase08_2(void)
+{
+    Persona p;
+
+    p.edad = 9;
+    printf("%d", p.edad);
 }

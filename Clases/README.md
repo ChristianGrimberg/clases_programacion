@@ -65,4 +65,4 @@ Tipo de dato `char` guarda caracteres numericos convertidos al valor correspondi
 Validaciones con funciones privadas para obtener una cadena de caracteres, numeros flotantes y enteros. Funciones públicas para pedir datos al usuario.
 
 ## Clase 8
-Método de ordenamiento de inserción.
+Método de ordenamiento de inserción. Arrays paralelos. Declaración de estructuras.
