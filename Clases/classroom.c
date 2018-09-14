@@ -64,6 +64,11 @@ int getEntero(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje,
     return retorno;
 }
 
+void imprimirPersona(Persona persona)
+{
+    printf("Nombre: %s\nEdad: %d\nDNI: %s\nAltura: %.2f", persona.nombre, persona.edad, persona.dni, persona.altura);
+}
+
 void clase02(void)
 {
     int number;
@@ -276,6 +281,11 @@ void clase08_2(void)
 {
     Persona p;
 
-    p.edad = 9;
-    printf("%d", p.edad);
+    if(utn_getNombre(p.nombre, 25, 0, "Ingrese el nombre: ", "Error de ingreso. ") == 0
+        && utn_getInt(&p.edad, 0, 0, 200, "Ingrese la edad: ", "Error de ingreso. ") == 0
+        && utn_getNombre(p.dni, 9, 0, "Ingrese el DNI: ", "Error de ingreso. ") == 0
+        && utn_getFloat(&p.altura, 0, 0, 500, "Ingrese su peso: ", "Error de ingreso. ") == 0)
+    {
+        imprimirPersona(p);
+    }
 }
