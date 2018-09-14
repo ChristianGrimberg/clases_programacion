@@ -11,7 +11,7 @@ typedef struct
 
 int getEdad(int*);
 int getEntero(int*, int, int, int, char*, char*);
-void imprimirPersona(Persona persona);
+void imprimirPersona(Persona* persona);
 void clase02(void);
 void clase03(void);
 void clase04(void);
