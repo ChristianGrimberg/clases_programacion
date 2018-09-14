@@ -26,10 +26,7 @@
 		<Unit filename="classroom.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="classroom.h" />
-		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="classroom.h" />		
 		<Unit filename="person.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -38,6 +35,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="utn.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />

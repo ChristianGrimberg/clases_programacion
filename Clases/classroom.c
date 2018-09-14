@@ -272,10 +272,18 @@ void clase08(void)
 
 void clase08_2(void)
 {
-    Persona persona;
+    Persona arrayPersonas[3];
+    int i;
 
-    if(person_altaPersona(&persona) == 0)
+    for(i=0; i < 3; i++)
     {
-        person_imprimirPersona(&persona);
+        Persona personaAux;
+
+        if(person_altaPersona(&personaAux) == 0)
+        {
+            arrayPersonas[i] = personaAux;
+            // TODO (csgrimberg#1#): Realizar una inicializador de array de personas e imprimir los valores luego.
+            person_imprimirPersona(&arrayPersonas[i]);
+        }
     }
 }
