@@ -2,7 +2,7 @@
 #define CLASSROOM_H_INCLUDED
 #include "arrayFunctions.h"
 #include "utn.h"
-#include "person.h"
+#include "persons.h"
 
 int getEdad(int*);
 int getEntero(int*, int, int, int, char*, char*);

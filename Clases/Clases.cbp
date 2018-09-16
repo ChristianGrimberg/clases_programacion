@@ -27,10 +27,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="classroom.h" />		
-		<Unit filename="person.c">
+		<Unit filename="persons.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="person.h" />
+		<Unit filename="persons.h" />
 		<Unit filename="utn.c">
 			<Option compilerVar="CC" />
 		</Unit>

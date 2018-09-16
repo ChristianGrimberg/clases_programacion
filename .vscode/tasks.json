@@ -10,7 +10,7 @@
             "args": [
                 "-o",
                 "Clases/bin/Debug/Clases",
-                "Clases/person.c",              
+                "Clases/persons.c",              
                 "Clases/utn.c",
                 "Clases/arrayFunctions.c",
                 "Clases/classroom.c",                

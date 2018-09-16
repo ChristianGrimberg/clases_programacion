@@ -1,10 +1,10 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
-#include "person.h"
+#include "persons.h"
 #include "utn.h"
 
-int person_altaPersona(Persona* persona)
+int persons_altaPersona(Persona* persona)
 {
     int retorno = -1;
     char nombreAux[NOMBRE_LIMITE];
@@ -29,7 +29,7 @@ int person_altaPersona(Persona* persona)
     return retorno;
 }
 
-void person_imprimirPersona(Persona* persona)
+void persons_imprimirPersona(Persona* persona)
 {
     printf("Nombre: %s\nEdad: %d\nDNI: %s\nAltura: %.2f\n", persona->nombre, persona->edad, persona->dni, persona->altura);
 }

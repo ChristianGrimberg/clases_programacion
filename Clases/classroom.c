@@ -279,7 +279,7 @@ void clase08_2(void)
     {
         Persona personaAux;
 
-        if(person_altaPersona(&personaAux) == 0)
+        if(persons_altaPersona(&personaAux) == 0)
         {
             arrayPersonas[i] = personaAux;
         }
@@ -288,6 +288,6 @@ void clase08_2(void)
     for(i = 0; i < 3; i++)
     {
         printf("Persona %d:\n", i+1);
-        person_imprimirPersona(&arrayPersonas[i]);
+        persons_imprimirPersona(&arrayPersonas[i]);
     }
 }
