@@ -1,9 +1,13 @@
 #ifndef CLASSROOM_H_INCLUDED
 #define CLASSROOM_H_INCLUDED
+
+#include <stdio_ext.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <float.h>
 #include "arrayFunctions.h"
 #include "utn.h"
 #include "persons.h"
-
 int getEdad(int*);
 int getEntero(int*, int, int, int, char*, char*);
 void imprimirPersona(Persona* persona);

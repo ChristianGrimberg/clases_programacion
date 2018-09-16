@@ -1,7 +1,3 @@
-#include <stdio_ext.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <float.h>
 #include "classroom.h"
 
 int global; /**< Prueba de uso de variable global en otro archivo */

@@ -1,6 +1,8 @@
 #ifndef ARRAYFUNCTIONS_H_INCLUDED
 #define ARRAYFUNCTIONS_H_INCLUDED
 
+#include <stdio_ext.h> /**< Biblioteca Estandar de Entrada y Salida extendida */
+#include <stdlib.h>
 #define CANTIDAD_EMPLEADOS 5
 #define INITIALIZER -2
 #define true 1

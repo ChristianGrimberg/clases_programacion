@@ -1,6 +1,11 @@
 #ifndef UTN_H_INCLUDED
 #define UTN_H_INCLUDED
 
+#include <stdio_ext.h>
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
+#include <float.h>
 #define CHARACTERS_NUMBERS 64 /**< Character length limit for interger numbers. */
 #define STRING_MAX 4096 /**< . */
 #define EXIT_BUFFER '\0' /**< Exit buffer of the fgets function. */

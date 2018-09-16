@@ -1,9 +1,4 @@
-#include <stdio_ext.h>
-#include <stdlib.h>
-#include <string.h>
 #include "utn.h"
-#include "limits.h"
-#include "float.h"
 
 /** \brief
  *  Funcion que obtiene y valida un valor entero por ingreso de teclado.

@@ -1,8 +1,4 @@
-#include <stdio_ext.h>
-#include <stdlib.h>
-#include <string.h>
 #include "persons.h"
-#include "utn.h"
 
 int persons_altaPersona(Persona* persona)
 {

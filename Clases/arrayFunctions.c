@@ -1,5 +1,3 @@
-#include <stdio_ext.h> /**< Biblioteca Estandar de Entrada y Salida extendida */
-#include <stdlib.h>
 #include "arrayFunctions.h"
 
 /** \brief
