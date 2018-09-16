@@ -21,7 +21,14 @@ static int getInt(int* number);
  */
 static int getFloat(float* decimal);
 
-static int getString(char* inputString, int limit);
+/** \brief
+ *  Funcion que obtiene un puntero a un array de caracteres y valida su ingreso por teclado.
+ *  \param imputString char* Array de caracteres para almacenar el valor ingreso por teclado.
+ *  \param limit int Longitud del array de caracteres.
+ *  \return 0 si pudo obtener el valor de manera correcta, -1 si hubo un error.
+ *
+ */
+static int getString(char* imputString, int limit);
 
 /** \brief
  *  Funcion que valido si la cadena ingresada es numerica entera o no.
@@ -38,6 +45,24 @@ static int isNumber(char* stringValue);
  *
  */
 static int isFloat(char* stringValue);
+
+/** \brief
+ *  La funcion obtiene un cadena por teclado y si es solo letras la referencia al parametro ingresado.
+ *  \param imputString char* Array de caracteres para almacenar el valor ingreso por teclado.
+ *  \param limit int Longitud del array de caracteres.
+ *  \return 0 si pudo obtener el valor de manera correcta, -1 si hubo un error.
+ *
+ */
+static int getStringOnlyLetters(char* imputString, int limit);
+
+/** \brief
+ *  La funcion obtiene un cadena por teclado y si es numerica la referencia al parametro ingresado.
+ *  \param imputString char* Array de caracteres para almacenar el valor ingreso por teclado.
+ *  \param limit int Longitud del array de caracteres.
+ *  \return 0 si pudo obtener el valor de manera correcta, -1 si hubo un error.
+ *
+ */
+static int getStringOnlyNumbers(char* imputString, int limit);
 
 int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
 {
@@ -89,7 +114,7 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
     return retorno;
 }
 
-int utn_getNombre(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError)
+int utn_getCadena(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError)
 {
     int retorno = -1;
     char stringAux[STRING_MAX];
@@ -100,7 +125,7 @@ int utn_getNombre(char* pNombre, int limite, int reintentos, char* mensaje, char
         {
             reintentos--;
             printf(mensaje);
-            if(getString(stringAux, limite) == 0)
+            if(getStringOnlyLetters(stringAux, limite) == 0)
             {
                 strncpy(pNombre, stringAux, limite);
                 retorno = 0;
@@ -121,7 +146,7 @@ static int getInt(int* number)
     char stringAtoi[CHARACTERS_NUMBERS];
     int numberAux;
 
-    if(getString(stringAux, CHARACTERS_NUMBERS) == 0  && isNumber(stringAux) == 0)
+    if(getStringOnlyNumbers(stringAux, CHARACTERS_NUMBERS) == 0 && isNumber(stringAux) == 0)
     {
         numberAux = atoi(stringAux);
         /**< Validating conversion functions in interger limits. */
@@ -143,7 +168,7 @@ static int getFloat(float* decimal)
     float numberAux;
     int numberInt;
 
-    if(getString(stringAux, CHARACTERS_NUMBERS) == 0 && isFloat(stringAux) == 0)
+    if(getStringOnlyNumbers(stringAux, CHARACTERS_NUMBERS) == 0)
     {
         numberAux = atof(stringAux);
         /**< Validating conversion functions in float limits. */
@@ -158,12 +183,12 @@ static int getFloat(float* decimal)
     return returnValue;
 }
 
-static int getString(char* inputString, int limit)
+static int getString(char* imputString, int limit)
 {
     int returnValue = -1;
     char stringAux[STRING_MAX];
 
-    if(inputString != NULL && limit > 0)
+    if(imputString != NULL && limit > 0)
     {
         __fpurge(stdin);
         fgets(stringAux, sizeof(stringAux), stdin);
@@ -171,7 +196,7 @@ static int getString(char* inputString, int limit)
             stringAux[(strlen(stringAux))-1] = '\0';
         if(strlen(stringAux) <= limit)
         {
-            sprintf(inputString, "%s", stringAux);
+            sprintf(imputString, "%s", stringAux);
             returnValue = 0;
         }
 
@@ -182,7 +207,7 @@ static int getString(char* inputString, int limit)
 
 static int isNumber(char* stringValue)
 {
-    int returnValue = 0;
+    int returnValue = -1;
     int i = 0;
 
     while(stringValue[i] != (int)EXIT_BUFFER)
@@ -190,7 +215,9 @@ static int isNumber(char* stringValue)
         if(i == 0 && (stringValue[0] == (int)'-' || stringValue[0] == (int)'+'))
             i = 1;
 
-        if((int)stringValue[i] < (int)'0' || (int)stringValue[i] > (int)'9')
+        if((int)stringValue[i] >= (int)'0' && (int)stringValue[i] <= (int)'9')
+            returnValue = 0;
+        else
         {
             returnValue = -1;
             break;
@@ -203,7 +230,7 @@ static int isNumber(char* stringValue)
 
 static int isFloat(char* stringValue)
 {
-    int returnValue = 0;
+    int returnValue = -1;
     int pointerCounter = 0;
     int i = 0;
 
@@ -214,12 +241,48 @@ static int isFloat(char* stringValue)
 
         if(stringValue[i] == '.')
             pointerCounter++;
-        else if((int)stringValue[i] < (int)'0' || (int)stringValue[i] > (int)'9' || pointerCounter > 1)
+        else if((int)stringValue[i] >= (int)'0' && (int)stringValue[i] <= (int)'9' && pointerCounter <= 1)
+            returnValue = 0;
+        else
         {
             returnValue = -1;
             break;
         }
         i++;
+    }
+
+    return returnValue;
+}
+
+static int getStringOnlyLetters(char* imputString, int limit)
+{
+    int returnValue = -1;
+    char stringAux[limit];
+
+    if(imputString != NULL && limit > 0)
+    {
+        if(getString(stringAux, limit) == 0 && isNumber(stringAux) == -1)
+        {
+            strncpy(imputString, stringAux, limit);
+            returnValue = 0;
+        }
+    }
+
+    return returnValue;
+}
+
+static int getStringOnlyNumbers(char* imputString, int limit)
+{
+    int returnValue = -1;
+    char stringAux[limit];
+
+    if(imputString != NULL && limit > 0)
+    {
+        if(getString(stringAux, limit) == 0 && isFloat(stringAux) == 0)
+        {
+            strncpy(imputString, stringAux, limit);
+            returnValue = 0;
+        }
     }
 
     return returnValue;

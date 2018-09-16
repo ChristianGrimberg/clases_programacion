@@ -240,7 +240,7 @@ void clase07(void)
 {
     char nombre[STRING_MAX];
 
-    if(utn_getNombre(nombre, 26, 0, "Ingrese su nombre: ", "El valor es incorrecto. ") == 0)
+    if(utn_getCadena(nombre, 26, 0, "Ingrese su nombre: ", "El valor es incorrecto. ") == 0)
         printf("Nombre ingresado: %s\n", nombre);
 }
 

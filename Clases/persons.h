@@ -1,7 +1,7 @@
 #ifndef persons_H_INCLUDED
 #define persons_H_INCLUDED
 #define NOMBRE_LIMITE 25
-#define DNI_LIMITE 9
+#define DNI_LIMITE 11
 #define REINTENTOS 2
 
 typedef struct
