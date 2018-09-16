@@ -117,7 +117,7 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
     return retorno;
 }
 
-int utn_getCadena(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError)
+int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError)
 {
     int retorno = -1;
     char stringAux[STRING_MAX];
