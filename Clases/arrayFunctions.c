@@ -115,22 +115,6 @@ int initFloatArrayInt(float* pArray, int limit, int value)
     return returnValue;
 }
 
-static int swapIntArrayElements(int* pArray, int i, int j)
-{
-    int returnValue = -1;
-    int valueAux;
-
-    if(pArray != NULL && sizeof(pArray) > i && sizeof(pArray) > j)
-    {
-        valueAux = pArray[i];
-        pArray[i] = pArray[j];
-        pArray[j] = valueAux;
-        returnValue = 0;
-    }
-
-    return returnValue;
-}
-
 static int swapFloatArrayElements(float* pArray, int i, int j)
 {
     int returnValue = -1;
@@ -223,6 +207,22 @@ int intInsertionSort(int* pArray, int limit, int ascOrDesc)
             }
             pArray[j] = value; /**< Insertion action. */
         }
+        returnValue = 0;
+    }
+
+    return returnValue;
+}
+
+static int swapIntArrayElements(int* pArray, int i, int j)
+{
+    int returnValue = -1;
+    int valueAux;
+
+    if(pArray != NULL && sizeof(pArray) > i && sizeof(pArray) > j)
+    {
+        valueAux = pArray[i];
+        pArray[i] = pArray[j];
+        pArray[j] = valueAux;
         returnValue = 0;
     }
 

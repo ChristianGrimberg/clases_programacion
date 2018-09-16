@@ -275,15 +275,19 @@ void clase08_2(void)
     Persona arrayPersonas[3];
     int i;
 
-    for(i=0; i < 3; i++)
+    for(i = 0; i < 3; i++)
     {
         Persona personaAux;
 
         if(person_altaPersona(&personaAux) == 0)
         {
             arrayPersonas[i] = personaAux;
-            // TODO (csgrimberg#1#): Realizar una inicializador de array de personas e imprimir los valores luego.
-            person_imprimirPersona(&arrayPersonas[i]);
         }
+    }
+
+    for(i = 0; i < 3; i++)
+    {
+        printf("Persona %d:\n", i+1);
+        person_imprimirPersona(&arrayPersonas[i]);
     }
 }
