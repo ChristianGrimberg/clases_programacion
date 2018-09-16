@@ -31,7 +31,7 @@ static int getFloat(float* decimal);
 static int getString(char* imputString, int limit);
 
 /** \brief
- *  Funcion que valido si la cadena ingresada es numerica entera o no.
+ *  Funcion que valida si la cadena ingresada es numerica entera o no.
  *  \param stringValue char* Cadena de caracteres a validar.
  *  \return 0 si es un entero, -1 si no lo es.
  *
@@ -39,12 +39,20 @@ static int getString(char* imputString, int limit);
 static int isNumber(char* stringValue);
 
 /** \brief
- *  Funcion que valido si la cadena ingresada es numerica flotante o no.
+ *  Funcion que valida si la cadena ingresada es numerica flotante o no.
  *  \param stringValue char* Cadena de caracteres a validar.
  *  \return 0 si es un flotante, -1 si no lo es.
  *
  */
 static int isFloat(char* stringValue);
+
+/** \brief
+ *  Funcion que valida si la cadena ingresada es alfanumerica o no.
+ *  \param stringValue char* Cadena de caracteres a validar.
+ *  \return 0 si es alfanumerica, -1 si no lo es.
+ *
+ */
+static int isAlphaNumeric(char* stringValue);
 
 /** \brief
  *  La funcion obtiene un cadena por teclado y si es solo letras la referencia al parametro ingresado.
@@ -242,6 +250,28 @@ static int isFloat(char* stringValue)
         if(stringValue[i] == '.')
             pointerCounter++;
         else if((int)stringValue[i] >= (int)'0' && (int)stringValue[i] <= (int)'9' && pointerCounter <= 1)
+            returnValue = 0;
+        else
+        {
+            returnValue = -1;
+            break;
+        }
+        i++;
+    }
+
+    return returnValue;
+}
+
+static int isAlphaNumeric(char* stringValue)
+{
+    int returnValue = -1;
+    int i = 0;
+
+    while(stringValue[i] != (int)EXIT_BUFFER)
+    {
+        if(((int)stringValue[i] >= (int)'0' && (int)stringValue[i] <= (int)'9')
+        || ((int)stringValue[i] >= (int)'a' && (int)stringValue[i] <= (int)'z')
+        || ((int)stringValue[i] >= (int)'A' && (int)stringValue[i] <= (int)'Z'))
             returnValue = 0;
         else
         {

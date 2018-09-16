@@ -5,15 +5,15 @@
     "tasks": [
         {
             "label": "Classroom Compiler",
-            "command": "cc",
+            "command": "gcc",
             "type": "shell",
             "args": [
                 "-o",
                 "Clases/bin/Debug/Clases",
-                "Clases/persons.c",              
-                "Clases/utn.c",
                 "Clases/arrayFunctions.c",
-                "Clases/classroom.c",                
+                "Clases/persons.c",
+                "Clases/utn.c",
+                "Clases/classroom.c",
                 "Clases/main.c"
             ],
             "problemMatcher": [
@@ -22,20 +22,17 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
         },
         {
             "label": "Exercises Compiler",
-            "command": "cc",
+            "command": "gcc",
             "type": "shell",
             "args": [
                 "-o",
                 "GuiaEjercicios/bin/Debug/GuiaEjercicios",
-                "GuiaEjercicios/validator.h",
                 "GuiaEjercicios/validator.c",
-                "GuiaEjercicios/operations.h",
                 "GuiaEjercicios/operations.c",
-                "GuiaEjercicios/exercises.h",
                 "GuiaEjercicios/exercises.c",
                 "GuiaEjercicios/main.c"
             ],
