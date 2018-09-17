@@ -161,7 +161,12 @@ int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* me
                     cantGuiones++;
                     continue;
                 }
-                else if(isNumber(&stringAux[i]) == -1 || cantGuiones > 2)
+                else if(stringAux[i] == '-')
+                {
+                    cantPositivos++;
+                    continue;
+                }
+                else if(isNumber(&stringAux[i]) == -1 || cantGuiones > 2 || cantPositivos > 1)
                 {
                     retorno = -1;
                     break;
