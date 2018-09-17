@@ -6,11 +6,12 @@
 #include <string.h>
 #include <limits.h>
 #include <float.h>
-#define CHARACTERS_NUMBERS 64 /**< Character length limit for interger numbers. */
-#define STRING_MAX 4096 /**< . */
-#define EXIT_BUFFER '\0' /**< Exit buffer of the fgets function. */
-#define INIT_INT_ARRAY -200
-#define INIT_FLOAT_ARRAY -100.0f
+#define CHARACTERS_NUMBERS 64 /**< Valor maximo de caracteres numericos. */
+#define STRING_MAX 4096 /**< Valor maximo en cadena de caracteres. */
+#define EXIT_BUFFER '\0' /**< Valor de terminacion de una cadena de caracteres. */
+#define INIT_INT_ARRAY -200 /**< Valor para inicializar el array de enteros. */
+#define INIT_FLOAT_ARRAY -100.0f /**< Valor para inicializar el array de flotantes. */
+#define PHONE_CHARACTERS 15 /**< Valor maximo de cantidad de caracteres para un telefono. */
 
 /** \brief
  *  Funcion para obtener un entero por teclado en un rango, con mensajes al usuario.
@@ -53,13 +54,13 @@ int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char
 /** \brief
  *  Funcion que solicita el ingreso por teclado de un numero telefonico con codigo de area separado por un guion.
  *  \param pTelefono char* Direccion de memoria a almacenar el numero de telefono.
- *  \param cantDeNumeros int Cantidad de numeros que debera tener el numero telefonico.
+ *  \param cantDeNumerosMax int Cantidad maxima de numeros que debera tener el numero telefonico.
  *  \param mensaje char* Mensaje personalizado que solicita el dato al usuario.
  *  \param error char* Mensaje personalizado en caso de error.
  *  \return Retorna 0 si obtuvo un telefono correcto y -1 si no es un valor valido.
  * 
  */
-int utn_getPhone(char* pTelefono, int cantDeNumeros, int reintentos, char* mensaje, char* mensajeError);
+int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError);
 
 /** \brief
  *  Funcion que solicita y valida el ingreso por teclado de un numero de Documento de Identidad.

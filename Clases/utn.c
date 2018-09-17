@@ -142,6 +142,42 @@ int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char
     return retorno;
 }
 
+int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError)
+{
+    int retorno = -1;
+    char stringAux[cantDeNumerosMax];
+    int cantGuiones = 0;
+    int cantPositivos = 0;
+    int i = 0;
+
+    if(pTelefono != NULL && cantDeNumerosMax > 0 && reintentos >= 0)
+    {
+        if(getString(stringAux, cantDeNumerosMax) == 0)
+        {
+            while(stringAux[i] != EXIT_BUFFER)
+            {
+                if(stringAux[i] == '-')
+                {
+                    cantGuiones++;
+                    continue;
+                }
+                else if(isNumber(&stringAux[i]) == -1 || cantGuiones > 2)
+                {
+                    retorno = -1;
+                    break;
+                }
+                else
+                    retorno = 0;
+                i++;
+            }
+            if(retorno == 0)
+                strncpy(pTelefono, stringAux, cantDeNumerosMax);
+        }
+    }
+
+    return retorno;
+}
+
 static int getInt(int* number)
 {
     int returnValue = -1;
@@ -215,7 +251,7 @@ static int isNumber(char* stringValue)
 
     while(stringValue[i] != (int)EXIT_BUFFER)
     {
-        if(i == 0 && (stringValue[0] == (int)'-' || stringValue[0] == (int)'+'))
+        if(i == 0 && ((int)stringValue[0] == (int)'-' || (int)stringValue[0] == (int)'+'))
             i = 1;
 
         if((int)stringValue[i] >= (int)'0' && (int)stringValue[i] <= (int)'9')
@@ -239,7 +275,7 @@ static int isFloat(char* stringValue)
 
     while(stringValue[i] != (int)EXIT_BUFFER)
     {
-        if(i == 0 && (stringValue[0] == (int)'-' || stringValue[0] == (int)'+'))
+        if(i == 0 && ((int)stringValue[0] == (int)'-' || (int)stringValue[0] == (int)'+'))
             i = 1;
 
         if(stringValue[i] == '.')
