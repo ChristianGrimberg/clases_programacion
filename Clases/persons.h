@@ -5,18 +5,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include "utn.h"
-#define NOMBRE_LIMITE 50
-#define DNI_LIMITE 11
+#define NAME_LIMITS 50
+#define DNI_LIMITS 11
+#define PHONE_LIMITS 50 /**< Valor maximo de cantidad de caracteres para un telefono. */
 #define REINTENTOS 2
-#define PHONE_CHARACTERS 50 /**< Valor maximo de cantidad de caracteres para un telefono. */
+
 
 typedef struct
 {
-    char nombre[70];
+    char nombre[NAME_LIMITS];
     int edad;
-    char dni[20];
+    char dni[DNI_LIMITS];
     float altura;
-    char telefono[50];
+    char telefono[PHONE_LIMITS];
 }Persona;
 
 int persons_altaPersona(Persona* persona, int reintentos);
