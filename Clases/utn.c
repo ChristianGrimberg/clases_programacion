@@ -33,6 +33,8 @@ static int getString(char* imputString, int limit);
  */
 static int isNumber(char* stringValue);
 
+static int isNotNumber(char* stringValue);
+
 /** \brief
  *  Funcion que valida si la cadena ingresada es numerica flotante o no.
  *  \param stringValue char* Cadena de caracteres a validar.
@@ -146,38 +148,56 @@ int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* me
 {
     int retorno = -1;
     char stringAux[cantDeNumerosMax];
-    int cantGuiones = 0;
-    int cantPositivos = 0;
-    int i = 0;
+    int cantGuiones;
+    int cantPositivos;
+    int i;
 
     if(pTelefono != NULL && cantDeNumerosMax > 0 && reintentos >= 0)
     {
-        if(getString(stringAux, cantDeNumerosMax) == 0)
+        do
         {
-            while(stringAux[i] != EXIT_BUFFER)
+            reintentos--;
+            printf(mensaje);
+            if(getString(stringAux, cantDeNumerosMax) == 0)
             {
-                if(stringAux[i] == '-')
+                i = 0;
+                cantGuiones = 0;
+                cantPositivos = 0;
+                while(stringAux[i] != EXIT_BUFFER)
                 {
-                    cantGuiones++;
-                    continue;
+                    if(stringAux[i] == '-')
+                    {
+                        cantGuiones++;
+                        i++;
+                        continue;
+                    }
+                    else if(stringAux[i] == '+')
+                    {
+                        cantPositivos++;
+                        i++;
+                        continue;
+                    }
+
+                    if(isNotNumber(&stringAux[i]) == 0 || cantGuiones > 2 || cantPositivos > 1)
+                    {
+                        retorno = -1;
+                        break;               
+                    }
+                    else if(isNumber(&stringAux[i]) == 0)
+                    {
+                        retorno = 0;
+                    }              
+                    i++;
                 }
-                else if(stringAux[i] == '-')
-                {
-                    cantPositivos++;
-                    continue;
-                }
-                else if(isNumber(&stringAux[i]) == -1 || cantGuiones > 2 || cantPositivos > 1)
-                {
-                    retorno = -1;
-                    break;
-                }
-                else
-                    retorno = 0;
-                i++;
             }
             if(retorno == 0)
+            {
                 strncpy(pTelefono, stringAux, cantDeNumerosMax);
-        }
+                reintentos = -1;
+            }
+            else
+                printf(mensajeError);
+        }while(reintentos >= 0);
     }
 
     return retorno;
@@ -252,14 +272,38 @@ static int getString(char* imputString, int limit)
 static int isNumber(char* stringValue)
 {
     int returnValue = -1;
+    char charAux;
     int i = 0;
 
     while(stringValue[i] != (int)EXIT_BUFFER)
     {
-        if(i == 0 && ((int)stringValue[0] == (int)'-' || (int)stringValue[0] == (int)'+'))
+        charAux = stringValue[i];
+        if(i == 0 && (charAux == '-' || charAux == '+'))
             i = 1;
 
-        if((int)stringValue[i] >= (int)'0' && (int)stringValue[i] <= (int)'9')
+        if((int)charAux >= (int)'0' && (int)charAux <= (int)'9')
+            returnValue = 0;
+        else
+        {
+            returnValue = -1;
+            break;
+        }
+        i++;
+    }
+
+    return returnValue;
+}
+
+static int isNotNumber(char* stringValue)
+{
+    int returnValue = -1;
+    char charAux;
+    int i = 0;
+
+    while(stringValue[i] != (int)EXIT_BUFFER)
+    {
+        charAux = stringValue[i];
+        if((int)charAux < (int)'0' || (int)charAux > (int)'9')
             returnValue = 0;
         else
         {

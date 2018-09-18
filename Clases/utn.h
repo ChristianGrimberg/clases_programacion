@@ -11,7 +11,6 @@
 #define EXIT_BUFFER '\0' /**< Valor de terminacion de una cadena de caracteres. */
 #define INIT_INT_ARRAY -200 /**< Valor para inicializar el array de enteros. */
 #define INIT_FLOAT_ARRAY -100.0f /**< Valor para inicializar el array de flotantes. */
-#define PHONE_CHARACTERS 15 /**< Valor maximo de cantidad de caracteres para un telefono. */
 
 /** \brief
  *  Funcion para obtener un entero por teclado en un rango, con mensajes al usuario.

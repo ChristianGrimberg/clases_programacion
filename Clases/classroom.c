@@ -58,6 +58,13 @@ int getEntero(int* pEdad, int reintentos, int minimo, int maximo, char* mensaje,
     return retorno;
 }
 
+void pruebas(void)
+{
+    char telefono[15];
+    if(utn_getPhone(telefono, 15, 50, "Telefono: ", "Error. ") == 0)
+        printf("\n%s\n", telefono);
+}
+
 void clase02(void)
 {
     int number;
@@ -275,7 +282,7 @@ void clase08_2(void)
     {
         Persona personaAux;
 
-        if(persons_altaPersona(&personaAux) == 0)
+        if(persons_altaPersona(&personaAux, 1) == 0)
         {
             arrayPersonas[i] = personaAux;
         }

@@ -12,6 +12,7 @@ int main()
         system("cls");
     #endif // __unix__
 
+    //pruebas();
     //clase02(); /**< Maximos, Minimos y Promedios. */
     //clase03(); /**< Uso de funciones y parametros por referencia. */
     //clase04(); /**< Funcion generica para obtener enteros en un rango. */

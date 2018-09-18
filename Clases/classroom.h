@@ -10,7 +10,7 @@
 #include "persons.h"
 int getEdad(int*);
 int getEntero(int*, int, int, int, char*, char*);
-void imprimirPersona(Persona* persona);
+void pruebas(void);
 void clase02(void);
 void clase03(void);
 void clase04(void);
