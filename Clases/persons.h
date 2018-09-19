@@ -20,6 +20,7 @@ typedef struct
     char telefono[PHONE_LIMITS];
 }Persona;
 
+int persons_inicializarArray(Persona* pPersona, int limite);
 int persons_altaPersona(Persona* persona, int reintentos);
 void persons_imprimirPersona(Persona* pPersona, int limite);
 

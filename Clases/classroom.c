@@ -278,15 +278,18 @@ void clase08_2(void)
     Persona arrayPersonas[3];
     int i;
 
-    for(i = 0; i < 3; i++)
+    if(persons_inicializarArray(arrayPersonas, 3) == 0)
     {
-        Persona personaAux;
-
-        if(persons_altaPersona(&personaAux, 1) == 0)
+        for(i = 0; i < 3; i++)
         {
-            arrayPersonas[i] = personaAux;
+            Persona personaAux;
+
+            if(persons_altaPersona(&personaAux, 1) == 0)
+            {
+                arrayPersonas[i] = personaAux;
+            }
         }
-    }
+    }    
 
     persons_imprimirPersona(arrayPersonas, 3);
 }

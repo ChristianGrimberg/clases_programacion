@@ -1,5 +1,34 @@
 #include "persons.h"
 
+static int nullPerson(Persona* persona);
+
+int persons_inicializarArray(Persona* pPersona, int limite)
+{
+    int retorno = -1;
+    Persona personaAux;
+    int i;
+
+    if(pPersona != NULL && limite > 0)
+    {
+        for(i = 0; i < limite; i++)
+        {
+            personaAux = pPersona[i];
+            if(nullPerson(&personaAux) == 0)
+            {
+                pPersona[i] = personaAux;
+                retorno = 0;
+            }
+            else
+            {
+                retorno = -1;
+                break;
+            }
+        }
+    }
+
+    return retorno;
+}
+
 int persons_altaPersona(Persona* persona, int reintentos)
 {
     int retorno = -1;
@@ -50,4 +79,22 @@ void persons_imprimirPersona(Persona* pPersona, int limite)
         }
         printf("-------------------------------------------------------------------------------\n\n");
     }
+}
+
+static int nullPerson(Persona* persona)
+{
+    int returnValue = -1;
+
+    if(persona != NULL)
+    {
+        strncpy(persona->nombre, "(vacio)", 8);
+        persona->edad = -1;
+        strncpy(persona->dni, "0", 2);
+        persona->altura = -1.0f;
+        strncpy(persona->telefono, "(vacio)", 8);
+
+        returnValue = 0;
+    }
+
+    return returnValue;
 }
