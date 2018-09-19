@@ -8,6 +8,15 @@
  */
 static int nullPerson(Persona* persona);
 
+/** \brief
+ *  Funcion que da el Alta de una Persona.
+ *  \param person Persona* Puntero a Estructura Persona.
+ *  \param retry int Cantidad de reintentos en caso de error.
+ *  \return 0 si pudo cargar la persona correctamente, -1 si hubo un error.
+ * 
+ */
+static int newPerson(Persona* person, int retry);
+
 int persons_inicializarArray(Persona* personas, int limite)
 {
     int retorno = -1;
@@ -35,36 +44,28 @@ int persons_inicializarArray(Persona* personas, int limite)
     return retorno;
 }
 
-int persons_altaPersona(Persona* persona, int reintentos)
+int persons_altaPersonas(Persona* personas, int cantidad, int reintentos)
 {
     int retorno = -1;
-    char nombreAux[NAME_LIMITS];
-    int edadAux;
-    char dniAux[DNI_LIMITS];
-    float alturaAux;
-    char telefonoAux[PHONE_LIMITS];
-    char error[] = "Error de ingreso.\n";
+    Persona personaAux;
+    int i;
 
-    if(persona != NULL)
+    if(personas != NULL && cantidad > 0 && reintentos >= 0)
     {
-        if(utn_getString(nombreAux, NAME_LIMITS, reintentos, "Ingrese el nombre: ", error) == 0
-            && utn_getInt(&edadAux, reintentos, 0, 200, "Ingrese la edad: ", error) == 0
-            && utn_getString(dniAux, DNI_LIMITS, reintentos, "Ingrese el DNI con separador de miles: ", error) == 0
-            && utn_getFloat(&alturaAux, reintentos, 0, 3, "Ingrese su altura en metros: ", error) == 0
-            && utn_getPhone(telefonoAux, PHONE_LIMITS, reintentos, "Ingrese el numero de telefono: ", error) == 0)
+        for(i = 0; i < cantidad; i++)
         {
-            strncpy(persona->nombre, nombreAux, NAME_LIMITS);
-            persona->edad = edadAux;
-            strncpy(persona->dni, dniAux, DNI_LIMITS);
-            persona->altura = alturaAux;
-            strncpy(persona->telefono, telefonoAux, PHONE_LIMITS);
-            retorno = 0;
+            if(newPerson(&personaAux, reintentos) == 0)
+            {
+                personas[i] = personaAux;
+                retorno = 0;
+            }
         }
     }
+
     return retorno;
 }
 
-void persons_imprimirPersona(Persona* personas, int limite)
+void persons_imprimirPersonas(Persona* personas, int limite)
 {
     int i;
     char edadAux[5];
@@ -102,5 +103,34 @@ static int nullPerson(Persona* persona)
         returnValue = 0;
     }
 
+    return returnValue;
+}
+
+static int newPerson(Persona* person, int retry)
+{
+    int returnValue = -1;
+    char nameAux[NAME_LIMITS];
+    int ageAux;
+    char dniAux[DNI_LIMITS];
+    float heightAux;
+    char phoneAux[PHONE_LIMITS];
+    char error[] = "Error de ingreso.\n";
+
+    if(person != NULL)
+    {
+        if(utn_getString(nameAux, NAME_LIMITS, retry, "Ingrese el nombre: ", error) == 0
+            && utn_getInt(&ageAux, retry, 0, 200, "Ingrese la edad: ", error) == 0
+            && utn_getString(dniAux, DNI_LIMITS, retry, "Ingrese el DNI con separador de miles: ", error) == 0
+            && utn_getFloat(&heightAux, retry, 0, 3, "Ingrese su altura en metros: ", error) == 0
+            && utn_getPhone(phoneAux, PHONE_LIMITS, retry, "Ingrese el numero de telefono: ", error) == 0)
+        {
+            strncpy(person->nombre, nameAux, NAME_LIMITS);
+            person->edad = ageAux;
+            strncpy(person->dni, dniAux, DNI_LIMITS);
+            person->altura = heightAux;
+            strncpy(person->telefono, phoneAux, PHONE_LIMITS);
+            returnValue = 0;
+        }
+    }
     return returnValue;
 }

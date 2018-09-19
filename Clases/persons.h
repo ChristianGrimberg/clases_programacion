@@ -32,13 +32,14 @@ typedef struct
 int persons_inicializarArray(Persona* personas, int limite);
 
 /** \brief
- *  Funcion que da el Alta de una Persona.
- *  \param persona Persona* Puntero a una Persona.
- *  \param reintentos int Cantidad de reintentos en caso de error de carga.
+ *  Funcion que da el Alta de Personas en un Array.
+ *  \param personas Persona* Array de Personas.
+ *  \param cantidad int Cantidad de Personas a cargar.
+ *  \param reintentos int Cantidad de reintentos de los valores en caso de error de carga.
  *  \return 0 si el alta fue exitosa, -1 si hubo un error.
  * 
  */
-int persons_altaPersona(Persona* persona, int reintentos);
+int persons_altaPersonas(Persona* personas, int cantidad, int reintentos);
 
 /** \brief
  *  Funcion que imprime un Array de Personas.
@@ -47,6 +48,6 @@ int persons_altaPersona(Persona* persona, int reintentos);
  *  \return No retorna valores.
  * 
  */
-void persons_imprimirPersona(Persona* personas, int limite);
+void persons_imprimirPersonas(Persona* personas, int limite);
 
 #endif //PERSONS_H_INCLUDED
