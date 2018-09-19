@@ -33,6 +33,12 @@ static int getString(char* imputString, int limit);
  */
 static int isNumber(char* stringValue);
 
+/** \brief
+ *  Funcion que valida si una cadena ingresada no es un numero.
+ *  \param stringValue char* Cadena de caracteres a validar.
+ *  \return 0 si no es numerico, -1 si lo es.
+ * 
+ */
 static int isNotNumber(char* stringValue);
 
 /** \brief

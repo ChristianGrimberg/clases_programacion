@@ -1,21 +1,27 @@
 #include "persons.h"
 
+/** \brief
+ *  Funcion que coloca una persona con valores por defecto.
+ *  \param persona Persona* Puntero a Estructura Persona.
+ *  \return 0 si pudo colocar los valores por defecto, -1 si hubo un error.
+ * 
+ */
 static int nullPerson(Persona* persona);
 
-int persons_inicializarArray(Persona* pPersona, int limite)
+int persons_inicializarArray(Persona* personas, int limite)
 {
     int retorno = -1;
     Persona personaAux;
     int i;
 
-    if(pPersona != NULL && limite > 0)
+    if(personas != NULL && limite > 0)
     {
         for(i = 0; i < limite; i++)
         {
-            personaAux = pPersona[i];
+            personaAux = personas[i];
             if(nullPerson(&personaAux) == 0)
             {
-                pPersona[i] = personaAux;
+                personas[i] = personaAux;
                 retorno = 0;
             }
             else
@@ -58,13 +64,13 @@ int persons_altaPersona(Persona* persona, int reintentos)
     return retorno;
 }
 
-void persons_imprimirPersona(Persona* pPersona, int limite)
+void persons_imprimirPersona(Persona* personas, int limite)
 {
     int i;
     char edadAux[5];
     char alturaAux[15];
 
-    if(pPersona != NULL && limite > 0)
+    if(personas != NULL && limite > 0)
     {
         printf("\n-------------------------------------------------------------------------------\n");
         printf("|%10s%10s|%5s%2s|%7s%7s|%7s%7s|%9s%9s|\n",
@@ -72,10 +78,10 @@ void persons_imprimirPersona(Persona* pPersona, int limite)
         printf("===============================================================================\n");
         for(i = 0; i < limite; i++)
         {
-            sprintf(edadAux, "%d", (pPersona[i]).edad);
-            sprintf(alturaAux, "%.2f", (pPersona[i]).altura);
+            sprintf(edadAux, "%d", (personas[i]).edad);
+            sprintf(alturaAux, "%.2f", (personas[i]).altura);
             printf("|%19s |%6s |%13s |%13s |%17s |\n",
-                (pPersona[i]).nombre, edadAux, (pPersona[i]).dni, alturaAux, (pPersona[i]).telefono);
+                (personas[i]).nombre, edadAux, (personas[i]).dni, alturaAux, (personas[i]).telefono);
         }
         printf("-------------------------------------------------------------------------------\n\n");
     }
@@ -87,11 +93,11 @@ static int nullPerson(Persona* persona)
 
     if(persona != NULL)
     {
-        strncpy(persona->nombre, "(vacio)", 8);
-        persona->edad = -1;
+        strncpy(persona->nombre, NULL_STRING, 8);
+        persona->edad = NULL_EDAD;
         strncpy(persona->dni, "0", 2);
-        persona->altura = -1.0f;
-        strncpy(persona->telefono, "(vacio)", 8);
+        persona->altura = NULL_ALTURA;
+        strncpy(persona->telefono, NULL_STRING, 8);
 
         returnValue = 0;
     }
