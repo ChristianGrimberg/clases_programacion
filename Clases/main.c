@@ -10,7 +10,7 @@ int main()
         system("clear");
     #else
         system("cls");
-    #endif // __unix__
+    #endif //__unix__
 
     //pruebas();
     //clase02(); /**< Maximos, Minimos y Promedios. */

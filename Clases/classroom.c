@@ -288,9 +288,5 @@ void clase08_2(void)
         }
     }
 
-    for(i = 0; i < 3; i++)
-    {
-        printf("Persona %d:\n", i+1);
-        persons_imprimirPersona(&arrayPersonas[i]);
-    }
+    persons_imprimirPersona(arrayPersonas, 3);
 }

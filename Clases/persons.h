@@ -21,6 +21,6 @@ typedef struct
 }Persona;
 
 int persons_altaPersona(Persona* persona, int reintentos);
-void persons_imprimirPersona(Persona* persona);
+void persons_imprimirPersona(Persona* pPersona, int limite);
 
 #endif // persons_H_INCLUDED

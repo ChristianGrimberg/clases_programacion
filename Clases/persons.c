@@ -29,7 +29,25 @@ int persons_altaPersona(Persona* persona, int reintentos)
     return retorno;
 }
 
-void persons_imprimirPersona(Persona* persona)
+void persons_imprimirPersona(Persona* pPersona, int limite)
 {
-    printf("Nombre: %s\nEdad: %d\nDNI: %s\nAltura: %.2f\nTelefono: %s\n", persona->nombre, persona->edad, persona->dni, persona->altura, persona->telefono);
+    int i;
+    char edadAux[5];
+    char alturaAux[15];
+
+    if(pPersona != NULL && limite > 0)
+    {
+        printf("\n-------------------------------------------------------------------------------\n");
+        printf("|%10s%10s|%5s%2s|%7s%7s|%7s%7s|%9s%9s|\n",
+            "Nombre", "", "Edad", "", "DNI", "", "Altura", "", "Telefono", "");
+        printf("===============================================================================\n");
+        for(i = 0; i < limite; i++)
+        {
+            sprintf(edadAux, "%d", (pPersona[i]).edad);
+            sprintf(alturaAux, "%.2f", (pPersona[i]).altura);
+            printf("|%19s |%6s |%13s |%13s |%17s |\n",
+                (pPersona[i]).nombre, edadAux, (pPersona[i]).dni, alturaAux, (pPersona[i]).telefono);
+        }
+        printf("-------------------------------------------------------------------------------\n\n");
+    }
 }
