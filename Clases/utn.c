@@ -148,8 +148,8 @@ int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* me
 {
     int retorno = -1;
     char stringAux[cantDeNumerosMax];
+    char valorActual[2];
     int cantGuiones;
-    int cantPositivos;
     int i;
 
     if(pTelefono != NULL && cantDeNumerosMax > 0 && reintentos >= 0)
@@ -162,33 +162,39 @@ int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* me
             {
                 i = 0;
                 cantGuiones = 0;
-                cantPositivos = 0;
+                valorActual[1] = EXIT_BUFFER;
                 while(stringAux[i] != EXIT_BUFFER)
                 {
-                    if(stringAux[i] == '-')
+                    valorActual[0] = stringAux[i];
+                    if(i > 0 && stringAux[i-1] == stringAux[i] && (stringAux[i] == '-' || stringAux[i] == '+'))
+                    {
+                        retorno = -1;
+                        break; 
+                    }
+                    else if(stringAux[i] == '-')
                     {
                         cantGuiones++;
                         i++;
                         continue;
                     }
-                    else if(stringAux[i] == '+')
+                    else if(i == 0 && stringAux[i] == '+')
                     {
-                        cantPositivos++;
                         i++;
                         continue;
                     }
 
-                    if(isNotNumber(&stringAux[i]) == 0 || cantGuiones > 2 || cantPositivos > 1)
+                    
+                    if((isNotNumber(valorActual) == 0 && stringAux[i] != '-') || cantGuiones > 2)
                     {
                         retorno = -1;
                         break;               
                     }
-                    else if(isNumber(&stringAux[i]) == 0)
-                    {
-                        retorno = 0;
-                    }              
+                    else if(isNumber(valorActual) == 0)
+                        retorno = 0;      
                     i++;
                 }
+                if(valorActual[0] == '-')
+                    retorno = -1;
             }
             if(retorno == 0)
             {
