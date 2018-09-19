@@ -285,3 +285,8 @@ void clase08_2(void)
         }
     }
 }
+
+void clase09(void)
+{
+
+}

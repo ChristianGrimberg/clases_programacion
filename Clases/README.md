@@ -66,3 +66,15 @@ Validaciones con funciones privadas para obtener una cadena de caracteres, numer
 
 ## Clase 8
 Método de ordenamiento de inserción. Arrays paralelos. Declaración de estructuras.
+
+## Clase 9
+Practica con estructuras con ejemplo de Producto segun la siguiente definición:
+```c
+typedef struct
+{
+	char nombre[32];
+	char descripcion[128];
+	float precio;
+}Producto;
+```
+Hacer una funcion para inicializar en biblioteca para Productos, y otra funcion para cargar un Producto de un Array indicando el índice y validando el tamaño del Array.

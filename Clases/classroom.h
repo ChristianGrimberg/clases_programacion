@@ -23,5 +23,6 @@ void clase06_4(void);
 void clase07(void);
 void clase08(void);
 void clase08_2(void);
+void clase09(void);
 
 #endif //CLASSROOM_H_INCLUDED

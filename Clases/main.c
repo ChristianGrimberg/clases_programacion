@@ -23,7 +23,8 @@ int main()
     //clase06_4(); /**< Uso de array de enteros y ordenamiento por Insertion Sort. */
     //clase07(); /**< Validaciones de cadena de caracteres. */
     //clase08();
-    clase08_2(); /**< Uso de funciones de un array de Personas. */
+    //clase08_2(); /**< Uso de funciones de un array de Personas. */
+    clase09();
 
     return 0;
 }
