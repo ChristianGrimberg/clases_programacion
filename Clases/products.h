@@ -5,6 +5,7 @@
 
 typedef struct
 {
+    int ID;
     char nombre[32];
     char descripcion[128];
     float precio;
@@ -12,7 +13,7 @@ typedef struct
 }Producto;
 
 int products_inicializarArray(Producto* pProductos, int cantidad);
-int nuevoProducto(Producto* pProducto, int indice, int longitud);
+int products_cargarProducto(Producto* pProducto, int indice, int longitud);
 void products_imprimirListado(Producto* pProducto, int indice, int longitud);
 int products_GetEmptyIndex(Producto* productos, int longitud);
 int products_menuOpciones(void);

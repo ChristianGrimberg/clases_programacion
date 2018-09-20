@@ -2,27 +2,29 @@
 #include <stdlib.h>
 #include "products.h"
 
+static int getNewId(void);
+
 int products_inicializarArray(Producto* pProductos, int cantidad)
 {
     int i;
     int retorno = -1;
+
     if(pProductos != NULL && cantidad > 0)
     {
         for(i = 0; i < cantidad; i++)
-        {
             (pProductos+i)->isEmpty = 1;
-        }
         retorno = 0;
     }
-    return retorno;
 
+    return retorno;
 }
 
-int nuevoProducto(Producto* pProducto, int indice, int longitud)
+int products_cargarProducto(Producto* pProducto, int indice, int longitud)
 {
     int retorno = -1;
     Producto productoAuxiliar;
 
+    productoAuxiliar.isEmpty = 0;
     if(pProducto != NULL && indice >= 0 && indice < longitud)
     {
         if(utn_getString(productoAuxiliar.nombre, 32, 3, "Escriba el nombre: ", "Error, intente nuevamente. ") == 0
@@ -32,7 +34,7 @@ int nuevoProducto(Producto* pProducto, int indice, int longitud)
             if((pProducto+indice)->isEmpty == 1)
             {
                 pProducto[indice] = productoAuxiliar;
-                pProducto[indice].isEmpty = 0;
+                pProducto[indice].ID = getNewId();
                 retorno = 0;
             }
         }
@@ -44,12 +46,11 @@ void products_imprimirListado(Producto* pProducto, int indice, int longitud)
 {
     if(pProducto != NULL && indice < longitud)
     {
-        printf("Nombre: %s\tDescripcion: %s\tPrecio: %.2f\tEs vacio: %d.\n", pProducto[indice].nombre, pProducto[indice].descripcion, pProducto[indice].precio, pProducto[indice].isEmpty);
+        printf("ID: %d\tNombre: %s\tDescripcion: %s\tPrecio: %.2f\tEs vacio: %d.\n", 
+            pProducto[indice].ID, pProducto[indice].nombre, pProducto[indice].descripcion, pProducto[indice].precio, pProducto[indice].isEmpty);
     }
     else
-    {
         printf("Error al imprimir la persona.\n");
-    }
 }
 
 int products_GetEmptyIndex(Producto* productos, int longitud)
@@ -86,4 +87,11 @@ int products_menuOpciones(void)
         retorno=enteroAuxiliar;
 
     return retorno;
+}
+
+static int getNewId(void)
+{
+    static int counterID = -1;
+
+    return counterID++;
 }

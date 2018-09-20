@@ -301,16 +301,13 @@ void clase09(void)
     int indiceBuscado;
     char seguirPrograma[2]="s\0";
     int opcion;
+    int contadorProductos = 0;
     int i;
 
     if(products_inicializarArray(productos, 200) == 0)
-    {
         printf("Productos inicializados correctamente.\n");
-    }
     else
-    {
         printf("Error de inicializacion de Productos.\n");
-    }
 
     do{
         opcion = products_menuOpciones();
@@ -320,14 +317,10 @@ void clase09(void)
                 indiceBuscado = products_GetEmptyIndex(productos, 200);
                 if(indiceBuscado != -1)
                 {
-                    if(nuevoProducto(productos, indiceBuscado, 200) == 0)
-                    {
+                    if(products_cargarProducto(productos, indiceBuscado, 200) == 0)
                         printf("Producto cargado correctamente en indice %d.\n", indiceBuscado);
-                    }
                     else
-                    {
                         printf("Error de carga.\n");
-                    }
                 }
                 else
                     printf("No hay productos libres a cargar.\n");
@@ -338,8 +331,11 @@ void clase09(void)
                     if(productos[i].isEmpty == 0)
                     {
                         products_imprimirListado(productos, i, 200);
+                        contadorProductos++;
                     }
                 }
+                if(contadorProductos == 0)
+                    printf("Listado de productos vacio.\n");
                 break;
         }
         if(utn_getString(seguirPrograma, 1, 3, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ") == -1)
