@@ -337,12 +337,15 @@ void clase09(void)
                 if(contadorProductos == 0)
                     printf("Listado de productos vacio.\n");
                 break;
+            case 3:
+                break;
         }
-        if(utn_getString(seguirPrograma, 1, 3, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ", 0) == -1)
+        if(opcion != 3 && utn_getString(seguirPrograma, 1, 3, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ", 0) == -1)
         {
             printf("Error al Salir.\n");
             break;
         }
-        pauseScreen("Presione Enter para continuar...");
+        else if(opcion == 3)
+            break;
     }while(seguirPrograma[0] == 's');
 }

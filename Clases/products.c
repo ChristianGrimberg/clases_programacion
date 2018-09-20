@@ -82,8 +82,9 @@ int products_menuOpciones(void)
     printf("==========MENU DE OPCIONES==========\n");
     printf("1. Cargar un Producto.\n");
     printf("2. Imprimir lista de Productos.\n");
+    printf("3. Salir del programa.\n");
     printf("====================================\n");
-    if(utn_getInt(&enteroAuxiliar,3,1,2,"Indique la Opcion deseada: ","Seleccion no valida. ") == 0)
+    if(utn_getInt(&enteroAuxiliar,3,1,3,"Indique la Opcion deseada: ","Seleccion no valida. ") == 0)
         retorno=enteroAuxiliar;
 
     return retorno;
@@ -91,7 +92,7 @@ int products_menuOpciones(void)
 
 static int getNewId(void)
 {
-    static int counterID = -1;
-
-    return counterID++;
+    static int counterID = 0;
+    counterID++;
+    return counterID;
 }
