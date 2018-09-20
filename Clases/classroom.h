@@ -8,6 +8,7 @@
 #include "arrayFunctions.h"
 #include "utn.h"
 #include "persons.h"
+#include "products.h"
 
 int getEdad(int*);
 int getEntero(int*, int, int, int, char*, char*);

@@ -77,4 +77,4 @@ typedef struct
 	float precio;
 }Producto;
 ```
-Hacer una funcion para inicializar en biblioteca para Productos, y otra funcion para cargar un Producto de un Array indicando el índice y validando el tamaño del Array.
+Los ejercicios para hacer en la clase están en el documento ["Ejercicios ABM de Productos por Pasos"](EjercicioABM_PorPasos.md)

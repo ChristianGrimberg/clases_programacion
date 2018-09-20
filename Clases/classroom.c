@@ -288,5 +288,54 @@ void clase08_2(void)
 
 void clase09(void)
 {
+    Producto productos[200];
+    int indiceBuscado;
+    char seguirPrograma[2]="s\0";
+    int opcion;
+    int i;
 
+    if(inicializarProducto(productos,200)==0)
+    {
+        printf("productos inicializados\n");
+    }
+    else
+    {
+        printf("error de inicializacion\n");
+    }
+
+    do{
+        opcion=menuProductos();
+        switch(opcion)
+        {
+            case 1:
+                indiceBuscado=productoGetEmptyIndex(productos,200);
+                if(indiceBuscado!=-1)
+                {
+                    if(nuevoProducto(productos,indiceBuscado,200)==0)
+                    {
+                        printf("producto cargado correctamente en %d\n", indiceBuscado);
+                    }
+                    else
+                    {
+                        printf("Error de carga\n");
+                    }
+                }
+                break;
+            case 2:
+                for(i=0;i<200;i++)
+                {
+                    if(productos[i].isEmpty==0)
+                    {
+                        imprimirProducto(productos,i,200);
+                    }
+                }
+                break;
+        }
+        if(utn_getString(seguirPrograma,1,3,"Desea Continuar? ", "Valor Incorrecto ") == -1)
+        {
+            printf(" Error al Salir ");
+            break;
+        }
+        system("pause");
+    }while(seguirPrograma[0]=='s');
 }

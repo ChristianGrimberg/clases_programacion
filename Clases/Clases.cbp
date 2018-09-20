@@ -31,6 +31,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="persons.h" />
+		<Unit filename="products.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="products.h" />
 		<Unit filename="utn.c">
 			<Option compilerVar="CC" />
 		</Unit>
