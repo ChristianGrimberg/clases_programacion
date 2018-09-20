@@ -78,10 +78,10 @@ int products_menuOpciones(void)
     int retorno=-1;
 
     system("clear");
-    printf("==========MENU DE OPCIONES==========\n ");
-    printf("1. Cargar un Producto.\n ");
-    printf("2. Imprimir lista de Productos.\n ");
-    printf("====================================\n ");
+    printf("==========MENU DE OPCIONES==========\n");
+    printf("1. Cargar un Producto.\n");
+    printf("2. Imprimir lista de Productos.\n");
+    printf("====================================\n");
     if(utn_getInt(&enteroAuxiliar,3,1,2,"Indique la Opcion deseada: ","Seleccion no valida. ") == 0)
         retorno=enteroAuxiliar;
 

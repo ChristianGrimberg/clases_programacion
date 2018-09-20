@@ -1,6 +1,7 @@
 #include "classroom.h"
 
 int global; /**< Prueba de uso de variable global en otro archivo */
+static void pauseScreen(void);
 
 int getEdad(int* pEdad)
 {
@@ -63,6 +64,13 @@ void pruebas(void)
     char telefono[15];
     if(utn_getPhone(telefono, 15, 50, "Telefono: ", "Error. ") == 0)
         printf("\n%s\n", telefono);
+}
+
+static void pauseScreen(void)
+{
+    printf("Presione la tecla Enter para continuar...\n");
+    __fpurge(stdin);
+    getchar();
 }
 
 void clase02(void)
@@ -338,6 +346,6 @@ void clase09(void)
             printf("Error al Salir.\n");
             break;
         }
-        system("pause");
+        pauseScreen();
     }while(seguirPrograma[0] == 's');
 }
