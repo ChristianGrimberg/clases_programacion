@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "utn.h"
 
 #define LED 1
 #define LCD 2
@@ -11,14 +12,13 @@
 #define EMPTY 1
 #define FULL 0
 
-#include "utn.h"
-
 typedef struct
 {
     int pantallaID;
     int tipo;
     char nombre[NOMBRE_MAX];
     char direccion[DIRECCION_MAX];
+    float precioPorDia;
     int isEmpty;
 }Pantalla;
 

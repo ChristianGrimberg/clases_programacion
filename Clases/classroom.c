@@ -354,18 +354,41 @@ void clase10(void)
 {
     Pantalla pantallas[PANTALLAS];
     int pantallaLibre;
+    int opcionMenu;
+    char seguirPrograma[2]="s\0";
 
     if(screen_inicializarArray(pantallas, PANTALLAS) == 0)
         printf("Array de pantallas inicializado.\n");
     else
         printf("Error de inicializacion.\n");
-    pantallaLibre = screen_buscarLugarLibre(pantallas, PANTALLAS);
-    if(pantallaLibre == -1)
-        printf("No hay pantalla libre.\n");
-    else
+
+    do
     {
-        if(screen_altaPantalla(pantallas, pantallaLibre) == 0)
-            printf("Pantalla cargada en el indice %d.\n", pantallaLibre);
-    }
+        opcionMenu = menu_opcionesMenu();
+        switch(opcionMenu)
+        {
+            case 1:
+                pantallaLibre = screen_buscarLugarLibre(pantallas, PANTALLAS);
+                if(pantallaLibre == -1)
+                    printf("No hay pantalla libre.\n");
+                else
+                {
+                    if(screen_altaPantalla(pantallas, pantallaLibre) == 0)
+                        printf("Pantalla cargada en el indice %d.\n", pantallaLibre);
+                    else
+                        printf("Error al cargar la pantalla.\n");
+                }
+                break;
+            case SALIR_PROGRAMA:
+                break;
+        }
+        if(opcionMenu != SALIR_PROGRAMA && utn_getString(seguirPrograma, 1, 3, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ", 0) == -1)
+        {
+            printf("Error al Salir.\n");
+            break;
+        }
+        else if(opcionMenu == SALIR_PROGRAMA)
+            break;
+    }while(seguirPrograma[0] == 's');
 
 }

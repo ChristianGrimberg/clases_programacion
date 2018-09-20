@@ -26,7 +26,14 @@
 		<Unit filename="classroom.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="classroom.h" />		
+		<Unit filename="classroom.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu.h" />
 		<Unit filename="persons.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -35,13 +42,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="products.h" />
+		<Unit filename="screen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="screen.h" />
 		<Unit filename="utn.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="utn.h" />
-		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
