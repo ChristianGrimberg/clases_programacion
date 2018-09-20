@@ -45,10 +45,11 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
  *  \param reintentos int Cantidad de reintentos al usuario.
  *  \param mensaje char* Mensaje personalizado que solicita el dato al usuario.
  *  \param error char* Mensaje personalizado en caso de error.
+ *  \param isOnlyLetters int Indicador si acepta solo letras (1) o letras, numeros y caracteres especiales (0).
  *  \return Retorna 0 si obtuvo la cadena correctamente y -1 si hubo un error.
  * 
  */
-int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError);
+int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError, int isOnlyLetters);
 
 /** \brief
  *  Funcion que solicita el ingreso por teclado de un numero telefonico con codigo de area separado por un guion.

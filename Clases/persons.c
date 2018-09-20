@@ -4,7 +4,7 @@
  *  Funcion que coloca una persona con valores por defecto.
  *  \param persona Persona* Puntero a Estructura Persona.
  *  \return 0 si pudo colocar los valores por defecto, -1 si hubo un error.
- * 
+ *
  */
 static int nullPerson(Persona* persona);
 
@@ -13,7 +13,7 @@ static int nullPerson(Persona* persona);
  *  \param person Persona* Puntero a Estructura Persona.
  *  \param retry int Cantidad de reintentos en caso de error.
  *  \return 0 si pudo cargar la persona correctamente, -1 si hubo un error.
- * 
+ *
  */
 static int newPerson(Persona* person, int retry);
 
@@ -118,9 +118,9 @@ static int newPerson(Persona* person, int retry)
 
     if(person != NULL)
     {
-        if(utn_getString(nameAux, NAME_LIMITS, retry, "Ingrese el nombre: ", error) == 0
+        if(utn_getString(nameAux, NAME_LIMITS, retry, "Ingrese el nombre: ", error, 1) == 0
             && utn_getInt(&ageAux, retry, 0, 200, "Ingrese la edad: ", error) == 0
-            && utn_getString(dniAux, DNI_LIMITS, retry, "Ingrese el DNI con separador de miles: ", error) == 0
+            && utn_getString(dniAux, DNI_LIMITS, retry, "Ingrese el DNI con separador de miles: ", error, 0) == 0
             && utn_getFloat(&heightAux, retry, 0, 3, "Ingrese su altura en metros: ", error) == 0
             && utn_getPhone(phoneAux, PHONE_LIMITS, retry, "Ingrese el numero de telefono: ", error) == 0)
         {

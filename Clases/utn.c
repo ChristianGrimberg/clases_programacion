@@ -125,7 +125,7 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
     return retorno;
 }
 
-int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError)
+int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError, int isOnlyLetters)
 {
     int retorno = -1;
     char stringAux[STRING_MAX];
@@ -136,7 +136,8 @@ int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char
         {
             reintentos--;
             printf(mensaje);
-            if(getStringOnlyLetters(stringAux, limite) == 0)
+            if((isOnlyLetters == 0 && getString(stringAux, limite) == 0)
+                || (isOnlyLetters = 1 && getStringOnlyLetters(stringAux, limite) == 0))
             {
                 strncpy(pNombre, stringAux, limite);
                 retorno = 0;

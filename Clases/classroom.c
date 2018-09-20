@@ -252,7 +252,7 @@ void clase07(void)
 {
     char nombre[STRING_MAX];
 
-    if(utn_getString(nombre, 26, 0, "Ingrese su nombre: ", "El valor es incorrecto. ") == 0)
+    if(utn_getString(nombre, 26, 0, "Ingrese su nombre: ", "El valor es incorrecto. ", 1) == 0)
         printf("Nombre ingresado: %s\n", nombre);
 }
 
@@ -338,7 +338,7 @@ void clase09(void)
                     printf("Listado de productos vacio.\n");
                 break;
         }
-        if(utn_getString(seguirPrograma, 1, 3, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ") == -1)
+        if(utn_getString(seguirPrograma, 1, 3, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ", 0) == -1)
         {
             printf("Error al Salir.\n");
             break;
