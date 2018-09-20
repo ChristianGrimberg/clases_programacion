@@ -294,48 +294,50 @@ void clase09(void)
     int opcion;
     int i;
 
-    if(inicializarProducto(productos,200)==0)
+    if(products_inicializarArray(productos, 200) == 0)
     {
-        printf("productos inicializados\n");
+        printf("Productos inicializados correctamente.\n");
     }
     else
     {
-        printf("error de inicializacion\n");
+        printf("Error de inicializacion de Productos.\n");
     }
 
     do{
-        opcion=menuProductos();
+        opcion = products_menuOpciones();
         switch(opcion)
         {
             case 1:
-                indiceBuscado=productoGetEmptyIndex(productos,200);
-                if(indiceBuscado!=-1)
+                indiceBuscado = products_GetEmptyIndex(productos, 200);
+                if(indiceBuscado != -1)
                 {
-                    if(nuevoProducto(productos,indiceBuscado,200)==0)
+                    if(nuevoProducto(productos, indiceBuscado, 200) == 0)
                     {
-                        printf("producto cargado correctamente en %d\n", indiceBuscado);
+                        printf("Producto cargado correctamente en indice %d.\n", indiceBuscado);
                     }
                     else
                     {
-                        printf("Error de carga\n");
+                        printf("Error de carga.\n");
                     }
                 }
+                else
+                    printf("No hay productos libres a cargar.\n");
                 break;
             case 2:
-                for(i=0;i<200;i++)
+                for(i = 0; i < 200; i++)
                 {
-                    if(productos[i].isEmpty==0)
+                    if(productos[i].isEmpty == 0)
                     {
-                        imprimirProducto(productos,i,200);
+                        products_imprimirListado(productos, i, 200);
                     }
                 }
                 break;
         }
-        if(utn_getString(seguirPrograma,1,3,"Desea Continuar? ", "Valor Incorrecto ") == -1)
+        if(utn_getString(seguirPrograma, 1, 3, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ") == -1)
         {
-            printf(" Error al Salir ");
+            printf("Error al Salir.\n");
             break;
         }
         system("pause");
-    }while(seguirPrograma[0]=='s');
+    }while(seguirPrograma[0] == 's');
 }

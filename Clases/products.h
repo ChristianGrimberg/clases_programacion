@@ -11,10 +11,10 @@ typedef struct
     int isEmpty;
 }Producto;
 
-int inicializarProducto(Producto* pProductos, int cantidad);
+int products_inicializarArray(Producto* pProductos, int cantidad);
 int nuevoProducto(Producto* pProducto, int indice, int longitud);
-void imprimirProducto(Producto* pProducto, int indice, int longitud);
-int productoGetEmptyIndex(Producto* productos, int longitud);
-int menuProductos(void);
+void products_imprimirListado(Producto* pProducto, int indice, int longitud);
+int products_GetEmptyIndex(Producto* productos, int longitud);
+int products_menuOpciones(void);
 
 #endif //PRODUCTS_H_INCLUDED
