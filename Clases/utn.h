@@ -11,6 +11,7 @@
 #define EXIT_BUFFER '\0' /**< Valor de terminacion de una cadena de caracteres. */
 #define INIT_INT_ARRAY -200 /**< Valor para inicializar el array de enteros. */
 #define INIT_FLOAT_ARRAY -100.0f /**< Valor para inicializar el array de flotantes. */
+#define REINTENTOS 3
 
 /** \brief
  *  Funcion para obtener un entero por teclado en un rango, con mensajes al usuario.
@@ -47,7 +48,7 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
  *  \param error char* Mensaje personalizado en caso de error.
  *  \param isOnlyLetters int Indicador si acepta solo letras (1) o letras, numeros y caracteres especiales (0).
  *  \return Retorna 0 si obtuvo la cadena correctamente y -1 si hubo un error.
- * 
+ *
  */
 int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError, int isOnlyLetters);
 
@@ -58,7 +59,7 @@ int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char
  *  \param mensaje char* Mensaje personalizado que solicita el dato al usuario.
  *  \param error char* Mensaje personalizado en caso de error.
  *  \return Retorna 0 si obtuvo un telefono correcto y -1 si no es un valor valido.
- * 
+ *
  */
 int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError);
 
@@ -70,7 +71,7 @@ int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* me
  *  \param mensaje char* Mensaje personalizado que solicita el dato al usuario.
  *  \param error char* Mensaje personalizado en caso de error.
  *  \return Retorna 0 si obtuvo un DNI dentro del rango y -1 si no es un valor valido.
- * 
+ *
  */
 int utn_getDNI(int* pDNI, int reintentos, int minimo, int maximo, char* mensaje, char* mensajeError);
 
@@ -83,7 +84,7 @@ int utn_getDNI(int* pDNI, int reintentos, int minimo, int maximo, char* mensaje,
  *  \param mensaje char* Mensaje personalizado que solicita el dato al usuario.
  *  \param error char* Mensaje personalizado en caso de error.
  *  \return Retorna 0 si obtuvo un CUIT valido y -1 si hubo un error.
- * 
+ *
  */
 int utn_getCUIT(char* pCUIT, int limite, int minimo, int maximo, int reintentos, char* mensaje, char* mensajeError);
 
@@ -95,7 +96,7 @@ int utn_getCUIT(char* pCUIT, int limite, int minimo, int maximo, int reintentos,
  *  \param mensaje char* Mensaje personalizado que solicita el dato al usuario.
  *  \param error char* Mensaje personalizado en caso de error.
  *  \return Retorna 0 si obtuvo el email correctamente y -1 si hubo un error.
- * 
+ *
  */
 int utn_getEmail(char* pEmail, int limite, int reintentos, char* mensaje, char* mensajeError);
 

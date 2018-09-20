@@ -9,6 +9,10 @@
 #include "utn.h"
 #include "persons.h"
 #include "products.h"
+#include "screen.h"
+
+#define PANTALLAS 100
+#define CONTRATACIONES 1000
 
 int getEdad(int*);
 int getEntero(int*, int, int, int, char*, char*);
@@ -25,5 +29,6 @@ void clase07(void);
 void clase08(void);
 void clase08_2(void);
 void clase09(void);
+void clase10(void);
 
 #endif //CLASSROOM_H_INCLUDED

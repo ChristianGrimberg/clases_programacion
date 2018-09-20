@@ -24,7 +24,8 @@ int main()
     //clase07(); /**< Validaciones de cadena de caracteres. */
     //clase08();
     //clase08_2(); /**< Uso de funciones de un array de Personas. */
-    clase09();
+    //clase09();
+    clase10();
 
     return 0;
 }

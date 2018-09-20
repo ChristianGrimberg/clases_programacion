@@ -349,3 +349,23 @@ void clase09(void)
             break;
     }while(seguirPrograma[0] == 's');
 }
+
+void clase10(void)
+{
+    Pantalla pantallas[PANTALLAS];
+    int pantallaLibre;
+
+    if(screen_inicializarArray(pantallas, PANTALLAS) == 0)
+        printf("Array de pantallas inicializado.\n");
+    else
+        printf("Error de inicializacion.\n");
+    pantallaLibre = screen_buscarLugarLibre(pantallas, PANTALLAS);
+    if(pantallaLibre == -1)
+        printf("No hay pantalla libre.\n");
+    else
+    {
+        if(screen_altaPantalla(pantallas, pantallaLibre) == 0)
+            printf("Pantalla cargada en el indice %d.\n", pantallaLibre);
+    }
+
+}
