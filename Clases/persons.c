@@ -118,9 +118,9 @@ static int newPerson(Persona* person, int retry)
 
     if(person != NULL)
     {
-        if(utn_getString(nameAux, NAME_LIMITS, retry, "Ingrese el nombre: ", error, 1) == 0
+        if(utn_getString(nameAux, NAME_LIMITS, retry, "Ingrese el nombre: ", error, ONLY_LETTERS) == 0
             && utn_getInt(&ageAux, retry, 0, 200, "Ingrese la edad: ", error) == 0
-            && utn_getString(dniAux, DNI_LIMITS, retry, "Ingrese el DNI con separador de miles: ", error, 0) == 0
+            && utn_getString(dniAux, DNI_LIMITS, retry, "Ingrese el DNI con separador de miles: ", error, ALL_CHARACTERES) == 0
             && utn_getFloat(&heightAux, retry, 0, 3, "Ingrese su altura en metros: ", error) == 0
             && utn_getPhone(phoneAux, PHONE_LIMITS, retry, "Ingrese el numero de telefono: ", error) == 0)
         {

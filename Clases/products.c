@@ -27,8 +27,8 @@ int products_cargarProducto(Producto* pProducto, int indice, int longitud)
     productoAuxiliar.isEmpty = 0;
     if(pProducto != NULL && indice >= 0 && indice < longitud)
     {
-        if(utn_getString(productoAuxiliar.nombre, 32, 3, "Escriba el nombre: ", "Error, intente nuevamente. ", 0) == 0
-        && utn_getString(productoAuxiliar.descripcion, 128, 3, "Escriba la Descripcion: ", "Error, intente nuevamente. ", 0) == 0
+        if(utn_getString(productoAuxiliar.nombre, 32, 3, "Escriba el nombre: ", "Error, intente nuevamente. ", ALL_CHARACTERES) == 0
+        && utn_getString(productoAuxiliar.descripcion, 128, 3, "Escriba la Descripcion: ", "Error, intente nuevamente. ", ALL_CHARACTERES) == 0
         && utn_getFloat(&productoAuxiliar.precio, 3, 1.0f, 20000.0f, "Ingrese el precio (Maximo: 2000.00): ", "Error, valor no admitido. ") == 0)
         {
             if((pProducto+indice)->isEmpty == 1)

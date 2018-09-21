@@ -252,7 +252,7 @@ void clase07(void)
 {
     char nombre[STRING_MAX];
 
-    if(utn_getString(nombre, 26, 0, "Ingrese su nombre: ", "El valor es incorrecto. ", 1) == 0)
+    if(utn_getString(nombre, 26, 0, "Ingrese su nombre: ", "El valor es incorrecto. ", ONLY_LETTERS) == 0)
         printf("Nombre ingresado: %s\n", nombre);
 }
 
@@ -299,7 +299,7 @@ void clase09(void)
 {
     Producto productos[200];
     int indiceBuscado;
-    char seguirPrograma[2]="s\0";
+    char seguirPrograma = 's';
     int opcion;
     int contadorProductos = 0;
     int i;
@@ -340,14 +340,14 @@ void clase09(void)
             case 3:
                 break;
         }
-        if(opcion != 3 && utn_getString(seguirPrograma, 1, 3, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ", 0) == -1)
+        if(opcion != 3 && utn_getChar(&seguirPrograma, REINTENTOS, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ") == -1)
         {
             printf("Error al Salir.\n");
             break;
         }
         else if(opcion == 3)
             break;
-    }while(seguirPrograma[0] == 's');
+    }while(seguirPrograma == 's');
 }
 
 void clase10(void)
@@ -355,7 +355,7 @@ void clase10(void)
     Pantalla pantallas[PANTALLAS];
     int pantallaLibre;
     int opcionMenu;
-    char seguirPrograma[2]="s\0";
+    char seguirPrograma = 's';
     int contadorPantallas = 0;
     int idParaEliminar;
     int i;
@@ -409,12 +409,12 @@ void clase10(void)
             case SALIR_PROGRAMA:
                 break;
         }
-        if(opcionMenu != SALIR_PROGRAMA && utn_getString(seguirPrograma, 1, 3, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ", 0) == -1)
+        if(opcionMenu != SALIR_PROGRAMA && utn_getChar(&seguirPrograma, REINTENTOS, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ") == -1)
         {
             printf("Error al Salir.\n");
             break;
         }
         else if(opcionMenu == SALIR_PROGRAMA)
             break;
-    }while(seguirPrograma[0] == 's');
+    }while(seguirPrograma == 's');
 }

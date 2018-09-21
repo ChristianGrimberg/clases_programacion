@@ -47,8 +47,8 @@ int screen_altaPantalla(Pantalla* pantallas, int indice)
     {
         pantallaAuxiliar.pantallaID = getNuevoIdPantalla();
         if(utn_getInt(&pantallaAuxiliar.tipo, REINTENTOS, LED, LCD, "Ingrese 1 para LED, 2 para LCD: ", error) == 0
-            && utn_getString(pantallaAuxiliar.nombre, NOMBRE_MAX, REINTENTOS, "Ingrese el nombre de la pantalla: ", error, 0) == 0
-            && utn_getString(pantallaAuxiliar.direccion, DIRECCION_MAX, REINTENTOS, "Ingrese la direccion: ", error, 0) == 0
+            && utn_getString(pantallaAuxiliar.nombre, NOMBRE_MAX, REINTENTOS, "Ingrese el nombre de la pantalla: ", error, ALL_CHARACTERES) == 0
+            && utn_getString(pantallaAuxiliar.direccion, DIRECCION_MAX, REINTENTOS, "Ingrese la direccion: ", error, ALL_CHARACTERES) == 0
             && utn_getFloat(&pantallaAuxiliar.precioPorDia, REINTENTOS, 1.0f, 1000000.0f, "Ingrese el precio: ", "Rango del valor no aceptado. ") == 0)
         {
             if(pantallas[indice].isEmpty == EMPTY)
@@ -74,7 +74,8 @@ void screen_imprimirPantalla(Pantalla* pantalla, int indice)
         else if(pantalla->tipo == LCD)
             strncpy(tipo, "LCD", 4);
 
-        printf("Nombre: %s\tTipo: %s\tDireccion: %s\tPrecio por Dia: %.2f\tVacio: %d\n", pantalla->nombre, tipo, pantalla->direccion, pantalla->precioPorDia, pantalla->isEmpty);
+        printf("ID: %d\tNombre: %s\tTipo: %s\tDireccion: %s\tPrecio por Dia: %.2f\tVacio: %d\n",
+            pantalla->pantallaID, pantalla->nombre, tipo, pantalla->direccion, pantalla->precioPorDia, pantalla->isEmpty);
     }
     else
         printf("Pantalla no encontrada.\n");

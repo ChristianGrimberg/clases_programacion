@@ -125,19 +125,41 @@ int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, cha
     return retorno;
 }
 
+int utn_getChar(char* pCaracter, int reintentos, char* mensaje, char* mensajeError)
+{
+    int retorno = -1;
+    char charAux;
+
+    if(pCaracter !=NULL && reintentos >= 0)
+    {
+        printf(mensaje);
+        __fpurge(stdin);
+        fgets(&charAux, 2, stdin); /**< Por si esta el caracter \n en el buffer. */
+        if(sizeof(charAux) == 1)
+        {
+            strncpy(pCaracter, &charAux, 1);
+            retorno = 0;
+        }
+        else
+            printf(mensajeError);
+    }
+
+    return retorno;
+}
+
 int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError, int isOnlyLetters)
 {
     int retorno = -1;
     char stringAux[STRING_MAX];
 
-    if(pNombre != NULL && mensaje != NULL && mensajeError != NULL && limite > 0 && reintentos >= 0)
+    if(pNombre != NULL && limite > 0 && reintentos >= 0)
     {
         do
         {
             reintentos--;
             printf(mensaje);
-            if((isOnlyLetters == 0 && getString(stringAux, limite) == 0)
-                || (isOnlyLetters = 1 && getStringOnlyLetters(stringAux, limite) == 0))
+            if((isOnlyLetters == ALL_CHARACTERES && getString(stringAux, limite) == 0)
+                || (isOnlyLetters = ONLY_LETTERS && getStringOnlyLetters(stringAux, limite) == 0))
             {
                 strncpy(pNombre, stringAux, limite);
                 retorno = 0;
