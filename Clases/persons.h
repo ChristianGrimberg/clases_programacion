@@ -1,9 +1,6 @@
 #ifndef PERSONS_H_INCLUDED
 #define PERSONS_H_INCLUDED
 
-#include <stdio_ext.h>
-#include <stdlib.h>
-#include <string.h>
 #include "utn.h"
 
 #define NAME_LIMITS 50 /**< Limite en la cantidad de caracteres en el nombre de una Persona. */

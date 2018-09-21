@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "classroom.h"
 
 extern int global; /**< Uso de variable global en otro source previamente declarada */
@@ -24,8 +22,8 @@ int main()
     //clase07(); /**< Validaciones de cadena de caracteres. */
     //clase08();
     //clase08_2(); /**< Uso de funciones de un array de Personas. */
-    //clase09();
-    clase10();
+    //clase09(); /**< ABM de entidad de Producto. */
+    clase10(); /**< ABM y relaciones de entidades. */
 
     return 0;
 }

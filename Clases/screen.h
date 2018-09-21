@@ -1,8 +1,6 @@
 #ifndef SCREEN_H_INCLUDED
 #define SCREEN_H_INCLUDED
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "utn.h"
 
 #define LED 1

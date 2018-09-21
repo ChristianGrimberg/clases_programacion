@@ -6,6 +6,7 @@
 #include <string.h>
 #include <limits.h>
 #include <float.h>
+
 #define CHARACTERS_NUMBERS 64 /**< Valor maximo de caracteres numericos. */
 #define STRING_MAX 4096 /**< Valor maximo en cadena de caracteres. */
 #define EXIT_BUFFER '\0' /**< Valor de terminacion de una cadena de caracteres. */
