@@ -356,6 +356,8 @@ void clase10(void)
     int pantallaLibre;
     int opcionMenu;
     char seguirPrograma[2]="s\0";
+    int contadorPantallas = 0;
+    int i;
 
     if(screen_inicializarArray(pantallas, PANTALLAS) == 0)
         printf("Array de pantallas inicializado.\n");
@@ -378,6 +380,18 @@ void clase10(void)
                     else
                         printf("Error al cargar la pantalla.\n");
                 }
+                break;
+            case 10:
+                for(i = 0; i < PANTALLAS; i++)
+                {
+                    if(pantallas[i].isEmpty == FULL)
+                    {
+                        screen_imprimirPantalla(pantallas, i);
+                        contadorPantallas++;
+                    }
+                }
+                if(contadorPantallas == 0)
+                    printf("No hay pantallas cargadas.\n");
                 break;
             case SALIR_PROGRAMA:
                 break;

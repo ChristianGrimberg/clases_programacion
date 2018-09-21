@@ -65,14 +65,14 @@ int screen_altaPantalla(Pantalla* pantallas, int indice)
 
 void screen_imprimirPantalla(Pantalla* pantalla, int indice)
 {
-    char tipo[3];
+    char tipo[4];
 
     if(pantalla != NULL && indice >= 0)
     {
         if(pantalla->tipo == LED)
-            strncpy(tipo, "LED", 3);
+            strncpy(tipo, "LED", 4);
         else if(pantalla->tipo == LCD)
-            strncpy(tipo, "LCD", 3);
+            strncpy(tipo, "LCD", 4);
 
         printf("Nombre: %s\tTipo: %s\tDireccion: %s\tPrecio por Dia: %.2f\tVacio: %d\n", pantalla->nombre, tipo, pantalla->direccion, pantalla->precioPorDia, pantalla->isEmpty);
     }

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "utn.h"
 
-#define SALIR_PROGRAMA 4
+#define SALIR_PROGRAMA 11
 
 int menu_opcionesMenu(void);
 

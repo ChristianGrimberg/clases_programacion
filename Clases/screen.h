@@ -25,5 +25,7 @@ typedef struct
 int screen_inicializarArray(Pantalla* pantallas, int longitud);
 int screen_buscarLugarLibre(Pantalla* pantallas, int longitud);
 int screen_altaPantalla(Pantalla* pantallas, int indice);
+void screen_imprimirPantalla(Pantalla* pantalla, int indice);
+int screen_buscarPantallaPorId(Pantalla* pantallas, int longitud, int idPantalla);
 
 #endif // SCREEN_H_INCLUDED
