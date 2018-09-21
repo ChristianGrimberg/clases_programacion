@@ -65,12 +65,38 @@ int screen_altaPantalla(Pantalla* pantallas, int indice)
 
 void screen_imprimirPantalla(Pantalla* pantalla, int indice)
 {
+    char tipo[3];
+
     if(pantalla != NULL && indice >= 0)
     {
-        printf("Nombre:\t");
+        if(pantalla->tipo == LED)
+            strncpy(tipo, "LED", 3);
+        else if(pantalla->tipo == LCD)
+            strncpy(tipo, "LCD", 3);
+
+        printf("Nombre: %s\tTipo: %s\tDireccion: %s\tPrecio por Dia: %.2f\tVacio: %d\n", pantalla->nombre, tipo, pantalla->direccion, pantalla->precioPorDia, pantalla->isEmpty);
     }
     else
         printf("Pantalla no encontrada.\n");
+}
+
+int screen_buscarPantallaPorId(Pantalla* pantallas, int longitud, int idPantalla)
+{
+    int retorno = -1;
+    int i;
+    if(pantallas != NULL && longitud > 0)
+    {
+        for(i = 0; i < longitud; i++)
+        {
+            if(pantallas[i].isEmpty == FULL && pantallas[i].pantallaID == idPantalla)
+            {
+                retorno = i;
+                break;
+            }
+        }
+    }
+
+    return retorno;
 }
 
 static int getNuevoIdPantalla(void)
