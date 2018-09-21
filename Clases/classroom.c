@@ -357,6 +357,7 @@ void clase10(void)
     int opcionMenu;
     char seguirPrograma[2]="s\0";
     int contadorPantallas = 0;
+    int idParaEliminar;
     int i;
 
     if(screen_inicializarArray(pantallas, PANTALLAS) == 0)
@@ -381,7 +382,19 @@ void clase10(void)
                         printf("Error al cargar la pantalla.\n");
                 }
                 break;
-            case 10:
+            case 3:
+                if(utn_getInt(&idParaEliminar, REINTENTOS, 0, PANTALLAS, "Indique el ID de Pantalla a eliminar: ", "Valor fuera de rango. ") == 0
+                    && screen_buscarPantallaPorId(pantallas, PANTALLAS, idParaEliminar) == 0)
+                {
+                    if(screen_eliminarPantallaPorId(pantallas, idParaEliminar) == 0)
+                        printf("Pantalla eliminada %d\n", idParaEliminar);
+                    else
+                        printf("Error al eliminar pantalla.\n");
+                }
+                else
+                    printf("Error al encontrar el ID de pantalla.\n");
+                break;
+            case 9:
                 for(i = 0; i < PANTALLAS; i++)
                 {
                     if(pantallas[i].isEmpty == FULL)

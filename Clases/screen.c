@@ -99,6 +99,19 @@ int screen_buscarPantallaPorId(Pantalla* pantallas, int longitud, int idPantalla
     return retorno;
 }
 
+int screen_eliminarPantallaPorId(Pantalla* pantalla, int idPantalla)
+{
+    int retorno = -1;
+
+    if(pantalla != NULL && pantalla[idPantalla].isEmpty == FULL)
+    {
+        pantalla[idPantalla].isEmpty = EMPTY;
+        retorno = 0;
+    }
+
+    return retorno;
+}
+
 static int getNuevoIdPantalla(void)
 {
     static int contadorID = 0;
