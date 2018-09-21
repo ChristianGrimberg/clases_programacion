@@ -10,7 +10,7 @@
 #include "persons.h"
 #include "products.h"
 #include "screen.h"
-#include "menu.h"
+#include "impresiones.h"
 
 #define PANTALLAS 100
 #define CONTRATACIONES 1000

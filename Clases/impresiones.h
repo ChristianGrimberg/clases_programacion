@@ -4,9 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "utn.h"
+#include "screen.h"
 
 #define SALIR_PROGRAMA 11
 
-int menu_opcionesMenu(void);
+int impresiones_menuPrincipal(void);
+void impresiones_imprimirPantalla(Pantalla* pantalla, int indice);
 
 #endif // MENU_H_INCLUDED

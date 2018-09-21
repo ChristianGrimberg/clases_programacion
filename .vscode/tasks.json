@@ -15,7 +15,7 @@
                 "Clases/persons.c",
                 "Clases/products.c",
                 "Clases/screen.c",
-                "Clases/menu.c",
+                "Clases/impresiones.c",
                 "Clases/classroom.c",
                 "Clases/main.c"
             ],

@@ -30,10 +30,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="menu.c">
+		<Unit filename="impresiones.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="menu.h" />
+		<Unit filename="impresiones.h" />
 		<Unit filename="persons.c">
 			<Option compilerVar="CC" />
 		</Unit>

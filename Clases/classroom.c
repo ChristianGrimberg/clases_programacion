@@ -1,7 +1,6 @@
 #include "classroom.h"
 
 int global; /**< Prueba de uso de variable global en otro archivo */
-static void pauseScreen(char* mensaje);
 
 int getEdad(int* pEdad)
 {
@@ -64,14 +63,6 @@ void pruebas(void)
     char telefono[15];
     if(utn_getPhone(telefono, 15, 50, "Telefono: ", "Error. ") == 0)
         printf("\n%s\n", telefono);
-}
-
-static void pauseScreen(char* mensaje)
-{
-    char flush[2] = " \n";
-    printf("%s\n", mensaje);
-    __fpurge(stdin);
-    fgets(flush, 2, stdin);
 }
 
 void clase02(void)
@@ -367,7 +358,7 @@ void clase10(void)
 
     do
     {
-        opcionMenu = menu_opcionesMenu();
+        opcionMenu = impresiones_menuPrincipal();
         switch(opcionMenu)
         {
             case 1:
@@ -399,7 +390,7 @@ void clase10(void)
                 {
                     if(pantallas[i].isEmpty == FULL)
                     {
-                        screen_imprimirPantalla(pantallas, i);
+                        impresiones_imprimirPantalla(pantallas, i);
                         contadorPantallas++;
                     }
                 }

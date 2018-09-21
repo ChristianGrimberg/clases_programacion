@@ -1,4 +1,4 @@
-# Primer Parcial Laboratorio 1 año 2017
+# Primer Parcial de Laboratorio 1 (Año 2017)
 Se debe desarrollar un sistema (en ANSI C) el cual permita comercializar espacios publicitarios, los cuales estarán integrados por dos tipos de dispositivos:
 1. __Pantallas LCD__ - Ubicados en paseos comerciales.
 1. __Pantallas​ Gigantes Led__ - Ubicadas en la vía pública.
