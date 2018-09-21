@@ -390,5 +390,4 @@ void clase10(void)
         else if(opcionMenu == SALIR_PROGRAMA)
             break;
     }while(seguirPrograma[0] == 's');
-
 }

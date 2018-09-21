@@ -48,7 +48,8 @@ int screen_altaPantalla(Pantalla* pantallas, int indice)
         pantallaAuxiliar.pantallaID = getNuevoIdPantalla();
         if(utn_getInt(&pantallaAuxiliar.tipo, REINTENTOS, LED, LCD, "Ingrese 1 para LED, 2 para LCD: ", error) == 0
             && utn_getString(pantallaAuxiliar.nombre, NOMBRE_MAX, REINTENTOS, "Ingrese el nombre de la pantalla: ", error, 0) == 0
-            && utn_getString(pantallaAuxiliar.direccion, DIRECCION_MAX, REINTENTOS, "Ingrese la direccion: ", error, 0) == 0)
+            && utn_getString(pantallaAuxiliar.direccion, DIRECCION_MAX, REINTENTOS, "Ingrese la direccion: ", error, 0) == 0
+            && utn_getFloat(&pantallaAuxiliar.precioPorDia, REINTENTOS, 1.0f, 1000000.0f, "Ingrese el precio: ", "Rango del valor no aceptado. ") == 0)
         {
             if(pantallas[indice].isEmpty == EMPTY)
             {
@@ -60,6 +61,16 @@ int screen_altaPantalla(Pantalla* pantallas, int indice)
     }
 
     return retorno;
+}
+
+void screen_imprimirPantalla(Pantalla* pantalla, int indice)
+{
+    if(pantalla != NULL && indice >= 0)
+    {
+        printf("Nombre:\t");
+    }
+    else
+        printf("Pantalla no encontrada.\n");
 }
 
 static int getNuevoIdPantalla(void)
