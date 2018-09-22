@@ -1,6 +1,5 @@
 #ifndef PRODUCTS_H_INCLUDED
 #define PRODUCTS_H_INCLUDED
-
 #include "utn.h"
 
 typedef struct

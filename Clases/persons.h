@@ -1,8 +1,6 @@
 #ifndef PERSONS_H_INCLUDED
 #define PERSONS_H_INCLUDED
-
 #include "utn.h"
-
 #define NAME_LIMITS 50 /**< Limite en la cantidad de caracteres en el nombre de una Persona. */
 #define DNI_LIMITS 11 /**< Limite en la cantidad de caracteres de un DNI. */
 #define PHONE_LIMITS 50 /**< Valor maximo de cantidad de caracteres para un telefono. */
