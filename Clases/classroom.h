@@ -4,7 +4,6 @@
 #include "persons.h"
 #include "products.h"
 #include "impresiones.h"
-#define PANTALLAS 100
 #define CONTRATACIONES 1000
 
 int getEdad(int*);
