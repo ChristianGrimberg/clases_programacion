@@ -10,12 +10,12 @@ void clase10(void)
     char seguirPrograma = 's';
     int contadorPantallas = 0;
     int idParaEliminar;
+    int inicializacionPantallas;
     int i;
 
-    if(screen_inicializarArray(pantallas, PANTALLAS) == 0)
-        printf("Array de pantallas inicializado.\n");
-    else
-        printf("Error de inicializacion.\n");
+    inicializacionPantallas = screen_inicializarArray(pantallas, PANTALLAS);
+    if(inicializacionPantallas != 0)
+        printf("Error de inicializacion del array de Pantallas.\n");
 
     do
     {
@@ -73,7 +73,7 @@ void clase10(void)
         }
         else if(opcionMenu == SALIR_PROGRAMA)
             break;
-    }while(seguirPrograma == 's' || seguirPrograma == 'S');
+    }while((seguirPrograma == 's' || seguirPrograma == 'S') && inicializacionPantallas == 0);
 }
 
 void clase09(void)
