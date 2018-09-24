@@ -4,12 +4,6 @@ extern int global; /**< Uso de variable global en otro source previamente declar
 
 int main()
 {
-    #ifdef __unix__
-        system("clear");
-    #else
-        system("cls");
-    #endif //__unix__
-
     //pruebas();
     //clase02(); /**< Maximos, Minimos y Promedios. */
     //clase03(); /**< Uso de funciones y parametros por referencia. */

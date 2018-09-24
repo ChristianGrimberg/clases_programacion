@@ -8,7 +8,6 @@
 #define EMPTY 1
 #define FULL 0
 
-
 /*! \struct Pantalla
     \brief
     Tipo de dato Pantalla.

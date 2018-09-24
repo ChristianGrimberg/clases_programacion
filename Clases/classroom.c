@@ -51,11 +51,16 @@ void clase10(void)
                 {
                     if(pantallas[i].isEmpty == FULL)
                     {
-                        impresiones_imprimirPantalla(pantallas, i);
                         contadorPantallas++;
+                        if(i == 0)
+                            impresiones_imprimirPantalla(pantallas, i, ENCABEZADO);
+                        else
+                            impresiones_imprimirPantalla(pantallas, i, LISTA);                        
                     }
                 }
-                if(contadorPantallas == 0)
+                if(contadorPantallas > 0)
+                    printf("\n");
+                else if(contadorPantallas == 0)
                     printf("No hay pantallas cargadas.\n");
                 break;
             case SALIR_PROGRAMA:
@@ -68,7 +73,7 @@ void clase10(void)
         }
         else if(opcionMenu == SALIR_PROGRAMA)
             break;
-    }while(seguirPrograma == 's');
+    }while(seguirPrograma == 's' || seguirPrograma == 'S');
 }
 
 void clase09(void)
