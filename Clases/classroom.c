@@ -16,6 +16,7 @@ void clase10(void)
     {
         do
         {
+            opcionMenu = impresiones_menuPrincipal();
             switch(opcionMenu)
             {
                 case 1:
