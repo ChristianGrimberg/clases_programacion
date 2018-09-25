@@ -24,5 +24,6 @@ typedef struct
 }Contratacion;
 
 int contratacion_inicializarArray(Contratacion* contrataciones, int longitud);
+int contratacion_buscarLugarLibre(Contratacion* contrataciones, int longitud);
 
 #endif //CONTRATACION_H_INCLUDED
