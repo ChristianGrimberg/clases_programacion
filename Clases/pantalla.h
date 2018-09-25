@@ -8,8 +8,6 @@
 #define LCD 2
 #define NOMBRE_MAX 64
 #define DIRECCION_MAX 128
-#define EMPTY 1
-#define FULL 0
 
 /*! \struct Pantalla
     \brief

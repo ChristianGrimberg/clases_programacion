@@ -3,6 +3,7 @@
 
 #include "utn.h"
 #define CONTRATACIONES 1000 /**< Cantidad de contrataciones que soporta el programa. */
+#define CONTRATACION_INICIAL 1 /**< Inicio de contador de ID de Contratacion. */
 #define CUIT_MAX 16 /**< Longitud maxima del numero de CUIT Argentino. */
 #define VIDEO_MAX 32 /**< Longitud maxima del nombre y tipo del archivo de video. */
 
@@ -19,6 +20,9 @@ typedef struct
     char video[VIDEO_MAX]; /**< Nombre y tipo del archivo de video de publicidad. */
     int diasPublicacion; /**< Cantidad de dias de Alquiler para la publicidad. */
     int pantallaID; /**< ID de Pantalla existente. */
+    int isEmpty; /**< Indicador de elemento vacio o cargado. */
 }Contratacion;
+
+int contratacion_inicializarArray(Contratacion* contrataciones, int longitud);
 
 #endif //CONTRATACION_H_INCLUDED

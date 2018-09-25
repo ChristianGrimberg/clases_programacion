@@ -5,6 +5,7 @@ int global; /**< Prueba de uso de variable global en otro archivo */
 void clase10(void)
 {
     Pantalla pantallas[PANTALLAS];
+    Contratacion contrataciones[CONTRATACIONES];
     int pantallaLibre;
     int opcionMenu;
     int opcionModificar;
@@ -15,7 +16,7 @@ void clase10(void)
     char consultaEliminar;
     int i;
     
-    if(pantalla_inicializarArray(pantallas, PANTALLAS) == 0)
+    if(pantalla_inicializarArray(pantallas, PANTALLAS) == 0 && contratacion_inicializarArray(contrataciones, CONTRATACIONES) == 0)
     {
         do
         {
@@ -113,7 +114,7 @@ void clase10(void)
         }while(seguirPrograma == 's' || seguirPrograma == 'S' || seguirPrograma == '\n');
     }
     else
-        printf("Error de inicializacion del array de Pantallas.\n");
+        printf("Error de inicializacion de datos.\n");
 }
 
 void clase09(void)

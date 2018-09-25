@@ -13,6 +13,8 @@
 #define REINTENTOS 3 /**< Valor por defecto para reintentos. */
 #define ONLY_LETTERS 1 /**< Definicion para indicar que es solo letras la cadena. */
 #define ALL_CHARACTERES 0 /**< Definicion para indicar la cadena contiene caracteres de todo tipo. */
+#define EMPTY 1
+#define FULL 0
 
 /** \brief
  *  Funcion para obtener un entero por teclado en un rango, con mensajes al usuario.
