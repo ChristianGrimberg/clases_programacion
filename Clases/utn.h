@@ -69,7 +69,7 @@ int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char
 int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError);
 
 /** \brief
- *  Funcion que solicita y valida el ingreso por teclado de un numero de Documento de Identidad.
+ *  Funcion que solicita y valida el ingreso por teclado de un numero de Documento de Identidad con separador de miles.
  *  \param reintentos int Cantidad de reintentos al usuario.
  *  \param minimo int Valor minimo a ingresar.
  *  \param maximo int Valor maximo a ingresar.
@@ -81,7 +81,7 @@ int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* me
 int utn_getDNI(int* pDNI, int reintentos, int minimo, int maximo, char* mensaje, char* mensajeError);
 
 /** \brief
- *  Funcion que solicita y valida el ingreso por teclado de un CUIT Argentino.
+ *  Funcion que solicita y valida el ingreso por teclado de un CUIT Argentino formateado, ejemplo "99/99.999.999-9".
  *  \param pCuit char* Direccion de memoria al almacenar el CUIT validado.
  *  \param limite int Limite de caracteres a ingresar por el usuario.
  *  \param minimo int Valor minimo a ingresar de DNI.

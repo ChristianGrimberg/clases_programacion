@@ -58,6 +58,8 @@ int pantalla_altaPantalla(Pantalla* pantallas, int indice)
                 retorno = 0;
             }
         }
+        else
+            printf("Error de carga de la Pantalla.\n");
     }
 
     return retorno;

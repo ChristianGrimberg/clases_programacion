@@ -61,7 +61,8 @@ void impresiones_imprimirPantalla(Pantalla* pantalla, int indice, int tabla)
         if(tabla == ENCABEZADO)
         {
             clearScreen();
-            printf("\n|%5s%2s|%20s%10s|%5s%1s|%20s%10s|%12s%2s|\n",
+            printf("+=======+==============================+======+==============================+==============+\n");
+            printf("|%5s%2s|%20s%10s|%5s%1s|%20s%10s|%12s%2s|\n",
                 "ID", "", "Nombre", "", "Tipo", "", "Direccion", "", "Precio Dia", "");
             printf("+=======+==============================+======+==============================+==============+\n");
         }
@@ -70,6 +71,38 @@ void impresiones_imprimirPantalla(Pantalla* pantalla, int indice, int tabla)
     }
     else
         printf("Pantalla no encontrada.\n");
+}
+
+int impresiones_imprimirListaPantallas(Pantalla* pantallas, int longitud)
+{
+    int retorno = -1;
+    int contadorPantallas;
+    int i;
+
+    if(pantallas != NULL && longitud > 0)
+    {
+        contadorPantallas = 0;
+        for(i = 0; i < PANTALLAS; i++)
+        {
+            if(pantallas[i].isEmpty == FULL)
+            {
+                contadorPantallas++;
+                if(contadorPantallas == 1)
+                    impresiones_imprimirPantalla(pantallas, i, ENCABEZADO);
+                else
+                    impresiones_imprimirPantalla(pantallas, i, LISTA);                        
+            }
+        }
+        if(contadorPantallas > 0)
+        {
+            printf("+=======+==============================+======+==============================+==============+\n");
+            retorno = contadorPantallas;
+        }
+        else if(contadorPantallas == 0)
+            printf("No hay pantallas cargadas.\n");
+    }
+
+    return retorno;
 }
 
 static void clearScreen(void)

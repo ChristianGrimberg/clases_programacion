@@ -2,6 +2,7 @@
 #define CONTRATACION_H_INCLUDED
 
 #include "utn.h"
+#include "impresiones.h"
 #define CONTRATACIONES 1000 /**< Cantidad de contrataciones que soporta el programa. */
 #define CONTRATACION_INICIAL 1 /**< Inicio de contador de ID de Contratacion. */
 #define CUIT_MAX 16 /**< Longitud maxima del numero de CUIT Argentino. */

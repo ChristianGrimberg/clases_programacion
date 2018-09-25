@@ -10,12 +10,11 @@ void clase10(void)
     int opcionMenu;
     int opcionModificar;
     char seguirPrograma = 's';
-    int contadorPantallas;
     int idParaBuscar;
     int indiceConsultado;
     char consultaEliminar;
-    int i;
-    
+    int cantidadPantallas;
+
     if(pantalla_inicializarArray(pantallas, PANTALLAS) == 0 && contratacion_inicializarArray(contrataciones, CONTRATACIONES) == 0)
     {
         do
@@ -78,28 +77,17 @@ void clase10(void)
                                 printf("Eliminacion cancelada.\n");
                         }
                         else
-                            printf("Pantalla no encontrada.\n");                      
+                            printf("Pantalla no encontrada.\n");
                     }
                     else
                         printf("Error al encontrar el ID de pantalla.\n");
                     break;
                 case 9:
-                    contadorPantallas = 0;
-                    for(i = 0; i < PANTALLAS; i++)
+                    cantidadPantallas = impresiones_imprimirListaPantallas(pantallas, PANTALLAS);
+                    if(cantidadPantallas != -1)
                     {
-                        if(pantallas[i].isEmpty == FULL)
-                        {
-                            contadorPantallas++;
-                            if(contadorPantallas == 1)
-                                impresiones_imprimirPantalla(pantallas, i, ENCABEZADO);
-                            else
-                                impresiones_imprimirPantalla(pantallas, i, LISTA);                        
-                        }
+                        printf("%d Pantalla/s cargada/s.\n", cantidadPantallas);
                     }
-                    if(contadorPantallas > 0)
-                        printf("\n");
-                    else if(contadorPantallas == 0)
-                        printf("No hay pantallas cargadas.\n");
                     break;
                 case SALIR_PROGRAMA:
                     break;
