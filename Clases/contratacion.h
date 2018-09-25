@@ -23,7 +23,22 @@ typedef struct
     int isEmpty; /**< Indicador de elemento vacio o cargado. */
 }Contratacion;
 
+/** \brief
+ *  Funcion para inicializar un Array de Contrataciones.
+ *  \param contraciones Contratacion* Direccion de memoria del Array de Contraciones.
+ *  \param longitud int Longitud del Array a inicializar.
+ *  \return 0 si pudo inicializar de manera correcta el array, -1 si hubo un error.
+ * 
+ */
 int contratacion_inicializarArray(Contratacion* contrataciones, int longitud);
+
+/** \brief
+ *  Funcion para buscar el primer lugar libre en un Array de Contrataciones.
+ *  \param contraciones Contratacion* Direccion de memoria del Array de Contraciones.
+ *  \param longitud int Longitud del Array a inicializar.
+ *  \return El indice del primer lugar libre del array, -1 si no encontro un lugar libre.
+ * 
+ */
 int contratacion_buscarLugarLibre(Contratacion* contrataciones, int longitud);
 
 #endif //CONTRATACION_H_INCLUDED

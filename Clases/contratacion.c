@@ -1,5 +1,10 @@
 #include "contratacion.h"
 
+/** \brief
+ *  Funcion que obtiene un numero identificador incremental desde el 1 en adelante.
+ *  \return Retorna el numero ID incremental.
+ * 
+ */
 static int getNuevoIdContratacion(void);
 
 int contratacion_inicializarArray(Contratacion* contrataciones, int longitud)
