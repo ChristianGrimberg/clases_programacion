@@ -22,6 +22,27 @@ int impresiones_menuPrincipal(void)
     return retorno;
 }
 
+int impresiones_menuModificarPantalla(Pantalla* pantalla, int indicePantalla)
+{
+    int retorno = -1;
+    int opcionAuxiliar;
+
+    if(pantalla != NULL && indicePantalla >= 0 && indicePantalla < PANTALLAS)
+    {
+        printf("==========MODIFICAR PANTALLA===========\n");
+        printf("1. Modificar Tipo (1 para LED, 2 para LCD).\n");
+        printf("2. Modificar Nombre de Pantalla.\n");
+        printf("3. Modificar direccion de Pantalla.\n");
+        printf("4. Modificar Precio por dia.\n");
+        printf("5. Cancelar.\n");
+        printf("=======================================\n");
+        if(utn_getInt(&opcionAuxiliar, REINTENTOS, 1, 5, "Indique la opcion deseada: ", "Seleccion no valida. ") == 0)
+            retorno = opcionAuxiliar;
+    }
+
+    return retorno;
+}
+
 void impresiones_imprimirPantalla(Pantalla* pantalla, int indice, int tabla)
 {
     char idAux[6];

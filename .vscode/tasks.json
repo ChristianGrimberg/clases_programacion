@@ -14,7 +14,7 @@
                 "Clases/utn.c",
                 "Clases/persons.c",
                 "Clases/products.c",
-                "Clases/screen.c",
+                "Clases/pantalla.c",
                 "Clases/impresiones.c",
                 "Clases/classroom.c",
                 "Clases/main.c"

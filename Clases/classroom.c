@@ -6,15 +6,16 @@ void clase10(void)
 {
     Pantalla pantallas[PANTALLAS];
     int pantallaLibre;
-    int opcionMenu = 0;
+    int opcionMenu;
+    int opcionModificar;
     char seguirPrograma = 's';
     int contadorPantallas;
-    int idParaEliminar;
-    int indiceParaEliminar;
+    int idParaBuscar;
+    int indiceConsultado;
     char consultaEliminar;
     int i;
     
-    if(screen_inicializarArray(pantallas, PANTALLAS) == 0)
+    if(pantalla_inicializarArray(pantallas, PANTALLAS) == 0)
     {
         do
         {
@@ -22,30 +23,53 @@ void clase10(void)
             switch(opcionMenu)
             {
                 case 1:
-                    pantallaLibre = screen_buscarLugarLibre(pantallas, PANTALLAS);
+                    pantallaLibre = pantalla_buscarLugarLibre(pantallas, PANTALLAS);
                     if(pantallaLibre == -1)
                         printf("No hay pantalla libre.\n");
                     else
                     {
-                        if(screen_altaPantalla(pantallas, pantallaLibre) == 0)
+                        if(pantalla_altaPantalla(pantallas, pantallaLibre) == 0)
                             printf("Pantalla cargada en el indice %d.\n", pantallaLibre);
                         else
                             printf("Error al cargar la pantalla.\n");
                     }
                     break;
-                case 3:
-                    if(utn_getInt(&idParaEliminar, REINTENTOS, PANTALLA_INICIAL, PANTALLAS, "Indique el ID de Pantalla a eliminar: ", "Valor fuera de rango. ") == 0)
+                case 2:
+                    if(utn_getInt(&idParaBuscar, REINTENTOS, PANTALLA_INICIAL, PANTALLAS, "Indique el ID de Pantalla a eliminar: ", "Valor fuera de rango. ") == 0)
                     {
-                        indiceParaEliminar = screen_buscarPantallaPorId(pantallas, PANTALLAS, idParaEliminar);
-                        if(indiceParaEliminar != -1)
+                        indiceConsultado = pantalla_buscarPantallaPorId(pantallas, PANTALLAS, idParaBuscar);
+                        if(indiceConsultado != -1)
                         {
-                            impresiones_imprimirPantalla(pantallas, indiceParaEliminar, ENCABEZADO);
+                            impresiones_imprimirPantalla(pantallas, indiceConsultado, ENCABEZADO);
+                            printf("\n");
+                            opcionModificar = impresiones_menuModificarPantalla(pantallas, indiceConsultado);
+                            if(opcionModificar != -1)
+                            {
+                                if(pantalla_modificarValorPantalla(pantallas, indiceConsultado, opcionModificar) == 0)
+                                    printf("Pantalla modificada correctamente.\n");
+                                else
+                                    printf("Error al modificar la pantalla.\n");
+                            }
+                        }
+                        else
+                            printf("Pantalla no encontrada.\n");
+                    }
+                    else
+                        printf("Error al encontrar el ID de pantalla.\n");
+                    break;
+                case 3:
+                    if(utn_getInt(&idParaBuscar, REINTENTOS, PANTALLA_INICIAL, PANTALLAS, "Indique el ID de Pantalla a eliminar: ", "Valor fuera de rango. ") == 0)
+                    {
+                        indiceConsultado = pantalla_buscarPantallaPorId(pantallas, PANTALLAS, idParaBuscar);
+                        if(indiceConsultado != -1)
+                        {
+                            impresiones_imprimirPantalla(pantallas, indiceConsultado, ENCABEZADO);
                             printf("\n");
                             if(utn_getChar(&consultaEliminar, REINTENTOS, "Confirme para eliminar (S/N): ", "Valor incorrecto. ") == 0
                                 && (consultaEliminar == 's' || consultaEliminar == 'S'))
                             {
-                                if(screen_eliminarPantallaPorIndice(pantallas, indiceParaEliminar) == 0)
-                                    printf("Pantalla eliminada %d\n", idParaEliminar);
+                                if(pantalla_eliminarPantallaPorIndice(pantallas, indiceConsultado) == 0)
+                                    printf("Pantalla eliminada %d\n", idParaBuscar);
                                 else
                                     printf("Error al eliminar pantalla.\n");
                             }
@@ -86,7 +110,7 @@ void clase10(void)
             }
             else if(opcionMenu == SALIR_PROGRAMA || seguirPrograma == 'n' || seguirPrograma == 'N')
                 break;
-        }while(seguirPrograma == 's' || seguirPrograma == 'S');
+        }while(seguirPrograma == 's' || seguirPrograma == 'S' || seguirPrograma == '\n');
     }
     else
         printf("Error de inicializacion del array de Pantallas.\n");

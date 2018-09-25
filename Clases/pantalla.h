@@ -1,5 +1,5 @@
-#ifndef SCREEN_H_INCLUDED
-#define SCREEN_H_INCLUDED
+#ifndef PANTALLA_H_INCLUDED
+#define PANTALLA_H_INCLUDED
 
 #include "utn.h"
 #define PANTALLAS 100
@@ -26,10 +26,11 @@ typedef struct
     int isEmpty; /**< Indicador de elemento vacio o cargado. */
 }Pantalla;
 
-int screen_inicializarArray(Pantalla* pantallas, int longitud);
-int screen_buscarLugarLibre(Pantalla* pantallas, int longitud);
-int screen_altaPantalla(Pantalla* pantallas, int indice);
-int screen_buscarPantallaPorId(Pantalla* pantallas, int longitud, int idPantalla);
-int screen_eliminarPantallaPorIndice(Pantalla* pantalla, int indicePantalla);
+int pantalla_inicializarArray(Pantalla* pantallas, int longitud);
+int pantalla_buscarLugarLibre(Pantalla* pantallas, int longitud);
+int pantalla_altaPantalla(Pantalla* pantallas, int indice);
+int pantalla_buscarPantallaPorId(Pantalla* pantallas, int longitud, int idPantalla);
+int pantalla_eliminarPantallaPorIndice(Pantalla* pantalla, int indicePantalla);
+int pantalla_modificarValorPantalla(Pantalla* pantalla, int indicePantalla, int modificarValor);
 
-#endif //SCREEN_H_INCLUDED
+#endif //PANTALLA_H_INCLUDED

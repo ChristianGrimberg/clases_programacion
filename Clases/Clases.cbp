@@ -42,10 +42,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="products.h" />
-		<Unit filename="screen.c">
+		<Unit filename="pantalla.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="screen.h" />
+		<Unit filename="pantalla.h" />
 		<Unit filename="utn.c">
 			<Option compilerVar="CC" />
 		</Unit>
