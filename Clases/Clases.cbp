@@ -46,6 +46,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pantalla.h" />
+		<Unit filename="contratacion.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="contratacion.h" />
 		<Unit filename="utn.c">
 			<Option compilerVar="CC" />
 		</Unit>

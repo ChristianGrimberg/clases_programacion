@@ -14,6 +14,7 @@
 /*! \struct Pantalla
     \brief
     Tipo de dato Pantalla.
+    Consta de una Pantalla para contratacion en publicidades de video en la calle.
 
 */
 typedef struct

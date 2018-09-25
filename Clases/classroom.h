@@ -1,10 +1,10 @@
 #ifndef CLASSROOM_H_INCLUDED
 #define CLASSROOM_H_INCLUDED
+
 #include "arrayFunctions.h"
 #include "persons.h"
 #include "products.h"
 #include "impresiones.h"
-#define CONTRATACIONES 1000
 
 int getEdad(int*);
 int getEntero(int*, int, int, int, char*, char*);
