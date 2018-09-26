@@ -37,7 +37,7 @@ static int isNumber(char* stringValue);
  *  Funcion que valida si una cadena ingresada no es un numero.
  *  \param stringValue char* Cadena de caracteres a validar.
  *  \return 0 si no es numerico, -1 si lo es.
- * 
+ *
  */
 static int isNotNumber(char* stringValue);
 
@@ -200,7 +200,7 @@ int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* me
                     if(i > 0 && stringAux[i-1] == stringAux[i] && (stringAux[i] == '-' || stringAux[i] == '+'))
                     {
                         retorno = -1;
-                        break; 
+                        break;
                     }
                     else if(stringAux[i] == '-')
                     {
@@ -214,14 +214,14 @@ int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* me
                         continue;
                     }
 
-                    
+
                     if((isNotNumber(valorActual) == 0 && stringAux[i] != '-') || cantGuiones > 2)
                     {
                         retorno = -1;
-                        break;               
+                        break;
                     }
                     else if(isNumber(valorActual) == 0)
-                        retorno = 0;      
+                        retorno = 0;
                     i++;
                 }
                 if(valorActual[0] == '-')
@@ -244,11 +244,7 @@ int utn_getDNI(char* pDNI, int cantDeNumerosMax, int reintentos, char* mensaje, 
 {
     int retorno = -1;
     char dniAux[DNI_MAX];
-    int contadorPuntos;
-    int separacionPuntos;
-    char valorActual[2];
-    int i;
-    
+
     if(pDNI != NULL && reintentos > 0 && cantDeNumerosMax > 0 && mensaje != NULL && mensajeError != NULL)
     {
         do
@@ -272,7 +268,45 @@ int utn_getDNI(char* pDNI, int cantDeNumerosMax, int reintentos, char* mensaje, 
 int utn_getCUIT(char* pCUIT, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError)
 {
     int retorno = -1;
-    printf("Sin implementacion.\n");
+    char auxiliarCUIT[cantDeNumerosMax];
+    char cabeceraCUIT[3];
+    char dniCUIT[DNI_MAX];
+    char pieCUIT[2];
+    int i;
+    int j;
+
+    if(pCUIT != NULL && cantDeNumerosMax > 0 && reintentos > 0 && mensaje != NULL && mensajeError != NULL)
+    {
+         do
+         {
+             reintentos--;
+             printf(mensaje);
+             if(getString(auxiliarCUIT, cantDeNumerosMax) == 0)
+             {
+                 for(i = 0; i < 2; i++)
+                {
+                    cabeceraCUIT[i] = auxiliarCUIT[i];
+                }
+                cabeceraCUIT[2] = '\0';
+                printf("c:%s\n", cabeceraCUIT);
+                if(isNumber(cabeceraCUIT) == 0 && auxiliarCUIT[2] == '/')
+                {
+                    for(j = 3; auxiliarCUIT[j] != '-'; j++)
+                    {
+                        printf("c:%c j:%d\n", auxiliarCUIT[j], j);
+                        dniCUIT[j-3] = auxiliarCUIT[j];
+                    }
+                    dniCUIT[j-3] = '\0';
+                    printf("dni:%s j:%d\n", dniCUIT, j);
+                    if(isFormatDNI(dniCUIT) == 0 && auxiliarCUIT[i] == '-')
+                    {
+                        printf("c:%s dni:%s\n", cabeceraCUIT, dniCUIT);
+                    }
+                }
+             }
+         }while(reintentos >= 0);
+    }
+
     return retorno;
 }
 
@@ -453,7 +487,7 @@ static int isFormatDNI(char* stringValue)
         {
             returnValue = -1;
             break;
-        }                    
+        }
         else if(isNumber(currentValue) == 0)
         {
             pointSeparation++;
