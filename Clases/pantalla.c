@@ -156,7 +156,7 @@ int pantalla_modificarValorPantalla(Pantalla* pantalla, int indicePantalla, int 
 
 static int getNuevoIdPantalla(void)
 {
-    static int contadorID = PANTALLA_INICIAL - 1;
-    contadorID++;
-    return contadorID;
+    static int contadorIdPantalla = PANTALLA_INICIAL - 1;
+    contadorIdPantalla++;
+    return contadorIdPantalla;
 }

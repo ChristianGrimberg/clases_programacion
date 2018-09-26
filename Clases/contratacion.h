@@ -2,7 +2,7 @@
 #define CONTRATACION_H_INCLUDED
 
 #include "utn.h"
-#include "impresiones.h"
+#include "pantalla.h"
 #define CONTRATACIONES 1000 /**< Cantidad de contrataciones que soporta el programa. */
 #define CONTRATACION_INICIAL 1 /**< Inicio de contador de ID de Contratacion. */
 #define CUIT_MAX 16 /**< Longitud maxima del numero de CUIT Argentino. */
@@ -29,7 +29,7 @@ typedef struct
  *  \param contraciones Contratacion* Direccion de memoria del Array de Contraciones.
  *  \param longitud int Longitud del Array a inicializar.
  *  \return 0 si pudo inicializar de manera correcta el array, -1 si hubo un error.
- * 
+ *
  */
 int contratacion_inicializarArray(Contratacion* contrataciones, int longitud);
 
@@ -38,7 +38,7 @@ int contratacion_inicializarArray(Contratacion* contrataciones, int longitud);
  *  \param contraciones Contratacion* Direccion de memoria del Array de Contraciones.
  *  \param longitud int Longitud del Array a inicializar.
  *  \return El indice del primer lugar libre del array, -1 si no encontro un lugar libre.
- * 
+ *
  */
 int contratacion_buscarLugarLibre(Contratacion* contrataciones, int longitud);
 

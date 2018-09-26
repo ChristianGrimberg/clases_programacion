@@ -15,6 +15,7 @@ void clase10(void)
     int indiceConsultado;
     char consultaEliminar;
     int cantidadPantallas;
+    int cantidadContrataciones;
 
     if(pantalla_inicializarArray(pantallas, PANTALLAS) == 0
         && contratacion_inicializarArray(contrataciones, CONTRATACIONES) == 0)
@@ -90,18 +91,22 @@ void clase10(void)
                         printf("No hay contrataciones libres para cargar.\n");
                     else
                     {
-                        if(contratacion_altaContratacion(contrataciones, contratacionLibre, pantallas, PANTALLAS) == 0)
+                        cantidadPantallas = impresiones_imprimirListaPantallas(pantallas, PANTALLAS);
+                        if(contratacion_altaContratacion(contrataciones, contratacionLibre, pantallas, cantidadPantallas) == 0)
                             printf("Contratacion cargada en el indice %d.\n", contratacionLibre);
                         else
                             printf("Error a cargar la contratacion.\n");
                     }
                     break;
+                case 8:
+                    cantidadContrataciones = impresiones_imprimirListaContrataciones(contrataciones, CONTRATACIONES);
+                    if(cantidadContrataciones != -1)
+                        printf("%d Contratacion/es cargada/s.\n", cantidadContrataciones);
+                    break;
                 case 9:
                     cantidadPantallas = impresiones_imprimirListaPantallas(pantallas, PANTALLAS);
                     if(cantidadPantallas != -1)
-                    {
                         printf("%d Pantalla/s cargada/s.\n", cantidadPantallas);
-                    }
                     break;
                 case SALIR_PROGRAMA:
                     break;

@@ -14,7 +14,8 @@ int impresiones_menuPrincipal(void)
     printf("2. Modificar datos de Pantalla.\n");
     printf("3. Baja de Pantalla.\n");
     printf("4. Contratar una Publicidad.\n");
-    printf("9. Informar Pantallas.\n");
+    printf("8. Listar Contrataciones.\n");
+    printf("9. Listar Pantallas.\n");
     printf("%d. Salir del programa.\n", SALIR_PROGRAMA);
     printf("=======================================\n");
     if(utn_getInt(&opcionAuxiliar, REINTENTOS, 1, SALIR_PROGRAMA, "Indique la opcion deseada: ", "Seleccion no valida. ") == 0)
@@ -44,20 +45,20 @@ int impresiones_menuModificarPantalla(Pantalla* pantalla, int indicePantalla)
     return retorno;
 }
 
-void impresiones_imprimirPantalla(Pantalla* pantalla, int indice, int tabla)
+void impresiones_imprimirPantalla(Pantalla* pantallas, int indice, int tabla)
 {
-    char idAux[6];
-    char tipoAux[4];
-    char precioAux[12];
+    char idAux[7];
+    char tipoAux[6];
+    char precioAux[14];
 
-    if(pantalla != NULL && indice >= 0)
+    if(pantallas != NULL && indice >= 0)
     {
-        if((pantalla+indice)->tipo == LED)
+        if((pantallas+indice)->tipo == LED)
             strncpy(tipoAux, "LED", 4);
-        else if((pantalla+indice)->tipo == LCD)
+        else if((pantallas+indice)->tipo == LCD)
             strncpy(tipoAux, "LCD", 4);
-        sprintf(idAux, "%d", (pantalla+indice)->pantallaID);
-        sprintf(precioAux, "%.2f", (pantalla+indice)->precioPorDia);
+        sprintf(idAux, "%d", (pantallas+indice)->pantallaID);
+        sprintf(precioAux, "%.2f", (pantallas+indice)->precioPorDia);
 
         if(tabla == ENCABEZADO)
         {
@@ -68,7 +69,7 @@ void impresiones_imprimirPantalla(Pantalla* pantalla, int indice, int tabla)
             printf("+=======+==============================+======+==============================+==============+\n");
         }
         printf("|%6s |%29s |%5s |%29s |%13s |\n",
-            idAux, (pantalla+indice)->nombre, tipoAux, (pantalla+indice)->direccion, precioAux);
+            idAux, (pantallas+indice)->nombre, tipoAux, (pantallas+indice)->direccion, precioAux);
     }
     else
         printf("Pantalla no encontrada.\n");
@@ -91,7 +92,7 @@ int impresiones_imprimirListaPantallas(Pantalla* pantallas, int longitud)
                 if(contadorPantallas == 1)
                     impresiones_imprimirPantalla(pantallas, i, ENCABEZADO);
                 else
-                    impresiones_imprimirPantalla(pantallas, i, LISTA);                        
+                    impresiones_imprimirPantalla(pantallas, i, LISTA);
             }
         }
         if(contadorPantallas > 0)
@@ -101,6 +102,65 @@ int impresiones_imprimirListaPantallas(Pantalla* pantallas, int longitud)
         }
         else if(contadorPantallas == 0)
             printf("No hay pantallas cargadas.\n");
+    }
+
+    return retorno;
+}
+
+void impresiones_imprimirContratacion(Contratacion* contrataciones, int indice, int tabla)
+{
+    char idAux[7];
+    char diasAux[18];
+    char pantallasAux[14];
+
+    if(contrataciones != NULL && indice >= 0)
+    {
+        sprintf(idAux, "%d", (contrataciones+indice)->contratacionID);
+        sprintf(diasAux, "%d", (contrataciones+indice)->diasPublicacion);
+        sprintf(pantallasAux, "%d", (contrataciones+indice)->pantallaID);
+
+        if(tabla == ENCABEZADO)
+        {
+            clearScreen();
+            printf("+=======+==================+==============================+==================+==============+\n");
+            printf("|%5s%2s|%9s%9s|%20s%10s|%17s%1s|%12s%2s|\n",
+                "ID", "", "CUIT", "", "Video", "", "Dias Publicacion", "", "ID Pantalla", "");
+            printf("+=======+==================+==============================+==================+==============+\n");
+        }
+        printf("|%6s |%17s |%29s |%17s |%13s |\n",
+            idAux, (contrataciones+indice)->CUIT, (contrataciones+indice)->video, diasAux, pantallasAux);
+    }
+    else
+        printf("Contratacion no encontrada.\n");
+}
+
+int impresiones_imprimirListaContrataciones(Contratacion* contrataciones, int longitud)
+{
+    int retorno = -1;
+    int contadorContrataciones;
+    int i;
+
+    if(contrataciones != NULL && longitud > 0)
+    {
+        contadorContrataciones = 0;
+        for(i = 0; i < CONTRATACIONES; i++)
+        {
+            if(contrataciones[i].isEmpty == FULL)
+            {
+                contadorContrataciones++;
+                if(contadorContrataciones == 1)
+                    impresiones_imprimirContratacion(contrataciones, i, ENCABEZADO);
+                else
+                    impresiones_imprimirContratacion(contrataciones, i, LISTA);
+            }
+        }
+        if(contadorContrataciones > 0)
+        {
+            printf("+=======+==================+==============================+==================+==============+\n");
+            retorno = contadorContrataciones;
+        }
+        else if(contadorContrataciones == 0)
+            printf("No hay contrataciones cargadas.\n");
     }
 
     return retorno;
