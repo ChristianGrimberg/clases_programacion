@@ -49,6 +49,8 @@ static int isNotNumber(char* stringValue);
  */
 static int isFloat(char* stringValue);
 
+static int isFormatDNI(char* stringValue);
+
 /** \brief
  *  Funcion que valida si la cadena ingresada es alfanumerica o no.
  *  \param stringValue char* Cadena de caracteres a validar.
@@ -253,40 +255,11 @@ int utn_getDNI(char* pDNI, int cantDeNumerosMax, int reintentos, char* mensaje, 
         {
             reintentos--;
             printf(mensaje);
-            if(getString(dniAux, DNI_MAX) == 0)
-            {
-                i = 0;
-                contadorPuntos = 0;
-                separacionPuntos = 0;
-                valorActual[1] = EXIT_BUFFER;
-                while(dniAux[i] != EXIT_BUFFER)
-                {
-                    valorActual[0] = dniAux[i];
-                    if(i == 0 && isNotNumber(valorActual) == 0)
-                    {
-                        retorno = -1;
-                        break;
-                    }
-                    else if(dniAux[i] == '.' && separacionPuntos%3 == 0)
-                    {
-                        contadorPuntos++;
-                        separacionPuntos = 0;
-                        retorno = 0;
-                    }
-                    else if(dniAux[i] == '.' && separacionPuntos%3 != 0)
-                    {
-                        retorno = -1;
-                        break;
-                    }
-                    else if(isNumber(valorActual) == 0)
-                        retorno = 0;
-                    i++;
-                }
-            }
-            if(retorno == 0)
+            if(getString(dniAux, DNI_MAX) == 0 && isFormatDNI(dniAux) == 0)
             {
                 strncpy(pDNI, dniAux, cantDeNumerosMax);
-                reintentos = -1;
+                retorno = 0;
+                break;
             }
             else
                 printf(mensajeError);
@@ -445,6 +418,56 @@ static int isFloat(char* stringValue)
         }
         i++;
     }
+
+    return returnValue;
+}
+
+static int isFormatDNI(char* stringValue)
+{
+    int returnValue = -1;
+    char dniAux[DNI_MAX];
+    int pointCounter = 0;
+    int pointSeparation = 0;
+    char currentValue[2];
+    int i =0;
+
+    strncpy(dniAux, stringValue, DNI_MAX);
+    currentValue[1] = EXIT_BUFFER;
+    while(dniAux[i] != EXIT_BUFFER)
+    {
+        currentValue[0] = dniAux[i];
+        if((i == 0 && isNotNumber(currentValue) == 0)
+            || (i == 0 && isNumber(currentValue) == 0 && dniAux[i] == '0'))
+        {
+            returnValue = -1;
+            break;
+        }
+        else if((dniAux[i] == '.' && pointSeparation%3 == 0)
+            || (dniAux[i] == '.' && (pointSeparation > 0 && pointSeparation < 3) && pointCounter == 0))
+        {
+            pointCounter++;
+            pointSeparation = 0;
+            returnValue = 0;
+        }
+        else if(dniAux[i] == '.' && pointSeparation >= 3 && pointSeparation%3 != 0)
+        {
+            returnValue = -1;
+            break;
+        }                    
+        else if(isNumber(currentValue) == 0)
+        {
+            pointSeparation++;
+            returnValue = 0;
+        }
+
+        if(pointSeparation != 3)
+        {
+            returnValue = -1;
+        }
+        i++;
+    }
+    if(returnValue == 0)
+        strncpy(stringValue, dniAux, DNI_MAX);
 
     return returnValue;
 }

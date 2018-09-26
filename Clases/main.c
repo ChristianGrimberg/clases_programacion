@@ -1,10 +1,11 @@
 #include "classroom.h"
 
 extern int global; /**< Uso de variable global en otro source previamente declarada */
+void pruebas(void);
 
 int main()
 {
-    //pruebas();
+    pruebas();
     //clase02(); /**< Maximos, Minimos y Promedios. */
     //clase03(); /**< Uso de funciones y parametros por referencia. */
     //clase04(); /**< Funcion generica para obtener enteros en un rango. */
@@ -17,7 +18,20 @@ int main()
     //clase08();
     //clase08_2(); /**< Uso de funciones de un array de Personas. */
     //clase09(); /**< ABM de entidad de Producto. */
-    clase10(); /**< ABM y relaciones de entidades. */
+    //clase10(); /**< ABM y relaciones de entidades. */
 
     return 0;
+}
+
+void pruebas(void)
+{
+    char telefono[15];
+    char dni[16];
+    char cuit[16];
+    if(utn_getDNI(dni, 16, 15, "DNI: ", "Error. ") == 0)
+        printf("%s\n", dni);
+    if(utn_getCUIT(cuit, 16, 1, "CUIT: ", "Error. ") == 0)
+        printf("%s\n", cuit);
+    if(utn_getPhone(telefono, 15, 50, "Telefono: ", "Error. ") == 0)
+        printf("%s\n", telefono);
 }

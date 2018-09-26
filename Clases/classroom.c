@@ -395,13 +395,6 @@ void clase02(void)
     printf("\nMinimo: %d\nMaximo: %d\nPromedio: %.2f\n", minNumber, maxNumber, average);
 }
 
-void pruebas(void)
-{
-    char telefono[15];
-    if(utn_getPhone(telefono, 15, 50, "Telefono: ", "Error. ") == 0)
-        printf("\n%s\n", telefono);
-}
-
 int getEdad(int* pEdad)
 {
     int edadAux;
