@@ -10,6 +10,7 @@
 #define EXIT_BUFFER '\0' /**< Valor de terminacion de una cadena de caracteres. */
 #define INIT_INT_ARRAY -200 /**< Valor para inicializar el array de enteros. */
 #define INIT_FLOAT_ARRAY -100.0f /**< Valor para inicializar el array de flotantes. */
+#define DNI_MAX 16 /**< Valor maximo de caracteres de un DNI formateado. */
 #define REINTENTOS 3 /**< Valor por defecto para reintentos. */
 #define ONLY_LETTERS 1 /**< Definicion para indicar que es solo letras la cadena. */
 #define ALL_CHARACTERES 0 /**< Definicion para indicar la cadena contiene caracteres de todo tipo. */
@@ -69,29 +70,27 @@ int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char
 int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError);
 
 /** \brief
- *  Funcion que solicita y valida el ingreso por teclado de un numero de Documento de Identidad con separador de miles.
+ *  Funcion que solicita y valida el ingreso de DNI Argentino formateado por ejemplo "99.999.999".
+ *  \param pDNI char* Direccion de memoria a almacenar el DNI ingresado formateado.
+ *  \param cantDeNumerosMax int Cantidad maxima de numeros que debera tener el numero telefonico.
  *  \param reintentos int Cantidad de reintentos al usuario.
- *  \param minimo int Valor minimo a ingresar.
- *  \param maximo int Valor maximo a ingresar.
  *  \param mensaje char* Mensaje personalizado que solicita el dato al usuario.
  *  \param error char* Mensaje personalizado en caso de error.
  *  \return Retorna 0 si obtuvo un DNI dentro del rango y -1 si no es un valor valido.
  *
  */
-int utn_getDNI(int* pDNI, int reintentos, int minimo, int maximo, char* mensaje, char* mensajeError);
+int utn_getDNI(char* pDNI, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError);
 
 /** \brief
- *  Funcion que solicita y valida el ingreso por teclado de un CUIT Argentino formateado, ejemplo "99/99.999.999-9".
+ *  Funcion que solicita y valida el ingreso de CUIT Argentino formateado, ejemplo "99/99.999.999-9".
  *  \param pCuit char* Direccion de memoria al almacenar el CUIT validado.
- *  \param limite int Limite de caracteres a ingresar por el usuario.
- *  \param minimo int Valor minimo a ingresar de DNI.
- *  \param maximo int Valor maximo a ingresar de DNI.
+ *  \param cantDeNumerosMax int Cantidad maxima de numeros que debera tener el numero telefonico.
  *  \param mensaje char* Mensaje personalizado que solicita el dato al usuario.
  *  \param error char* Mensaje personalizado en caso de error.
  *  \return Retorna 0 si obtuvo un CUIT valido y -1 si hubo un error.
  *
  */
-int utn_getCUIT(char* pCUIT, int limite, int minimo, int maximo, int reintentos, char* mensaje, char* mensajeError);
+int utn_getCUIT(char* pCUIT, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError);
 
 /** \brief
  *  Funcion que solicita el ingreso por teclado de una direccion email y la valida.

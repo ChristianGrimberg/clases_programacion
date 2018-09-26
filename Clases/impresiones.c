@@ -11,8 +11,9 @@ int impresiones_menuPrincipal(void)
     clearScreen();
     printf("==========VENTA DE PUBLICIDAD==========\n");
     printf("1. Alta de Pantalla.\n");
-    printf("2. Modificar Pantalla existente.\n");
+    printf("2. Modificar datos de Pantalla.\n");
     printf("3. Baja de Pantalla.\n");
+    printf("4. Contratar una Publicidad.\n");
     printf("9. Informar Pantallas.\n");
     printf("%d. Salir del programa.\n", SALIR_PROGRAMA);
     printf("=======================================\n");

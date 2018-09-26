@@ -42,4 +42,6 @@ int contratacion_inicializarArray(Contratacion* contrataciones, int longitud);
  */
 int contratacion_buscarLugarLibre(Contratacion* contrataciones, int longitud);
 
+int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContratacion, Pantalla* pantallas, int longitudPantallas);
+
 #endif //CONTRATACION_H_INCLUDED

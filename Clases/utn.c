@@ -130,7 +130,7 @@ int utn_getChar(char* pCaracter, int reintentos, char* mensaje, char* mensajeErr
     int retorno = -1;
     char charAux;
 
-    if(pCaracter !=NULL && reintentos >= 0)
+    if(pCaracter != NULL && reintentos >= 0 && mensaje != NULL && mensajeError != NULL)
     {
         printf(mensaje);
         __fpurge(stdin);
@@ -152,7 +152,7 @@ int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char
     int retorno = -1;
     char stringAux[STRING_MAX];
 
-    if(pNombre != NULL && limite > 0 && reintentos >= 0)
+    if(pNombre != NULL && limite > 0 && reintentos >= 0 && mensaje != NULL && mensajeError != NULL)
     {
         do
         {
@@ -181,7 +181,7 @@ int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* me
     int cantGuiones;
     int i;
 
-    if(pTelefono != NULL && cantDeNumerosMax > 0 && reintentos >= 0)
+    if(pTelefono != NULL && cantDeNumerosMax > 0 && reintentos >= 0 && mensaje != NULL && mensajeError != NULL)
     {
         do
         {
@@ -235,6 +235,78 @@ int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* me
         }while(reintentos >= 0);
     }
 
+    return retorno;
+}
+
+int utn_getDNI(char* pDNI, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError)
+{
+    int retorno = -1;
+    char dniAux[DNI_MAX];
+    int contadorPuntos;
+    int separacionPuntos;
+    char valorActual[2];
+    int i;
+    
+    if(pDNI != NULL && reintentos > 0 && cantDeNumerosMax > 0 && mensaje != NULL && mensajeError != NULL)
+    {
+        do
+        {
+            reintentos--;
+            printf(mensaje);
+            if(getString(dniAux, DNI_MAX) == 0)
+            {
+                i = 0;
+                contadorPuntos = 0;
+                separacionPuntos = 0;
+                valorActual[1] = EXIT_BUFFER;
+                while(dniAux[i] != EXIT_BUFFER)
+                {
+                    valorActual[0] = dniAux[i];
+                    if(i == 0 && isNotNumber(valorActual) == 0)
+                    {
+                        retorno = -1;
+                        break;
+                    }
+                    else if(dniAux[i] == '.' && separacionPuntos%3 == 0)
+                    {
+                        contadorPuntos++;
+                        separacionPuntos = 0;
+                        retorno = 0;
+                    }
+                    else if(dniAux[i] == '.' && separacionPuntos%3 != 0)
+                    {
+                        retorno = -1;
+                        break;
+                    }
+                    else if(isNumber(valorActual) == 0)
+                        retorno = 0;
+                    i++;
+                }
+            }
+            if(retorno == 0)
+            {
+                strncpy(pDNI, dniAux, cantDeNumerosMax);
+                reintentos = -1;
+            }
+            else
+                printf(mensajeError);
+        }while(reintentos >= 0);
+    }
+
+    return retorno;
+}
+
+int utn_getCUIT(char* pCUIT, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError)
+{
+    int retorno = -1;
+    printf("Sin implementacion.\n");
+    return retorno;
+}
+
+int utn_getEmail(char* pEmail, int limite, int reintentos, char* mensaje, char* mensajeError)
+{
+    int retorno = -1;
+    printf("Sin implementacion.\n");
     return retorno;
 }
 

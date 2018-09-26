@@ -7,6 +7,7 @@ void clase10(void)
     Pantalla pantallas[PANTALLAS];
     Contratacion contrataciones[CONTRATACIONES];
     int pantallaLibre;
+    int contratacionLibre;
     int opcionMenu;
     int opcionModificar;
     char seguirPrograma = 's';
@@ -15,7 +16,8 @@ void clase10(void)
     char consultaEliminar;
     int cantidadPantallas;
 
-    if(pantalla_inicializarArray(pantallas, PANTALLAS) == 0 && contratacion_inicializarArray(contrataciones, CONTRATACIONES) == 0)
+    if(pantalla_inicializarArray(pantallas, PANTALLAS) == 0
+        && contratacion_inicializarArray(contrataciones, CONTRATACIONES) == 0)
     {
         do
         {
@@ -25,7 +27,7 @@ void clase10(void)
                 case 1:
                     pantallaLibre = pantalla_buscarLugarLibre(pantallas, PANTALLAS);
                     if(pantallaLibre == -1)
-                        printf("No hay pantalla libre.\n");
+                        printf("No hay pantallas libres para cargar.\n");
                     else
                     {
                         if(pantalla_altaPantalla(pantallas, pantallaLibre) == 0)
@@ -81,6 +83,18 @@ void clase10(void)
                     }
                     else
                         printf("Error al encontrar el ID de pantalla.\n");
+                    break;
+                case 4:
+                    contratacionLibre = contratacion_buscarLugarLibre(contrataciones, CONTRATACIONES);
+                    if(contratacionLibre == -1)
+                        printf("No hay contrataciones libres para cargar.\n");
+                    else
+                    {
+                        if(contratacion_altaContratacion(contrataciones, contratacionLibre, pantallas, PANTALLAS) == 0)
+                            printf("Contratacion cargada en el indice %d.\n", contratacionLibre);
+                        else
+                            printf("Error a cargar la contratacion.\n");
+                    }
                     break;
                 case 9:
                     cantidadPantallas = impresiones_imprimirListaPantallas(pantallas, PANTALLAS);
