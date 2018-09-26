@@ -274,6 +274,7 @@ int utn_getCUIT(char* pCUIT, int cantDeNumerosMax, int reintentos, char* mensaje
     char pieCUIT[2];
     int i;
     int j;
+    int k;
 
     if(pCUIT != NULL && cantDeNumerosMax > 0 && reintentos > 0 && mensaje != NULL && mensajeError != NULL)
     {
@@ -288,19 +289,21 @@ int utn_getCUIT(char* pCUIT, int cantDeNumerosMax, int reintentos, char* mensaje
                     cabeceraCUIT[i] = auxiliarCUIT[i];
                 }
                 cabeceraCUIT[2] = '\0';
-                printf("c:%s\n", cabeceraCUIT);
                 if(isNumber(cabeceraCUIT) == 0 && auxiliarCUIT[2] == '/')
                 {
                     for(j = 3; auxiliarCUIT[j] != '-'; j++)
                     {
-                        printf("c:%c j:%d\n", auxiliarCUIT[j], j);
                         dniCUIT[j-3] = auxiliarCUIT[j];
                     }
-                    dniCUIT[j-3] = '\0';
-                    printf("dni:%s j:%d\n", dniCUIT, j);
-                    if(isFormatDNI(dniCUIT) == 0 && auxiliarCUIT[i] == '-')
+                    k = j-3;
+                    dniCUIT[k] = '\0';
+                    pieCUIT[0] = auxiliarCUIT[k+4];
+                    pieCUIT[1] = '\0';
+                    if(isFormatDNI(dniCUIT) == 0 && auxiliarCUIT[k+3] == '-' && isNumber(pieCUIT) == 0)
                     {
-                        printf("c:%s dni:%s\n", cabeceraCUIT, dniCUIT);
+                        retorno = 0;
+                        strncpy(pCUIT, auxiliarCUIT, cantDeNumerosMax);
+                        break;
                     }
                 }
              }

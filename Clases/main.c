@@ -5,7 +5,7 @@ void pruebas(void);
 
 int main()
 {
-    pruebas();
+    //pruebas();
     //clase02(); /**< Maximos, Minimos y Promedios. */
     //clase03(); /**< Uso de funciones y parametros por referencia. */
     //clase04(); /**< Funcion generica para obtener enteros en un rango. */
@@ -18,7 +18,7 @@ int main()
     //clase08();
     //clase08_2(); /**< Uso de funciones de un array de Personas. */
     //clase09(); /**< ABM de entidad de Producto. */
-    //clase10(); /**< ABM y relaciones de entidades. */
+    clase10(); /**< ABM y relaciones de entidades. */
 
     return 0;
 }

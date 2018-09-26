@@ -3,7 +3,7 @@
 /** \brief
  *  Funcion que obtiene un numero identificador incremental desde el 1 en adelante.
  *  \return Retorna el numero ID incremental.
- * 
+ *
  */
 static int getNuevoIdContratacion(void);
 
@@ -56,7 +56,7 @@ int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContra
         if(cantidadPantallas != -1)
         {
             if(utn_getInt(&contratacionAuxiliar.pantallaID, REINTENTOS, 1, cantidadPantallas, "Elija el ID de pantalla a cargar: ", error) == 0
-                && utn_getDNI(contratacionAuxiliar.CUIT, CUIT_MAX, REINTENTOS, "Ingrese el CUIT del Cliente: ", error) == 0
+                && utn_getCUIT(contratacionAuxiliar.CUIT, CUIT_MAX, REINTENTOS, "Ingrese el CUIT del Cliente: ", error) == 0
                 && utn_getString(contratacionAuxiliar.video, VIDEO_MAX, REINTENTOS, "Ingrese el nombre del archivo de video: ", error, ALL_CHARACTERES) == 0
                 && utn_getInt(&contratacionAuxiliar.diasPublicacion, REINTENTOS, 15, 365, "Ingrese la cantidad de dias (15~365): ", error) == 0)
             {
@@ -65,7 +65,7 @@ int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContra
                     contrataciones[indiceContratacion] = contratacionAuxiliar;
                     (contrataciones + indiceContratacion)->isEmpty = FULL;
                     retorno = 0;
-                } 
+                }
             }
             else
                 printf("Error de carga en la contratacion.\n");
