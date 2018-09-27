@@ -70,6 +70,34 @@ int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContra
     return retorno;
 }
 
+int contratacion_arrayPorCliente(Contratacion* contrataciones, int longitud, char* CUIT)
+{
+    int retorno = -1;
+    Contratacion contratacionesAux[longitud];
+    int indiceAux = 0;
+    int i;
+
+    if(contrataciones != NULL && longitud > 0 && CUIT != NULL
+        && contratacion_inicializarArray(contratacionesAux, longitud) == 0)
+    {
+        for(i = 0; i < longitud; i++)
+        {
+            if(strncmp(CUIT, (contrataciones+i)->CUIT, CUIT_MAX) == 0)
+            {
+                contratacionesAux[indiceAux] = contrataciones[i];
+                indiceAux++;
+            }
+        }
+        if(indiceAux > 0)
+        {
+            contrataciones = contratacionesAux;
+            retorno = 0;
+        }
+    }
+
+    return retorno;
+}
+
 static int getNuevoIdContratacion(void)
 {
     static int contadorIdContratacion = CONTRATACION_INICIAL - 1;

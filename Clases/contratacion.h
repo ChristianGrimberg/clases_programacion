@@ -44,4 +44,6 @@ int contratacion_buscarLugarLibre(Contratacion* contrataciones, int longitud);
 
 int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContratacion, Pantalla* pantallas, int longitudPantallas);
 
+int contratacion_arrayPorCliente(Contratacion* contrataciones, int longitud, char* CUIT);
+
 #endif //CONTRATACION_H_INCLUDED

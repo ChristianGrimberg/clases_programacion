@@ -14,6 +14,7 @@ int impresiones_menuPrincipal(void)
     printf("2. Modificar datos de Pantalla.\n");
     printf("3. Baja de Pantalla.\n");
     printf("4. Contratar una Publicidad.\n");
+    printf("5. Modificar condiciones de Publicacion.\n");
     printf("8. Listar Contrataciones.\n");
     printf("9. Listar Pantallas.\n");
     printf("%d. Salir del programa.\n", SALIR_PROGRAMA);

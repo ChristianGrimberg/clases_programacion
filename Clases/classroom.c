@@ -6,6 +6,7 @@ void clase10(void)
 {
     Pantalla pantallas[PANTALLAS];
     Contratacion contrataciones[CONTRATACIONES];
+    Contratacion contratacionesPorCuit[CONTRATACIONES];
     int pantallaLibre;
     int contratacionLibre;
     int opcionMenu;
@@ -14,6 +15,7 @@ void clase10(void)
     int idParaBuscar;
     int indiceConsultado;
     char consultaEliminar;
+    char consultaCUIT[CUIT_MAX];
     int cantidadPantallas;
     int cantidadContrataciones;
 
@@ -96,6 +98,23 @@ void clase10(void)
                             printf("Contratacion cargada en el indice %d.\n", contratacionLibre);
                         else
                             printf("Error a cargar la contratacion.\n");
+                    }
+                    break;
+                case 5:
+                    if(utn_getCUIT(consultaCUIT, CUIT_MAX, REINTENTOS, "Ingrese el CUIT del Cliente: ", "Valor de CUIT incorrecto. ") == 0)
+                    {
+                        if(contratacion_inicializarArray(contratacionesPorCuit, CONTRATACIONES) == 0)
+                        {
+                            *contratacionesPorCuit = *contrataciones;
+                            if(contratacion_arrayPorCliente(contratacionesPorCuit, CONTRATACIONES, consultaCUIT) == 0)
+                            {
+                                cantidadContrataciones = impresiones_imprimirListaContrataciones(contratacionesPorCuit, CONTRATACIONES, pantallas, PANTALLAS);
+                                if(cantidadContrataciones != -1)
+                                {
+                                    printf("Hasta aqui todo OK.\n");
+                                }
+                            }
+                        }
                     }
                     break;
                 case 8:
