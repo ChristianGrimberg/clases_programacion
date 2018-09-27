@@ -99,7 +99,7 @@ void clase10(void)
                     }
                     break;
                 case 8:
-                    cantidadContrataciones = impresiones_imprimirListaContrataciones(contrataciones, CONTRATACIONES);
+                    cantidadContrataciones = impresiones_imprimirListaContrataciones(contrataciones, CONTRATACIONES, pantallas, PANTALLAS);
                     if(cantidadContrataciones != -1)
                         printf("%d Contratacion/es cargada/s.\n", cantidadContrataciones);
                     break;

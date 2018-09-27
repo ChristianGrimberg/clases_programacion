@@ -107,40 +107,47 @@ int impresiones_imprimirListaPantallas(Pantalla* pantallas, int longitud)
     return retorno;
 }
 
-void impresiones_imprimirContratacion(Contratacion* contrataciones, int indice, int tabla)
+void impresiones_imprimirContratacion(Contratacion* contrataciones, int indiceContratacion, Pantalla* pantallas, int longitudPantallas, int tabla)
 {
     char idAux[7];
     char diasAux[18];
     char pantallasAux[14];
+    int indicePantalla;
 
-    if(contrataciones != NULL && indice >= 0)
+    if(contrataciones != NULL && indiceContratacion >= 0 && pantallas != NULL && longitudPantallas > 0)
     {
-        sprintf(idAux, "%d", (contrataciones+indice)->contratacionID);
-        sprintf(diasAux, "%d", (contrataciones+indice)->diasPublicacion);
-        sprintf(pantallasAux, "%d", (contrataciones+indice)->pantallaID);
-
-        if(tabla == ENCABEZADO)
+        indicePantalla = pantalla_buscarPantallaPorId(pantallas, PANTALLAS, (contrataciones+indiceContratacion)->pantallaID);
+        if(indicePantalla != -1)
         {
-            clearScreen();
-            printf("+=======+==================+==============================+==================+==============+\n");
-            printf("|%5s%2s|%9s%9s|%20s%10s|%17s%1s|%12s%2s|\n",
-                "ID", "", "CUIT", "", "Video", "", "Dias Publicacion", "", "ID Pantalla", "");
-            printf("+=======+==================+==============================+==================+==============+\n");
+            sprintf(idAux, "%d", (contrataciones+indiceContratacion)->contratacionID);
+            sprintf(diasAux, "%d", (contrataciones+indiceContratacion)->diasPublicacion);
+            sprintf(pantallasAux, "%d", (pantallas+indicePantalla)->pantallaID);
+
+            if(tabla == ENCABEZADO)
+            {
+                clearScreen();
+                printf("+=======+==================+==============================+==================+==============+==============================+\n");
+                printf("|%5s%2s|%9s%9s|%20s%10s|%17s%1s|%12s%2s|%20s%10s|\n",
+                    "ID", "", "CUIT", "", "Video", "", "Dias Publicacion", "", "ID Pantalla", "", "Nombre Pantalla", "");
+                printf("+=======+==================+==============================+==================+==============+==============================+\n");
+            }
+            printf("|%6s |%17s |%29s |%17s |%13s |%29s |\n",
+                idAux, (contrataciones+indiceContratacion)->CUIT, (contrataciones+indiceContratacion)->video, diasAux, pantallasAux, (pantallas+indicePantalla)->nombre);
         }
-        printf("|%6s |%17s |%29s |%17s |%13s |\n",
-            idAux, (contrataciones+indice)->CUIT, (contrataciones+indice)->video, diasAux, pantallasAux);
+        else
+            printf("No se encuentra la pantalla a mostrar.\n");
     }
     else
         printf("Contratacion no encontrada.\n");
 }
 
-int impresiones_imprimirListaContrataciones(Contratacion* contrataciones, int longitud)
+int impresiones_imprimirListaContrataciones(Contratacion* contrataciones, int longitudContrataciones, Pantalla* pantallas, int longitudPantallas)
 {
     int retorno = -1;
     int contadorContrataciones;
     int i;
 
-    if(contrataciones != NULL && longitud > 0)
+    if(contrataciones != NULL && longitudContrataciones > 0 && pantallas != NULL && longitudPantallas > 0)
     {
         contadorContrataciones = 0;
         for(i = 0; i < CONTRATACIONES; i++)
@@ -149,14 +156,14 @@ int impresiones_imprimirListaContrataciones(Contratacion* contrataciones, int lo
             {
                 contadorContrataciones++;
                 if(contadorContrataciones == 1)
-                    impresiones_imprimirContratacion(contrataciones, i, ENCABEZADO);
+                    impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, ENCABEZADO);
                 else
-                    impresiones_imprimirContratacion(contrataciones, i, LISTA);
+                    impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, LISTA);
             }
         }
         if(contadorContrataciones > 0)
         {
-            printf("+=======+==================+==============================+==================+==============+\n");
+            printf("+=======+==================+==============================+==================+==============+==============================+\n");
             retorno = contadorContrataciones;
         }
         else if(contadorContrataciones == 0)
