@@ -64,15 +64,18 @@ int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContra
             && utn_getString(contratacionAuxiliar.video, VIDEO_MAX, REINTENTOS, "Ingrese el nombre del archivo de video: ", error, ALL_CHARACTERES) == 0
             && utn_getInt(&contratacionAuxiliar.diasPublicacion, REINTENTOS, DIAS_MIN, DIAS_MAX, mensajeDias, error) == 0)
         {
-            if(contrataciones[indiceContratacion].isEmpty == EMPTY)
+            if(contratacion_buscarContratacionPorIdPantallaMasCuit(contrataciones, CONTRATACIONES, contratacionAuxiliar.pantallaID, contratacionAuxiliar.CUIT) == -1
+                && contrataciones[indiceContratacion].isEmpty == EMPTY)
             {
                 contrataciones[indiceContratacion] = contratacionAuxiliar;
                 (contrataciones + indiceContratacion)->isEmpty = FULL;
                 retorno = 0;
             }
+            else
+                printf("Error: Ya existe una Contratacion de pantalla del Cliente ingresado.\n");
         }
         else
-            printf("Valores ingresados incorrectos para una contratacion.\n");
+            printf("Valores ingresados incorrectos para una Contratacion de Pantalla.\n");
     }
 
     return retorno;
