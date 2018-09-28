@@ -81,4 +81,5 @@ Los ejercicios para hacer en la clase están en el documento ["Ejercicios ABM de
 
 ## Clase 10, 11 y 12
 Practicas para Primer Parcial con estructuras anidadas, ABM de entidades e informes en pantalla con parciales de ejemplo:
-1. [Ejemplo de Primer Parcial](EjemploPrimerParcial.md)
+1. [Ejemplo de Primer Parcial de 2016](EjemploPrimerParcial2016.md)
+1. [Ejemplo de Primer Parcial de 2017](EjemploPrimerParcial2017.md)
