@@ -28,10 +28,10 @@ typedef struct
 
 int pantalla_inicializarArray(Pantalla* pantallas, int longitud);
 int pantalla_buscarLugarLibre(Pantalla* pantallas, int longitud);
-int pantalla_altaPantalla(Pantalla* pantallas, int indice);
 int pantalla_buscarPantallaPorId(Pantalla* pantallas, int longitud, int idPantalla);
+int pantalla_altaPantalla(Pantalla* pantallas, int indice);
+void pantalla_altaHardCode(Pantalla* pantallas, int longitud, int indice, int id, int tipo, char* nombre, char* direccion, float precio);
 int pantalla_eliminarPantallaPorIndice(Pantalla* pantalla, int indicePantalla);
 int pantalla_modificarValorPantalla(Pantalla* pantalla, int indicePantalla, int modificarValor);
-void pantalla_altaHardCode(Pantalla* pantallas, int longitud, int indice, int id, int tipo, char* nombre, char* direccion, float precio);
 
 #endif //PANTALLA_H_INCLUDED

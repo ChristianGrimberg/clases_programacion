@@ -10,8 +10,6 @@
 #define VIDEO_MAX 16 /**< Longitud maxima del nombre y tipo del archivo de video. */
 #define DIAS_MIN 15
 #define DIAS_MAX 365
-#define CON_CUIT 1
-#define SIN_CUIT 0
 
 /*! \struct Contratacion
     \brief
@@ -48,7 +46,7 @@ int contratacion_inicializarArray(Contratacion* contrataciones, int longitud);
 int contratacion_buscarLugarLibre(Contratacion* contrataciones, int longitud);
 
 int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContratacion, Pantalla* pantallas, int longitudPantallas);
-
 void contratacion_altaHardCode(Contratacion* contrataciones, int longitud, int indice, int id, char* cuit, char* video, int dias, int pantallaId);
+int contratacion_modificarDiasPorIdPantallaMasCuit(Contratacion* contrataciones, int longitud, int idPantalla, char* cuitCliente);
 
 #endif //CONTRATACION_H_INCLUDED

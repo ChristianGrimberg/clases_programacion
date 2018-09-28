@@ -7,6 +7,8 @@
  */
 static int getNuevoIdContratacion(void);
 
+static int contratacion_buscarContratacionPorIdPantallaMasCuit(Contratacion* contrataciones, int longitud, int idPantalla, char* cuitCliente);
+
 int contratacion_inicializarArray(Contratacion* contrataciones, int longitud)
 {
     int retorno = -1;
@@ -89,9 +91,51 @@ void contratacion_altaHardCode(Contratacion* contrataciones, int longitud, int i
     }
 }
 
+int contratacion_modificarDiasPorIdPantallaMasCuit(Contratacion* contrataciones, int longitud, int idPantalla, char* cuitCliente)
+{
+    int retorno = -1;
+    int indice;
+    int dias;
+    char mensajeDias[64];
+
+    sprintf(mensajeDias, "Ingrese la cantidad de dias a modificar (%d~%d): ", DIAS_MIN, DIAS_MAX);
+    indice = contratacion_buscarContratacionPorIdPantallaMasCuit(contrataciones, longitud, idPantalla, cuitCliente);   
+    if(indice != -1 && utn_getInt(&dias, REINTENTOS, DIAS_MIN, DIAS_MAX, mensajeDias, "Valor fuera de rango. ") == 0)
+    {
+        (contrataciones+indice)->diasPublicacion = dias;
+        retorno = 0;
+    }
+    else
+        printf("El id de pantalla no corresponde.\n");
+
+    return retorno;
+}
+
 static int getNuevoIdContratacion(void)
 {
     static int contadorIdContratacion = CONTRATACION_INICIAL - 1;
     contadorIdContratacion++;
     return contadorIdContratacion;
+}
+
+static int contratacion_buscarContratacionPorIdPantallaMasCuit(Contratacion* contrataciones, int longitud, int idPantalla, char* cuitCliente)
+{
+    int retorno = -1;
+    int i;
+
+    if(contrataciones != NULL && longitud > 0 && cuitCliente != NULL)
+    {
+        for(i = 0; i < longitud; i++)
+        {
+            if(contrataciones[i].isEmpty == FULL
+                && contrataciones[i].pantallaID == idPantalla
+                && strncmp(contrataciones[i].CUIT, cuitCliente, CUIT_MAX) == 0)
+            {
+                retorno = i;
+                break;
+            }
+        }
+    }
+
+    return retorno;
 }

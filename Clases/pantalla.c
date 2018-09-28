@@ -40,6 +40,26 @@ int pantalla_buscarLugarLibre(Pantalla* pantallas, int longitud)
     return retorno;
 }
 
+int pantalla_buscarPantallaPorId(Pantalla* pantallas, int longitud, int idPantalla)
+{
+    int retorno = -1;
+    int i;
+
+    if(pantallas != NULL && longitud > 0)
+    {
+        for(i = 0; i < longitud; i++)
+        {
+            if(pantallas[i].isEmpty == FULL && pantallas[i].pantallaID == idPantalla)
+            {
+                retorno = i;
+                break;
+            }
+        }
+    }
+
+    return retorno;
+}
+
 int pantalla_altaPantalla(Pantalla* pantallas, int indice)
 {
     int retorno = -1;
@@ -68,24 +88,17 @@ int pantalla_altaPantalla(Pantalla* pantallas, int indice)
     return retorno;
 }
 
-int pantalla_buscarPantallaPorId(Pantalla* pantallas, int longitud, int idPantalla)
+void pantalla_altaHardCode(Pantalla* pantallas, int longitud, int indice, int id, int tipo, char* nombre, char* direccion, float precio)
 {
-    int retorno = -1;
-    int i;
-
-    if(pantallas != NULL && longitud > 0)
+    if(pantallas != NULL && longitud > 0 && indice >= 0 && nombre != NULL && direccion != NULL && precio > 0 && (tipo == LED || tipo == LCD))
     {
-        for(i = 0; i < longitud; i++)
-        {
-            if(pantallas[i].isEmpty == FULL && pantallas[i].pantallaID == idPantalla)
-            {
-                retorno = i;
-                break;
-            }
-        }
+        (pantallas+indice)->pantallaID = id;
+        (pantallas+indice)->tipo = tipo;
+        strncpy((pantallas+indice)->nombre, nombre, NOMBRE_MAX);
+        strncpy((pantallas+indice)->direccion, direccion, DIRECCION_MAX);
+        (pantallas+indice)->precioPorDia = precio;
+        (pantallas+indice)->isEmpty = FULL;
     }
-
-    return retorno;
 }
 
 int pantalla_eliminarPantallaPorIndice(Pantalla* pantalla, int indicePantalla)
@@ -156,19 +169,6 @@ int pantalla_modificarValorPantalla(Pantalla* pantalla, int indicePantalla, int 
     }
 
     return retorno;
-}
-
-void pantalla_altaHardCode(Pantalla* pantallas, int longitud, int indice, int id, int tipo, char* nombre, char* direccion, float precio)
-{
-    if(pantallas != NULL && longitud > 0 && indice >= 0 && nombre != NULL && direccion != NULL && precio > 0 && (tipo == LED || tipo == LCD))
-    {
-        (pantallas+indice)->pantallaID = id;
-        (pantallas+indice)->tipo = tipo;
-        strncpy((pantallas+indice)->nombre, nombre, NOMBRE_MAX);
-        strncpy((pantallas+indice)->direccion, direccion, DIRECCION_MAX);
-        (pantallas+indice)->precioPorDia = precio;
-        (pantallas+indice)->isEmpty = FULL;
-    }
 }
 
 static int getNuevoIdPantalla(void)

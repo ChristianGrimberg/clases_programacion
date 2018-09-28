@@ -5,7 +5,7 @@ void pruebas(void);
 
 int main()
 {
-    //pruebas();
+    //pruebas(); /**< Para uso de pruebas de las funciones. */
     //clase02(); /**< Maximos, Minimos y Promedios. */
     //clase03(); /**< Uso de funciones y parametros por referencia. */
     //clase04(); /**< Funcion generica para obtener enteros en un rango. */

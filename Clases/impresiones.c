@@ -117,7 +117,7 @@ void impresiones_imprimirContratacion(Contratacion* contrataciones, int indiceCo
 
     if(contrataciones != NULL && indiceContratacion >= 0 && pantallas != NULL && longitudPantallas > 0)
     {
-        indicePantalla = pantalla_buscarPantallaPorId(pantallas, PANTALLAS, contrataciones[indiceContratacion].pantallaID);
+        indicePantalla = pantalla_buscarPantallaPorId(pantallas, longitudPantallas, contrataciones[indiceContratacion].pantallaID);
         if(indicePantalla != -1)
         {
             sprintf(idAux, "%d", (contrataciones+indiceContratacion)->contratacionID);
@@ -142,58 +142,70 @@ void impresiones_imprimirContratacion(Contratacion* contrataciones, int indiceCo
         printf("Contratacion no encontrada.\n");
 }
 
-int impresiones_imprimirListaContrataciones(Contratacion* contrataciones, int longitudContrataciones, Pantalla* pantallas, int longitudPantallas, int conCuit)
+int impresiones_imprimirListaContrataciones(Contratacion* contrataciones, int longitudContrataciones, Pantalla* pantallas, int longitudPantallas)
 {
     int retorno = -1;
-    int contadorContratacionesSinCuit;
-    int contadorContratacionesConCuit;
-    char consultaCUIT[CUIT_MAX];
+    int contadorContrataciones;
     int i;
 
     if(contrataciones != NULL && longitudContrataciones > 0 && pantallas != NULL && longitudPantallas > 0)
     {
-        contadorContratacionesSinCuit = 0;
-        contadorContratacionesConCuit = 0;
-        if(conCuit == CON_CUIT && utn_getCUIT(consultaCUIT, CUIT_MAX, REINTENTOS, "Ingrese el CUIT del Cliente: ", "Valor ingresado incorrecto. ") == 0)
+        contadorContrataciones = 0;
+        for(i = 0; i < CONTRATACIONES; i++)
         {
-            for(i = 0; i < CONTRATACIONES; i++)
+            if(contrataciones[i].isEmpty == FULL)
+            {
+                contadorContrataciones++;
+                if(contadorContrataciones == 1)
+                    impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, ENCABEZADO);
+                else
+                    impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, LISTA);
+            }
+        }
+        if(contadorContrataciones > 0)
+        {
+            printf("+=======+==================+================+==================+==============+==============================+\n");
+            retorno = contadorContrataciones;
+        }
+        else
+            printf("No hay contrataciones cargadas.\n");
+    }
+
+    return retorno;
+}
+
+int impresiones_imprimirContratacionesPorCuit(Contratacion* contrataciones, int longitudContrataciones, Pantalla* pantallas, int longitudPantallas, char* cuitExistente)
+{
+    int retorno = -1;
+    char consultaCUIT[CUIT_MAX];
+    int contadorContrataciones;
+    int i;
+
+    if(contrataciones != NULL && longitudContrataciones > 0 && pantallas != NULL && longitudPantallas > 0)
+    {
+        contadorContrataciones = 0;
+        if(utn_getCUIT(consultaCUIT, CUIT_MAX, REINTENTOS, "Ingrese el CUIT del Cliente a buscar: ", "Valor ingresado incorrecto. ") == 0)
+        {
+            for(i = 0; i < longitudContrataciones; i++)
             {
                 if(contrataciones[i].isEmpty == FULL && strncmp(contrataciones[i].CUIT, consultaCUIT, CUIT_MAX) == 0)
                 {
-                    contadorContratacionesConCuit++;
-                    if(contadorContratacionesConCuit == 1)
+                    contadorContrataciones++;
+                    if(contadorContrataciones == 1)
                         impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, ENCABEZADO);
                     else
                         impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, LISTA);
                 }
             }
-        }
-        else
-        {
-            for(i = 0; i < CONTRATACIONES; i++)
+            if(contadorContrataciones > 0)
             {
-                if(contrataciones[i].isEmpty == FULL)
-                {
-                    contadorContratacionesSinCuit++;
-                    if(contadorContratacionesSinCuit == 1)
-                        impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, ENCABEZADO);
-                    else
-                        impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, LISTA);
-                }
+                strncpy(cuitExistente, consultaCUIT, CUIT_MAX);
+                printf("+=======+==================+================+==================+==============+==============================+\n");
+                retorno = contadorContrataciones;
             }
+            else
+                printf("No hay contrataciones para el CUIT ingresado.\n");
         }
-        if(contadorContratacionesSinCuit > 0)
-        {
-            printf("+=======+==================+================+==================+==============+==============================+\n");
-            retorno = contadorContratacionesSinCuit;
-        }
-        else if(contadorContratacionesConCuit > 0)
-        {
-            printf("+=======+==================+================+==================+==============+==============================+\n");
-            retorno = contadorContratacionesConCuit;
-        }
-        else if(contadorContratacionesSinCuit == 0 && contadorContratacionesConCuit == 0)
-            printf("No hay contrataciones cargadas.\n");
     }
 
     return retorno;

@@ -13,6 +13,8 @@ void clase10(void)
     char seguirPrograma = 's';
     int idParaBuscar;
     int indiceConsultado;
+    char cuitConsultado[CUIT_MAX];
+    int consultaPantalla;
     char consultaEliminar;
     int cantidadPantallas;
     int cantidadContrataciones;
@@ -26,6 +28,7 @@ void clase10(void)
         contratacion_altaHardCode(contrataciones, CONTRATACIONES, 0, CONTRATACIONES, "11/2.222.222-3", "homero.avi", 30, PANTALLAS-2);
         contratacion_altaHardCode(contrataciones, CONTRATACIONES, 1, CONTRATACIONES-1, "44/5.555.555-6", "flanders.avi", 120, PANTALLAS);
         contratacion_altaHardCode(contrataciones, CONTRATACIONES, 2, CONTRATACIONES-2, "77/8.888.888-9", "nelson.avi", 45, PANTALLAS-1);
+        contratacion_altaHardCode(contrataciones, CONTRATACIONES, 3, CONTRATACIONES-3, "11/2.222.222-3", "bart.avi", 90, PANTALLAS-1);
         do
         {
             opcionMenu = impresiones_menuPrincipal();
@@ -103,9 +106,15 @@ void clase10(void)
                     }
                     break;
                 case 5:
+                    if(impresiones_imprimirContratacionesPorCuit(contrataciones, CONTRATACIONES, pantallas, PANTALLAS, cuitConsultado) != -1)
+                    {
+                        if(utn_getInt(&consultaPantalla, REINTENTOS, 0, PANTALLAS, "Ingrese el ID de Pantalla a modificar los dias: ", "Valor fuera de rango. ") == 0
+                            && contratacion_modificarDiasPorIdPantallaMasCuit(contrataciones, CONTRATACIONES, consultaPantalla, cuitConsultado) != -1)
+                            printf("Contratacion modificada correctamente.\n");
+                    }
                     break;
                 case 8:
-                    cantidadContrataciones = impresiones_imprimirListaContrataciones(contrataciones, CONTRATACIONES, pantallas, PANTALLAS, SIN_CUIT);
+                    cantidadContrataciones = impresiones_imprimirListaContrataciones(contrataciones, CONTRATACIONES, pantallas, PANTALLAS);
                     if(cantidadContrataciones != -1)
                         printf("%d Contratacion/es cargada/s.\n", cantidadContrataciones);
                     break;
