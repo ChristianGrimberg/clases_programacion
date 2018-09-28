@@ -79,5 +79,6 @@ typedef struct
 ```
 Los ejercicios para hacer en la clase están en el documento ["Ejercicios ABM de Productos por Pasos"](EjercicioABM_PorPasos.md)
 
-## Clase 10
-Practica con estructuras anidadas, ABM de entidades e informes en pantalla con ejercicios de [Ejemplo de Primer Parcial](EjemploPrimerParcial.md)
+## Clase 10, 11 y 12
+Practicas para Primer Parcial con estructuras anidadas, ABM de entidades e informes en pantalla con parciales de ejemplo:
+1. [Ejemplo de Primer Parcial](EjemploPrimerParcial.md)

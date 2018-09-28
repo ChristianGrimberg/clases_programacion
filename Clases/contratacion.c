@@ -70,7 +70,7 @@ int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContra
             }
         }
         else
-            printf("Error de carga en la contratacion.\n");
+            printf("Valores ingresados incorrectos para una contratacion.\n");
     }
 
     return retorno;
