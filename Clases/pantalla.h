@@ -4,6 +4,7 @@
 #include "utn.h"
 #define PANTALLAS 100
 #define PANTALLA_INICIAL 1
+#define PANTALLA_INICIALIZADOR -1
 #define LED 1
 #define LCD 2
 #define NOMBRE_MAX 64
@@ -31,5 +32,6 @@ int pantalla_altaPantalla(Pantalla* pantallas, int indice);
 int pantalla_buscarPantallaPorId(Pantalla* pantallas, int longitud, int idPantalla);
 int pantalla_eliminarPantallaPorIndice(Pantalla* pantalla, int indicePantalla);
 int pantalla_modificarValorPantalla(Pantalla* pantalla, int indicePantalla, int modificarValor);
+void pantalla_altaHardCode(Pantalla* pantallas, int longitud, int indice, int id, int tipo, char* nombre, char* direccion, float precio);
 
 #endif //PANTALLA_H_INCLUDED

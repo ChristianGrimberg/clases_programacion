@@ -6,7 +6,6 @@ void clase10(void)
 {
     Pantalla pantallas[PANTALLAS];
     Contratacion contrataciones[CONTRATACIONES];
-    Contratacion contratacionesPorCuit[CONTRATACIONES];
     int pantallaLibre;
     int contratacionLibre;
     int opcionMenu;
@@ -15,13 +14,18 @@ void clase10(void)
     int idParaBuscar;
     int indiceConsultado;
     char consultaEliminar;
-    char consultaCUIT[CUIT_MAX];
     int cantidadPantallas;
     int cantidadContrataciones;
 
     if(pantalla_inicializarArray(pantallas, PANTALLAS) == 0
         && contratacion_inicializarArray(contrataciones, CONTRATACIONES) == 0)
     {
+        pantalla_altaHardCode(pantallas, PANTALLAS, 0, PANTALLAS, LED, "Pantalla 75 pulgadas", "Cordoba 100, CABA", 750.0f);
+        pantalla_altaHardCode(pantallas, PANTALLAS, 1, PANTALLAS-1, LCD, "Pantalla 150 pulgadas", "Corrientes 1000, CABA", 4500.0f);
+        pantalla_altaHardCode(pantallas, PANTALLAS, 2, PANTALLAS-2, LCD, "Pantalla 300 pulgadas", "Santa Fe 1200, CABA", 9500.0f);
+        contratacion_altaHardCode(contrataciones, CONTRATACIONES, 0, CONTRATACIONES, "11/2.222.222-3", "homero.avi", 30, PANTALLAS-2);
+        contratacion_altaHardCode(contrataciones, CONTRATACIONES, 1, CONTRATACIONES-1, "44/5.555.555-6", "flanders.avi", 120, PANTALLAS);
+        contratacion_altaHardCode(contrataciones, CONTRATACIONES, 2, CONTRATACIONES-2, "77/8.888.888-9", "nelson.avi", 45, PANTALLAS-1);
         do
         {
             opcionMenu = impresiones_menuPrincipal();
@@ -40,7 +44,7 @@ void clase10(void)
                     }
                     break;
                 case 2:
-                    if(utn_getInt(&idParaBuscar, REINTENTOS, PANTALLA_INICIAL, PANTALLAS, "Indique el ID de Pantalla a eliminar: ", "Valor fuera de rango. ") == 0)
+                    if(utn_getInt(&idParaBuscar, REINTENTOS, PANTALLA_INICIAL, PANTALLAS, "Indique el ID de Pantalla a modificar: ", "Valor fuera de rango. ") == 0)
                     {
                         indiceConsultado = pantalla_buscarPantallaPorId(pantallas, PANTALLAS, idParaBuscar);
                         if(indiceConsultado != -1)
@@ -94,31 +98,14 @@ void clase10(void)
                     else
                     {
                         cantidadPantallas = impresiones_imprimirListaPantallas(pantallas, PANTALLAS);
-                        if(contratacion_altaContratacion(contrataciones, contratacionLibre, pantallas, cantidadPantallas) == 0)
+                        if(contratacion_altaContratacion(contrataciones, contratacionLibre, pantallas, PANTALLAS) == 0)
                             printf("Contratacion cargada en el indice %d.\n", contratacionLibre);
-                        else
-                            printf("Error a cargar la contratacion.\n");
                     }
                     break;
                 case 5:
-                    if(utn_getCUIT(consultaCUIT, CUIT_MAX, REINTENTOS, "Ingrese el CUIT del Cliente: ", "Valor de CUIT incorrecto. ") == 0)
-                    {
-                        if(contratacion_inicializarArray(contratacionesPorCuit, CONTRATACIONES) == 0)
-                        {
-                            *contratacionesPorCuit = *contrataciones;
-                            if(contratacion_arrayPorCliente(contratacionesPorCuit, CONTRATACIONES, consultaCUIT) == 0)
-                            {
-                                cantidadContrataciones = impresiones_imprimirListaContrataciones(contratacionesPorCuit, CONTRATACIONES, pantallas, PANTALLAS);
-                                if(cantidadContrataciones != -1)
-                                {
-                                    printf("Hasta aqui todo OK.\n");
-                                }
-                            }
-                        }
-                    }
                     break;
                 case 8:
-                    cantidadContrataciones = impresiones_imprimirListaContrataciones(contrataciones, CONTRATACIONES, pantallas, PANTALLAS);
+                    cantidadContrataciones = impresiones_imprimirListaContrataciones(contrataciones, CONTRATACIONES, pantallas, PANTALLAS, SIN_CUIT);
                     if(cantidadContrataciones != -1)
                         printf("%d Contratacion/es cargada/s.\n", cantidadContrataciones);
                     break;

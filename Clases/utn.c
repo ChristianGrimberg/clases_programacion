@@ -57,7 +57,7 @@ static int isFormatDNI(char* stringValue);
  *  \return 0 si es alfanumerica, -1 si no lo es.
  *
  */
-static int isAlphaNumeric(char* stringValue);
+//static int isAlphaNumeric(char* stringValue);
 
 /** \brief
  *  La funcion obtiene un cadena por teclado y si es solo letras la referencia al parametro ingresado.
@@ -509,6 +509,7 @@ static int isFormatDNI(char* stringValue)
     return returnValue;
 }
 
+/*
 static int isAlphaNumeric(char* stringValue)
 {
     int returnValue = -1;
@@ -530,6 +531,7 @@ static int isAlphaNumeric(char* stringValue)
 
     return returnValue;
 }
+*/
 
 static int getStringOnlyLetters(char* imputString, int limit)
 {

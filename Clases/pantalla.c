@@ -10,7 +10,10 @@ int pantalla_inicializarArray(Pantalla* pantallas, int longitud)
     if(pantallas != NULL && longitud > 0)
     {
         for(i = 0; i < longitud; i++)
-            pantallas[i].isEmpty = EMPTY;
+        {
+            (pantallas+i)->pantallaID = PANTALLA_INICIALIZADOR;
+            (pantallas+i)->isEmpty = EMPTY;
+        }
         retorno = 0;
     }
 
@@ -69,6 +72,7 @@ int pantalla_buscarPantallaPorId(Pantalla* pantallas, int longitud, int idPantal
 {
     int retorno = -1;
     int i;
+
     if(pantallas != NULL && longitud > 0)
     {
         for(i = 0; i < longitud; i++)
@@ -152,6 +156,19 @@ int pantalla_modificarValorPantalla(Pantalla* pantalla, int indicePantalla, int 
     }
 
     return retorno;
+}
+
+void pantalla_altaHardCode(Pantalla* pantallas, int longitud, int indice, int id, int tipo, char* nombre, char* direccion, float precio)
+{
+    if(pantallas != NULL && longitud > 0 && indice >= 0 && nombre != NULL && direccion != NULL && precio > 0 && (tipo == LED || tipo == LCD))
+    {
+        (pantallas+indice)->pantallaID = id;
+        (pantallas+indice)->tipo = tipo;
+        strncpy((pantallas+indice)->nombre, nombre, NOMBRE_MAX);
+        strncpy((pantallas+indice)->direccion, direccion, DIRECCION_MAX);
+        (pantallas+indice)->precioPorDia = precio;
+        (pantallas+indice)->isEmpty = FULL;
+    }
 }
 
 static int getNuevoIdPantalla(void)

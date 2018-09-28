@@ -5,8 +5,13 @@
 #include "pantalla.h"
 #define CONTRATACIONES 1000 /**< Cantidad de contrataciones que soporta el programa. */
 #define CONTRATACION_INICIAL 1 /**< Inicio de contador de ID de Contratacion. */
+#define CONTRATACION_INICIALIZADOR -1
 #define CUIT_MAX 16 /**< Longitud maxima del numero de CUIT Argentino. */
-#define VIDEO_MAX 32 /**< Longitud maxima del nombre y tipo del archivo de video. */
+#define VIDEO_MAX 16 /**< Longitud maxima del nombre y tipo del archivo de video. */
+#define DIAS_MIN 15
+#define DIAS_MAX 365
+#define CON_CUIT 1
+#define SIN_CUIT 0
 
 /*! \struct Contratacion
     \brief
@@ -44,6 +49,6 @@ int contratacion_buscarLugarLibre(Contratacion* contrataciones, int longitud);
 
 int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContratacion, Pantalla* pantallas, int longitudPantallas);
 
-int contratacion_arrayPorCliente(Contratacion* contrataciones, int longitud, char* CUIT);
+void contratacion_altaHardCode(Contratacion* contrataciones, int longitud, int indice, int id, char* cuit, char* video, int dias, int pantallaId);
 
 #endif //CONTRATACION_H_INCLUDED

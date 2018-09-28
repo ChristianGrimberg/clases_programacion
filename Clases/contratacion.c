@@ -15,7 +15,10 @@ int contratacion_inicializarArray(Contratacion* contrataciones, int longitud)
     if(contrataciones != NULL && longitud > 0)
     {
         for(i = 0; i < longitud; i++)
-            contrataciones[i].isEmpty = EMPTY;
+        {
+            (contrataciones+i)->contratacionID = CONTRATACION_INICIALIZADOR;
+            (contrataciones+i)->isEmpty = EMPTY;
+        }
         retorno = 0;
     }
 
@@ -47,14 +50,17 @@ int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContra
     int retorno = -1;
     Contratacion contratacionAuxiliar;
     char error[] = "Valor incorrecto. ";
+    char mensajeDias[64];
 
+    sprintf(mensajeDias, "Ingrese la cantidad de dias (%d~%d): ", DIAS_MIN, DIAS_MAX);
     if(contrataciones != NULL && indiceContratacion >= 0 && pantallas != NULL && longitudPantallas > 0)
     {
         contratacionAuxiliar.contratacionID = getNuevoIdContratacion();
         if(utn_getInt(&contratacionAuxiliar.pantallaID, REINTENTOS, 1, longitudPantallas, "Elija el ID de pantalla a cargar: ", error) == 0
+            && pantalla_buscarPantallaPorId(pantallas, PANTALLAS, contratacionAuxiliar.pantallaID) != -1
             && utn_getCUIT(contratacionAuxiliar.CUIT, CUIT_MAX, REINTENTOS, "Ingrese el CUIT del Cliente: ", error) == 0
             && utn_getString(contratacionAuxiliar.video, VIDEO_MAX, REINTENTOS, "Ingrese el nombre del archivo de video: ", error, ALL_CHARACTERES) == 0
-            && utn_getInt(&contratacionAuxiliar.diasPublicacion, REINTENTOS, 15, 365, "Ingrese la cantidad de dias (15~365): ", error) == 0)
+            && utn_getInt(&contratacionAuxiliar.diasPublicacion, REINTENTOS, DIAS_MIN, DIAS_MAX, mensajeDias, error) == 0)
         {
             if(contrataciones[indiceContratacion].isEmpty == EMPTY)
             {
@@ -70,32 +76,17 @@ int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContra
     return retorno;
 }
 
-int contratacion_arrayPorCliente(Contratacion* contrataciones, int longitud, char* CUIT)
+void contratacion_altaHardCode(Contratacion* contrataciones, int longitud, int indice, int id, char* cuit, char* video, int dias, int pantallaId)
 {
-    int retorno = -1;
-    Contratacion contratacionesAux[longitud];
-    int indiceAux = 0;
-    int i;
-
-    if(contrataciones != NULL && longitud > 0 && CUIT != NULL
-        && contratacion_inicializarArray(contratacionesAux, longitud) == 0)
+    if(contrataciones != NULL && longitud > 0 && indice >= 0 && cuit != NULL && video != NULL && dias >= DIAS_MIN)
     {
-        for(i = 0; i < longitud; i++)
-        {
-            if(strncmp(CUIT, (contrataciones+i)->CUIT, CUIT_MAX) == 0)
-            {
-                contratacionesAux[indiceAux] = contrataciones[i];
-                indiceAux++;
-            }
-        }
-        if(indiceAux > 0)
-        {
-            contrataciones = contratacionesAux;
-            retorno = 0;
-        }
+        (contrataciones+indice)->contratacionID = id;
+        strncpy((contrataciones+indice)->CUIT, cuit, CUIT_MAX);
+        strncpy((contrataciones+indice)->video, video, VIDEO_MAX);
+        (contrataciones+indice)->diasPublicacion = dias;
+        (contrataciones+indice)->pantallaID = pantallaId;
+        (contrataciones+indice)->isEmpty = FULL;
     }
-
-    return retorno;
 }
 
 static int getNuevoIdContratacion(void)

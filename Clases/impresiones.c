@@ -1,7 +1,7 @@
 #include "impresiones.h"
 
 static void clearScreen(void);
-static void pauseScreen(char* mensaje);
+//static void pauseScreen(char* mensaje);
 
 int impresiones_menuPrincipal(void)
 {
@@ -32,13 +32,13 @@ int impresiones_menuModificarPantalla(Pantalla* pantalla, int indicePantalla)
 
     if(pantalla != NULL && indicePantalla >= 0 && indicePantalla < PANTALLAS)
     {
-        printf("==========MODIFICAR PANTALLA===========\n");
+        printf("==========MODIFICAR PANTALLA================\n");
         printf("1. Modificar Tipo (1 para LED, 2 para LCD).\n");
         printf("2. Modificar Nombre de Pantalla.\n");
         printf("3. Modificar direccion de Pantalla.\n");
         printf("4. Modificar Precio por dia.\n");
         printf("5. Cancelar.\n");
-        printf("=======================================\n");
+        printf("============================================\n");
         if(utn_getInt(&opcionAuxiliar, REINTENTOS, 1, 5, "Indique la opcion deseada: ", "Seleccion no valida. ") == 0)
             retorno = opcionAuxiliar;
     }
@@ -117,7 +117,7 @@ void impresiones_imprimirContratacion(Contratacion* contrataciones, int indiceCo
 
     if(contrataciones != NULL && indiceContratacion >= 0 && pantallas != NULL && longitudPantallas > 0)
     {
-        indicePantalla = pantalla_buscarPantallaPorId(pantallas, PANTALLAS, (contrataciones+indiceContratacion)->pantallaID);
+        indicePantalla = pantalla_buscarPantallaPorId(pantallas, PANTALLAS, contrataciones[indiceContratacion].pantallaID);
         if(indicePantalla != -1)
         {
             sprintf(idAux, "%d", (contrataciones+indiceContratacion)->contratacionID);
@@ -127,12 +127,12 @@ void impresiones_imprimirContratacion(Contratacion* contrataciones, int indiceCo
             if(tabla == ENCABEZADO)
             {
                 clearScreen();
-                printf("+=======+==================+==============================+==================+==============+==============================+\n");
-                printf("|%5s%2s|%9s%9s|%20s%10s|%17s%1s|%12s%2s|%20s%10s|\n",
+                printf("+=======+==================+================+==================+==============+==============================+\n");
+                printf("|%5s%2s|%9s%9s|%10s%6s|%17s%1s|%12s%2s|%20s%10s|\n",
                     "ID", "", "CUIT", "", "Video", "", "Dias Publicacion", "", "ID Pantalla", "", "Nombre Pantalla", "");
-                printf("+=======+==================+==============================+==================+==============+==============================+\n");
+                printf("+=======+==================+================+==================+==============+==============================+\n");
             }
-            printf("|%6s |%17s |%29s |%17s |%13s |%29s |\n",
+            printf("|%6s |%17s |%15s |%17s |%13s |%29s |\n",
                 idAux, (contrataciones+indiceContratacion)->CUIT, (contrataciones+indiceContratacion)->video, diasAux, pantallasAux, (pantallas+indicePantalla)->nombre);
         }
         else
@@ -142,32 +142,57 @@ void impresiones_imprimirContratacion(Contratacion* contrataciones, int indiceCo
         printf("Contratacion no encontrada.\n");
 }
 
-int impresiones_imprimirListaContrataciones(Contratacion* contrataciones, int longitudContrataciones, Pantalla* pantallas, int longitudPantallas)
+int impresiones_imprimirListaContrataciones(Contratacion* contrataciones, int longitudContrataciones, Pantalla* pantallas, int longitudPantallas, int conCuit)
 {
     int retorno = -1;
-    int contadorContrataciones;
+    int contadorContratacionesSinCuit;
+    int contadorContratacionesConCuit;
+    char consultaCUIT[CUIT_MAX];
     int i;
 
     if(contrataciones != NULL && longitudContrataciones > 0 && pantallas != NULL && longitudPantallas > 0)
     {
-        contadorContrataciones = 0;
-        for(i = 0; i < CONTRATACIONES; i++)
+        contadorContratacionesSinCuit = 0;
+        contadorContratacionesConCuit = 0;
+        if(conCuit == CON_CUIT && utn_getCUIT(consultaCUIT, CUIT_MAX, REINTENTOS, "Ingrese el CUIT del Cliente: ", "Valor ingresado incorrecto. ") == 0)
         {
-            if(contrataciones[i].isEmpty == FULL)
+            for(i = 0; i < CONTRATACIONES; i++)
             {
-                contadorContrataciones++;
-                if(contadorContrataciones == 1)
-                    impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, ENCABEZADO);
-                else
-                    impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, LISTA);
+                if(contrataciones[i].isEmpty == FULL && strncmp(contrataciones[i].CUIT, consultaCUIT, CUIT_MAX) == 0)
+                {
+                    contadorContratacionesConCuit++;
+                    if(contadorContratacionesConCuit == 1)
+                        impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, ENCABEZADO);
+                    else
+                        impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, LISTA);
+                }
             }
         }
-        if(contadorContrataciones > 0)
+        else
         {
-            printf("+=======+==================+==============================+==================+==============+==============================+\n");
-            retorno = contadorContrataciones;
+            for(i = 0; i < CONTRATACIONES; i++)
+            {
+                if(contrataciones[i].isEmpty == FULL)
+                {
+                    contadorContratacionesSinCuit++;
+                    if(contadorContratacionesSinCuit == 1)
+                        impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, ENCABEZADO);
+                    else
+                        impresiones_imprimirContratacion(contrataciones, i, pantallas, longitudPantallas, LISTA);
+                }
+            }
         }
-        else if(contadorContrataciones == 0)
+        if(contadorContratacionesSinCuit > 0)
+        {
+            printf("+=======+==================+================+==================+==============+==============================+\n");
+            retorno = contadorContratacionesSinCuit;
+        }
+        else if(contadorContratacionesConCuit > 0)
+        {
+            printf("+=======+==================+================+==================+==============+==============================+\n");
+            retorno = contadorContratacionesConCuit;
+        }
+        else if(contadorContratacionesSinCuit == 0 && contadorContratacionesConCuit == 0)
             printf("No hay contrataciones cargadas.\n");
     }
 
@@ -183,6 +208,7 @@ static void clearScreen(void)
     #endif //__unix__
 }
 
+/*
 static void pauseScreen(char* mensaje)
 {
     char flush[2] = " \n";
@@ -190,3 +216,4 @@ static void pauseScreen(char* mensaje)
     __fpurge(stdin);
     fgets(flush, 2, stdin);
 }
+*/
