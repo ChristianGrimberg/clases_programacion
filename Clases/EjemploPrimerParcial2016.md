@@ -10,7 +10,7 @@ Se debe desarrollar en ANSI C donde una compañía que brinda el servicio de Ate
     * El o los motivo/s mas recurrente/s y su cantidad.
     * El motivo que en promedio mas demora en ser resuelto.
 
-> __Nota 0__: Tanto los motivos como los estados pueden ser definidos con `#defines`
+> __Nota 0__: Tanto los motivos como los estados pueden ser definidos con `#defines`:
 >   * Motivos (_INFARTO - ACV - GRIPE_)
 >   * Estados (_PENDIENTE – CUMPLIDO_)
 

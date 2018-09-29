@@ -7,7 +7,7 @@
  */
 static int getNuevoIdContratacion(void);
 
-static int contratacion_buscarContratacionPorIdPantallaMasCuit(Contratacion* contrataciones, int longitud, int idPantalla, char* cuitCliente);
+static int buscarContratacionPorIdPantallaMasCuit(Contratacion* contrataciones, int longitud, int idPantalla, char* cuitCliente);
 
 int contratacion_inicializarArray(Contratacion* contrataciones, int longitud)
 {
@@ -64,7 +64,7 @@ int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContra
             && utn_getString(contratacionAuxiliar.video, VIDEO_MAX, REINTENTOS, "Ingrese el nombre del archivo de video: ", error, ALL_CHARACTERES) == 0
             && utn_getInt(&contratacionAuxiliar.diasPublicacion, REINTENTOS, DIAS_MIN, DIAS_MAX, mensajeDias, error) == 0)
         {
-            if(contratacion_buscarContratacionPorIdPantallaMasCuit(contrataciones, CONTRATACIONES, contratacionAuxiliar.pantallaID, contratacionAuxiliar.CUIT) == -1
+            if(buscarContratacionPorIdPantallaMasCuit(contrataciones, CONTRATACIONES, contratacionAuxiliar.pantallaID, contratacionAuxiliar.CUIT) == -1
                 && contrataciones[indiceContratacion].isEmpty == EMPTY)
             {
                 contrataciones[indiceContratacion] = contratacionAuxiliar;
@@ -102,7 +102,7 @@ int contratacion_modificarDiasPorIdPantallaMasCuit(Contratacion* contrataciones,
     char mensajeDias[64];
 
     sprintf(mensajeDias, "Ingrese la cantidad de dias a modificar (%d~%d): ", DIAS_MIN, DIAS_MAX);
-    indice = contratacion_buscarContratacionPorIdPantallaMasCuit(contrataciones, longitud, idPantalla, cuitCliente);   
+    indice = buscarContratacionPorIdPantallaMasCuit(contrataciones, longitud, idPantalla, cuitCliente);   
     if(indice != -1 && utn_getInt(&dias, REINTENTOS, DIAS_MIN, DIAS_MAX, mensajeDias, "Valor fuera de rango. ") == 0)
     {
         (contrataciones+indice)->diasPublicacion = dias;
@@ -114,6 +114,26 @@ int contratacion_modificarDiasPorIdPantallaMasCuit(Contratacion* contrataciones,
     return retorno;
 }
 
+int contratacion_eliminarListaPorIdPantalla(Contratacion* contrataciones, int longitud, int idPantalla)
+{
+    int retorno = -1;
+    int i;
+
+    if(contrataciones != NULL && longitud > 0)
+    {
+        for(i = 0; i < longitud; i++)
+        {
+            if(contrataciones[i].pantallaID == idPantalla && contrataciones[i].isEmpty == FULL)
+            {
+                (contrataciones+i)->isEmpty = EMPTY;
+                retorno = 0;
+            }
+        }
+    }
+
+    return retorno;
+}
+
 static int getNuevoIdContratacion(void)
 {
     static int contadorIdContratacion = CONTRATACION_INICIAL - 1;
@@ -121,7 +141,7 @@ static int getNuevoIdContratacion(void)
     return contadorIdContratacion;
 }
 
-static int contratacion_buscarContratacionPorIdPantallaMasCuit(Contratacion* contrataciones, int longitud, int idPantalla, char* cuitCliente)
+static int buscarContratacionPorIdPantallaMasCuit(Contratacion* contrataciones, int longitud, int idPantalla, char* cuitCliente)
 {
     int retorno = -1;
     int i;

@@ -74,12 +74,15 @@ int pantalla_altaPantalla(Pantalla* pantallas, int indice)
             && utn_getString(pantallaAuxiliar.direccion, DIRECCION_MAX, REINTENTOS, "Ingrese la direccion: ", error, ALL_CHARACTERES) == 0
             && utn_getFloat(&pantallaAuxiliar.precioPorDia, REINTENTOS, 1.0f, 1000000.0f, "Ingrese el precio por dia: ", "Rango del valor no aceptado. ") == 0)
         {
-            if(pantallas[indice].isEmpty == EMPTY)
+            if(pantalla_buscarPantallaPorId(pantallas, PANTALLAS, pantallaAuxiliar.pantallaID) == -1
+                && pantallas[indice].isEmpty == EMPTY)
             {
                 pantallas[indice] = pantallaAuxiliar;
                 (pantallas + indice)->isEmpty = FULL;
                 retorno = 0;
             }
+            else
+                printf("Error: el identificador de la Pantalla ya existe.\n");
         }
         else
             printf("Error de carga de la Pantalla.\n");

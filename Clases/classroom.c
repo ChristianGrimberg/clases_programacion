@@ -80,10 +80,14 @@ void clase10(void)
                             if(utn_getChar(&consultaEliminar, REINTENTOS, "Confirme para eliminar (S/N): ", "Valor incorrecto. ") == 0
                                 && (consultaEliminar == 's' || consultaEliminar == 'S'))
                             {
-                                if(pantalla_eliminarPantallaPorIndice(pantallas, indiceConsultado) == 0)
-                                    printf("Pantalla eliminada %d\n", idParaBuscar);
+                                if(contratacion_eliminarListaPorIdPantalla(contrataciones, CONTRATACIONES, idParaBuscar) == 0)
+                                    printf("Se eliminaron las Contrataciones asociadas.\n");
                                 else
-                                    printf("Error al eliminar pantalla.\n");
+                                    printf("No hay Contrataciones asociadas para eliminar.\n");                                
+                                if(pantalla_eliminarPantallaPorIndice(pantallas, indiceConsultado) == 0)
+                                    printf("Se elimino la Pantalla ingresada.\n");
+                                else
+                                    printf("Error al eliminar la Pantalla.\n");
                             }
                             else
                                 printf("Eliminacion cancelada.\n");
