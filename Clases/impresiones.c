@@ -1,7 +1,14 @@
 #include "impresiones.h"
 
 static void clearScreen(void);
-//static void pauseScreen(char* mensaje);
+
+void pauseScreen(char* mensaje)
+{
+    char flush[2] = " \n";
+    printf("%s\n", mensaje);
+    __fpurge(stdin);
+    fgets(flush, 2, stdin);
+}
 
 int impresiones_menuPrincipal(void)
 {
@@ -219,13 +226,3 @@ static void clearScreen(void)
         system("cls");
     #endif //__unix__
 }
-
-/*
-static void pauseScreen(char* mensaje)
-{
-    char flush[2] = " \n";
-    printf("%s\n", mensaje);
-    __fpurge(stdin);
-    fgets(flush, 2, stdin);
-}
-*/

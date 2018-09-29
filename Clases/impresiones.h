@@ -7,6 +7,7 @@
 #define ENCABEZADO 1
 #define LISTA 2
 
+void pauseScreen(char* mensaje);
 int impresiones_menuPrincipal(void);
 int impresiones_menuModificarPantalla(Pantalla* pantalla, int indicePantalla);
 void impresiones_imprimirPantalla(Pantalla* pantallas, int indice, int tabla);

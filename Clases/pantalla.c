@@ -78,7 +78,7 @@ int pantalla_altaPantalla(Pantalla* pantallas, int indice)
                 && pantallas[indice].isEmpty == EMPTY)
             {
                 pantallas[indice] = pantallaAuxiliar;
-                (pantallas + indice)->isEmpty = FULL;
+                (pantallas+indice)->isEmpty = FULL;
                 retorno = 0;
             }
             else
@@ -91,17 +91,27 @@ int pantalla_altaPantalla(Pantalla* pantallas, int indice)
     return retorno;
 }
 
-void pantalla_altaHardCode(Pantalla* pantallas, int longitud, int indice, int id, int tipo, char* nombre, char* direccion, float precio)
+int pantalla_altaHardCode(Pantalla* pantallas, int longitud, int indice, int id, int tipo, char* nombre, char* direccion, float precio)
 {
+    int retorno = -1;
+
     if(pantallas != NULL && longitud > 0 && indice >= 0 && nombre != NULL && direccion != NULL && precio > 0 && (tipo == LED || tipo == LCD))
     {
-        (pantallas+indice)->pantallaID = id;
-        (pantallas+indice)->tipo = tipo;
-        strncpy((pantallas+indice)->nombre, nombre, NOMBRE_MAX);
-        strncpy((pantallas+indice)->direccion, direccion, DIRECCION_MAX);
-        (pantallas+indice)->precioPorDia = precio;
-        (pantallas+indice)->isEmpty = FULL;
+        if(pantalla_buscarPantallaPorId(pantallas, longitud, id) == -1)
+        {
+            (pantallas+indice)->pantallaID = id;
+            (pantallas+indice)->tipo = tipo;
+            strncpy((pantallas+indice)->nombre, nombre, NOMBRE_MAX);
+            strncpy((pantallas+indice)->direccion, direccion, DIRECCION_MAX);
+            (pantallas+indice)->precioPorDia = precio;
+            (pantallas+indice)->isEmpty = FULL;
+            retorno = 0;
+        }
+        else
+            printf("Error al cargar los valores de una Pantalla.\n");
     }
+
+    return retorno;
 }
 
 int pantalla_eliminarPantallaPorIndice(Pantalla* pantalla, int indicePantalla)

@@ -6,6 +6,7 @@ void clase10(void)
 {
     Pantalla pantallas[PANTALLAS];
     Contratacion contrataciones[CONTRATACIONES];
+    char errorHardCode[] = "Presione la tecla enter para continuar...";
     int pantallaLibre;
     int contratacionLibre;
     int opcionMenu;
@@ -22,13 +23,20 @@ void clase10(void)
     if(pantalla_inicializarArray(pantallas, PANTALLAS) == 0
         && contratacion_inicializarArray(contrataciones, CONTRATACIONES) == 0)
     {
-        pantalla_altaHardCode(pantallas, PANTALLAS, 0, PANTALLAS, LED, "Pantalla 75 pulgadas", "Cordoba 100, CABA", 750.0f);
-        pantalla_altaHardCode(pantallas, PANTALLAS, 1, PANTALLAS-1, LCD, "Pantalla 150 pulgadas", "Corrientes 1000, CABA", 4500.0f);
-        pantalla_altaHardCode(pantallas, PANTALLAS, 2, PANTALLAS-2, LCD, "Pantalla 300 pulgadas", "Santa Fe 1200, CABA", 9500.0f);
-        contratacion_altaHardCode(contrataciones, CONTRATACIONES, 0, CONTRATACIONES, "11/2.222.222-3", "homero.avi", 30, PANTALLAS-2);
-        contratacion_altaHardCode(contrataciones, CONTRATACIONES, 1, CONTRATACIONES-1, "44/5.555.555-6", "flanders.avi", 120, PANTALLAS);
-        contratacion_altaHardCode(contrataciones, CONTRATACIONES, 2, CONTRATACIONES-2, "77/8.888.888-9", "nelson.avi", 45, PANTALLAS-1);
-        contratacion_altaHardCode(contrataciones, CONTRATACIONES, 3, CONTRATACIONES-3, "11/2.222.222-3", "bart.avi", 90, PANTALLAS-1);
+        if(pantalla_altaHardCode(pantallas, PANTALLAS, 0, PANTALLAS, LED, "Pantalla 75 pulgadas", "Cordoba 100, CABA", 750.0f) == -1)
+            pauseScreen(errorHardCode);
+        if(pantalla_altaHardCode(pantallas, PANTALLAS, 1, PANTALLAS-1, LCD, "Pantalla 150 pulgadas", "Corrientes 1000, CABA", 4500.0f) == -1)
+            pauseScreen(errorHardCode);
+        if(pantalla_altaHardCode(pantallas, PANTALLAS, 2, PANTALLAS-2, LCD, "Pantalla 300 pulgadas", "Santa Fe 1200, CABA", 9500.0f) == -1)
+            pauseScreen(errorHardCode);
+        if(contratacion_altaHardCode(contrataciones, CONTRATACIONES, 0, CONTRATACIONES, "11/2.222.222-3", "homero.avi", 30, PANTALLAS-2) == -1)
+            pauseScreen(errorHardCode);
+        if(contratacion_altaHardCode(contrataciones, CONTRATACIONES, 1, CONTRATACIONES-1, "44/5.555.555-6", "flanders.avi", 120, PANTALLAS) == -1)
+            pauseScreen(errorHardCode);
+        if(contratacion_altaHardCode(contrataciones, CONTRATACIONES, 2, CONTRATACIONES-2, "77/8.888.888-9", "nelson.avi", 45, PANTALLAS-1) == -1)
+            pauseScreen(errorHardCode);
+        if(contratacion_altaHardCode(contrataciones, CONTRATACIONES, 3, CONTRATACIONES-3, "11/2.222.222-3", "bart.avi", 90, PANTALLAS-1) == -1)
+            pauseScreen(errorHardCode);
         do
         {
             opcionMenu = impresiones_menuPrincipal();

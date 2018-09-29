@@ -47,6 +47,26 @@ int contratacion_buscarLugarLibre(Contratacion* contrataciones, int longitud)
     return retorno;
 }
 
+int contratacion_buscarContratacionPorId(Contratacion* contrataciones, int longitud, int idContratacion)
+{
+    int retorno = -1;
+    int i;
+
+    if(contrataciones != NULL && longitud > 0)
+    {
+        for(i = 0; i < longitud; i++)
+        {
+            if(contrataciones[i].isEmpty == FULL && contrataciones[i].contratacionID == idContratacion)
+            {
+                retorno = i;
+                break;
+            }
+        }
+    }
+
+    return retorno;
+}
+
 int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContratacion, Pantalla* pantallas, int longitudPantallas)
 {
     int retorno = -1;
@@ -64,15 +84,20 @@ int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContra
             && utn_getString(contratacionAuxiliar.video, VIDEO_MAX, REINTENTOS, "Ingrese el nombre del archivo de video: ", error, ALL_CHARACTERES) == 0
             && utn_getInt(&contratacionAuxiliar.diasPublicacion, REINTENTOS, DIAS_MIN, DIAS_MAX, mensajeDias, error) == 0)
         {
-            if(buscarContratacionPorIdPantallaMasCuit(contrataciones, CONTRATACIONES, contratacionAuxiliar.pantallaID, contratacionAuxiliar.CUIT) == -1
-                && contrataciones[indiceContratacion].isEmpty == EMPTY)
+            if(contratacion_buscarContratacionPorId(contrataciones, CONTRATACIONES, contratacionAuxiliar.contratacionID) == -1)
             {
-                contrataciones[indiceContratacion] = contratacionAuxiliar;
-                (contrataciones + indiceContratacion)->isEmpty = FULL;
-                retorno = 0;
+                if(buscarContratacionPorIdPantallaMasCuit(contrataciones, CONTRATACIONES, contratacionAuxiliar.pantallaID, contratacionAuxiliar.CUIT) == -1
+                    && contrataciones[indiceContratacion].isEmpty == EMPTY)
+                {
+                    contrataciones[indiceContratacion] = contratacionAuxiliar;
+                    (contrataciones+indiceContratacion)->isEmpty = FULL;
+                    retorno = 0;
+                }
+                else
+                    printf("Error: Ya existe una Contratacion de pantalla del Cliente ingresado.\n");
             }
             else
-                printf("Error: Ya existe una Contratacion de pantalla del Cliente ingresado.\n");
+                printf("Error: el identificador de Contratacion ya existe.\n");
         }
         else
             printf("Valores ingresados incorrectos para una Contratacion de Pantalla.\n");
@@ -81,17 +106,30 @@ int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContra
     return retorno;
 }
 
-void contratacion_altaHardCode(Contratacion* contrataciones, int longitud, int indice, int id, char* cuit, char* video, int dias, int pantallaId)
+int contratacion_altaHardCode(Contratacion* contrataciones, int longitud, int indice, int id, char* cuit, char* video, int dias, int pantallaId)
 {
+    int retorno = -1;
+
     if(contrataciones != NULL && longitud > 0 && indice >= 0 && cuit != NULL && video != NULL && dias >= DIAS_MIN)
     {
-        (contrataciones+indice)->contratacionID = id;
-        strncpy((contrataciones+indice)->CUIT, cuit, CUIT_MAX);
-        strncpy((contrataciones+indice)->video, video, VIDEO_MAX);
-        (contrataciones+indice)->diasPublicacion = dias;
-        (contrataciones+indice)->pantallaID = pantallaId;
-        (contrataciones+indice)->isEmpty = FULL;
+        if(contratacion_buscarContratacionPorId(contrataciones, longitud, id) == -1
+            && buscarContratacionPorIdPantallaMasCuit(contrataciones, longitud, pantallaId, cuit) == -1)
+        {
+            (contrataciones+indice)->contratacionID = id;
+            strncpy((contrataciones+indice)->CUIT, cuit, CUIT_MAX);
+            strncpy((contrataciones+indice)->video, video, VIDEO_MAX);
+            (contrataciones+indice)->diasPublicacion = dias;
+            (contrataciones+indice)->pantallaID = pantallaId;
+            (contrataciones+indice)->isEmpty = FULL;
+            retorno = 0;
+        }
+        else
+        {
+            printf("Error al cargar los valores de una Contratacion\n");
+        }
     }
+
+    return retorno;
 }
 
 int contratacion_modificarDiasPorIdPantallaMasCuit(Contratacion* contrataciones, int longitud, int idPantalla, char* cuitCliente)
