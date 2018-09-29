@@ -152,6 +152,21 @@ int contratacion_modificarDiasPorIdPantallaMasCuit(Contratacion* contrataciones,
     return retorno;
 }
 
+int contratacion_cancelarContratacionPorIdPantallaMasCuit(Contratacion* contrataciones, int longitud, int idPantalla, char* cuitCliente)
+{
+    int retorno = -1;
+    int indice;
+
+    indice = buscarContratacionPorIdPantallaMasCuit(contrataciones, longitud, idPantalla, cuitCliente);
+    if(indice != -1)
+    {
+        (contrataciones+indice)->isEmpty = EMPTY;
+        retorno = 0;
+    }
+
+    return retorno;
+}
+
 int contratacion_eliminarListaPorIdPantalla(Contratacion* contrataciones, int longitud, int idPantalla)
 {
     int retorno = -1;

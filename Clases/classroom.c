@@ -125,6 +125,14 @@ void clase10(void)
                             printf("Contratacion modificada correctamente.\n");
                     }
                     break;
+                case 6:
+                    if(impresiones_imprimirContratacionesPorCuit(contrataciones, CONTRATACIONES, pantallas, PANTALLAS, cuitConsultado) != -1)
+                    {
+                        if(utn_getInt(&consultaPantalla, REINTENTOS, 0, PANTALLAS, "Ingrese el ID de Pantalla a cancelar: ", "Valor fuera de rango. ") == 0
+                            && contratacion_cancelarContratacionPorIdPantallaMasCuit(contrataciones, CONTRATACIONES, consultaPantalla, cuitConsultado) != -1)
+                            printf("Contratacion cancelada correctamente.\n");
+                    }
+                    break;
                 case 8:
                     cantidadContrataciones = impresiones_imprimirListaContrataciones(contrataciones, CONTRATACIONES, pantallas, PANTALLAS);
                     if(cantidadContrataciones != -1)
