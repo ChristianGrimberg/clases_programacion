@@ -10,6 +10,8 @@
 #define ASC 0
 #define DESC 1
 #define NUMBER_QTY 6
+#define INIT_INT_ARRAY -200 /**< Valor para inicializar el array de enteros. */
+#define INIT_FLOAT_ARRAY -100.0f /**< Valor para inicializar el array de flotantes. */
 
 /** \brief
  *  Funcion que muestra el Debug de los valores en pantalla del array de enteros.
@@ -17,7 +19,7 @@
  *  \param limit int Longitud del array.
  *  \param message char* Mensaje de cabecera a imprimir.
  *  \return No retorna valores.
- * 
+ *
  */
 void debugIntArray(int* pArray, int limit, char* message);
 
@@ -27,7 +29,7 @@ void debugIntArray(int* pArray, int limit, char* message);
  *  \param limit int Longitud del array.
  *  \param message char* Mensaje de cabecera a imprimir.
  *  \return No retorna valores.
- * 
+ *
  */
 void debugFloatArray(float* pArray, int limit, char* message);
 
@@ -37,7 +39,7 @@ void debugFloatArray(float* pArray, int limit, char* message);
  *  \param limit int Longitud del array.
  *  \param pMaxInt int* Direccion de memoria a almacenar el valor maximo obtenido.
  *  \return 0 si pudo obtener un maximo, -1 si el array no tiene valores y -2 si el array solo esta inicializado.
- * 
+ *
  */
 int getMaxIntArray(int* pArray, int limit, int* pMaxInt);
 
@@ -47,7 +49,7 @@ int getMaxIntArray(int* pArray, int limit, int* pMaxInt);
  *  \param limit int Logitud del array.
  *  \param value int Valor a colocar en cada indice del array.
  *  \param 0 si pudo inicializar el array, -1 si no es posible inicializarlo.
- * 
+ *
  */
 int initIntArrayInt(int* pArray, int limit, int value);
 
@@ -57,7 +59,7 @@ int initIntArrayInt(int* pArray, int limit, int value);
  *  \param limit int Logitud del array.
  *  \param value int Valor a colocar en cada indice del array.
  *  \param 0 si pudo inicializar el array, -1 si no es posible inicializarlo.
- * 
+ *
  */
 int initFloatArrayInt(float* pArray, int limit, int value);
 
@@ -67,7 +69,7 @@ int initFloatArrayInt(float* pArray, int limit, int value);
  *  \param limit int Longitud del array.
  *  \param ascOrDesc int Indicador de ordenamiento Ascendente o Descendente.
  *  \return 0 si pudo ordenar el array, -1 si no es posible.
- * 
+ *
  */
 int intBubbleSort(int* pArray, int limit, int ascOrDesc);
 
@@ -77,7 +79,7 @@ int intBubbleSort(int* pArray, int limit, int ascOrDesc);
  *  \param limit int Longitud del array.
  *  \param ascOrDesc int Indicador de ordenamiento Ascendente o Descendente.
  *  \return 0 si pudo ordenar el array, -1 si no es posible.
- * 
+ *
  */
 int floatBubbleSort(float* pArray, int limit, int ascOrDesc);
 
@@ -87,7 +89,7 @@ int floatBubbleSort(float* pArray, int limit, int ascOrDesc);
  *  \param limit int Longitud del array.
  *  \param ascOrDesc int Indicador de ordenamiento Ascendente o Descendente.
  *  \return 0 si pudo ordenar el array, -1 si no es posible.
- * 
+ *
  */
 int intInsertionSort(int* pArray, int limit, int ascOrDesc);
 

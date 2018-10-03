@@ -55,7 +55,7 @@ void clase10(void)
                     }
                     break;
                 case 2:
-                    if(utn_getInt(&idParaBuscar, REINTENTOS, PANTALLA_INICIAL, PANTALLAS, "Indique el ID de Pantalla a modificar: ", "Valor fuera de rango. ") == 0)
+                    if(utn_getInt(&idParaBuscar, RETRY, PANTALLA_INICIAL, PANTALLAS, "Indique el ID de Pantalla a modificar: ", "Valor fuera de rango. ") == 0)
                     {
                         indiceConsultado = pantalla_buscarPantallaPorId(pantallas, PANTALLAS, idParaBuscar);
                         if(indiceConsultado != -1)
@@ -78,20 +78,20 @@ void clase10(void)
                         printf("Error al encontrar el ID de pantalla.\n");
                     break;
                 case 3:
-                    if(utn_getInt(&idParaBuscar, REINTENTOS, PANTALLA_INICIAL, PANTALLAS, "Indique el ID de Pantalla a eliminar: ", "Valor fuera de rango. ") == 0)
+                    if(utn_getInt(&idParaBuscar, RETRY, PANTALLA_INICIAL, PANTALLAS, "Indique el ID de Pantalla a eliminar: ", "Valor fuera de rango. ") == 0)
                     {
                         indiceConsultado = pantalla_buscarPantallaPorId(pantallas, PANTALLAS, idParaBuscar);
                         if(indiceConsultado != -1)
                         {
                             impresiones_imprimirPantalla(pantallas, indiceConsultado, ENCABEZADO);
                             printf("\n");
-                            if(utn_getChar(&consultaEliminar, REINTENTOS, "Confirme para eliminar (S/N): ", "Valor incorrecto. ") == 0
+                            if(utn_getChar(&consultaEliminar, RETRY, "Confirme para eliminar (S/N): ", "Valor incorrecto. ") == 0
                                 && (consultaEliminar == 's' || consultaEliminar == 'S'))
                             {
                                 if(contratacion_eliminarListaPorIdPantalla(contrataciones, CONTRATACIONES, idParaBuscar) == 0)
                                     printf("Se eliminaron las Contrataciones asociadas.\n");
                                 else
-                                    printf("No hay Contrataciones asociadas para eliminar.\n");                                
+                                    printf("No hay Contrataciones asociadas para eliminar.\n");
                                 if(pantalla_eliminarPantallaPorIndice(pantallas, indiceConsultado) == 0)
                                     printf("Se elimino la Pantalla ingresada.\n");
                                 else
@@ -120,7 +120,7 @@ void clase10(void)
                 case 5:
                     if(impresiones_imprimirContratacionesPorCuit(contrataciones, CONTRATACIONES, pantallas, PANTALLAS, cuitConsultado) != -1)
                     {
-                        if(utn_getInt(&consultaPantalla, REINTENTOS, 0, PANTALLAS, "Ingrese el ID de Pantalla a modificar los dias: ", "Valor fuera de rango. ") == 0
+                        if(utn_getInt(&consultaPantalla, RETRY, 0, PANTALLAS, "Ingrese el ID de Pantalla a modificar los dias: ", "Valor fuera de rango. ") == 0
                             && contratacion_modificarDiasPorIdPantallaMasCuit(contrataciones, CONTRATACIONES, consultaPantalla, cuitConsultado) != -1)
                             printf("Contratacion modificada correctamente.\n");
                     }
@@ -128,7 +128,7 @@ void clase10(void)
                 case 6:
                     if(impresiones_imprimirContratacionesPorCuit(contrataciones, CONTRATACIONES, pantallas, PANTALLAS, cuitConsultado) != -1)
                     {
-                        if(utn_getInt(&consultaPantalla, REINTENTOS, 0, PANTALLAS, "Ingrese el ID de Pantalla a cancelar: ", "Valor fuera de rango. ") == 0
+                        if(utn_getInt(&consultaPantalla, RETRY, 0, PANTALLAS, "Ingrese el ID de Pantalla a cancelar: ", "Valor fuera de rango. ") == 0
                             && contratacion_cancelarContratacionPorIdPantallaMasCuit(contrataciones, CONTRATACIONES, consultaPantalla, cuitConsultado) != -1)
                             printf("Contratacion cancelada correctamente.\n");
                     }
@@ -146,7 +146,7 @@ void clase10(void)
                 case SALIR_PROGRAMA:
                     break;
             }
-            if(opcionMenu != SALIR_PROGRAMA && utn_getChar(&seguirPrograma, REINTENTOS, "Desea Continuar? (S/N): ", "Valor Incorrecto. ") == -1)
+            if(opcionMenu != SALIR_PROGRAMA && utn_getChar(&seguirPrograma, RETRY, "Desea Continuar? (S/N): ", "Valor Incorrecto. ") == -1)
             {
                 printf("Error al Salir.\n");
                 break;
@@ -204,7 +204,7 @@ void clase09(void)
             case 3:
                 break;
         }
-        if(opcion != 3 && utn_getChar(&seguirPrograma, REINTENTOS, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ") == -1)
+        if(opcion != 3 && utn_getChar(&seguirPrograma, RETRY, "Desea Continuar (s/n)?: ", "Valor Incorrecto. ") == -1)
         {
             printf("Error al Salir.\n");
             break;

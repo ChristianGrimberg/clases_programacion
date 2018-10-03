@@ -69,10 +69,10 @@ int pantalla_altaPantalla(Pantalla* pantallas, int indice)
     if(pantallas != NULL && indice >= 0)
     {
         pantallaAuxiliar.pantallaID = getNuevoIdPantalla();
-        if(utn_getInt(&pantallaAuxiliar.tipo, REINTENTOS, LED, LCD, "Ingrese 1 para LED, 2 para LCD: ", error) == 0
-            && utn_getString(pantallaAuxiliar.nombre, NOMBRE_MAX, REINTENTOS, "Ingrese el nombre de la pantalla: ", error, ALL_CHARACTERES) == 0
-            && utn_getString(pantallaAuxiliar.direccion, DIRECCION_MAX, REINTENTOS, "Ingrese la direccion: ", error, ALL_CHARACTERES) == 0
-            && utn_getFloat(&pantallaAuxiliar.precioPorDia, REINTENTOS, 1.0f, 1000000.0f, "Ingrese el precio por dia: ", "Rango del valor no aceptado. ") == 0)
+        if(utn_getInt(&pantallaAuxiliar.tipo, RETRY, LED, LCD, "Ingrese 1 para LED, 2 para LCD: ", error) == 0
+            && utn_getString(pantallaAuxiliar.nombre, NOMBRE_MAX, RETRY, "Ingrese el nombre de la pantalla: ", error, ALL_CHARACTERES) == 0
+            && utn_getString(pantallaAuxiliar.direccion, DIRECCION_MAX, RETRY, "Ingrese la direccion: ", error, ALL_CHARACTERES) == 0
+            && utn_getFloat(&pantallaAuxiliar.precioPorDia, RETRY, 1.0f, 1000000.0f, "Ingrese el precio por dia: ", "Rango del valor no aceptado. ") == 0)
         {
             if(pantalla_buscarPantallaPorId(pantallas, PANTALLAS, pantallaAuxiliar.pantallaID) == -1
                 && pantallas[indice].isEmpty == EMPTY)
@@ -140,7 +140,7 @@ int pantalla_modificarValorPantalla(Pantalla* pantalla, int indicePantalla, int 
         switch(modificarValor)
             {
                 case 1:
-                    if(utn_getInt(&pantallaAuxiliar.tipo, REINTENTOS, LED, LCD, "Ingrese 1 para LED, 2 para LCD: ", error) == 0)
+                    if(utn_getInt(&pantallaAuxiliar.tipo, RETRY, LED, LCD, "Ingrese 1 para LED, 2 para LCD: ", error) == 0)
                     {
                         pantalla[indicePantalla] = pantallaAuxiliar;
                         retorno = 0;
@@ -149,7 +149,7 @@ int pantalla_modificarValorPantalla(Pantalla* pantalla, int indicePantalla, int 
                         printf(cancelar);
                     break;
                 case 2:
-                    if(utn_getString(pantallaAuxiliar.nombre, NOMBRE_MAX, REINTENTOS, "Ingrese el nombre de la pantalla: ", error, ALL_CHARACTERES) == 0)
+                    if(utn_getString(pantallaAuxiliar.nombre, NOMBRE_MAX, RETRY, "Ingrese el nombre de la pantalla: ", error, ALL_CHARACTERES) == 0)
                     {
                         pantalla[indicePantalla] = pantallaAuxiliar;
                         retorno = 0;
@@ -158,7 +158,7 @@ int pantalla_modificarValorPantalla(Pantalla* pantalla, int indicePantalla, int 
                         printf(cancelar);
                     break;
                 case 3:
-                    if(utn_getString(pantallaAuxiliar.direccion, DIRECCION_MAX, REINTENTOS, "Ingrese la direccion: ", error, ALL_CHARACTERES) == 0)
+                    if(utn_getString(pantallaAuxiliar.direccion, DIRECCION_MAX, RETRY, "Ingrese la direccion: ", error, ALL_CHARACTERES) == 0)
                     {
                         pantalla[indicePantalla] = pantallaAuxiliar;
                         retorno = 0;
@@ -167,7 +167,7 @@ int pantalla_modificarValorPantalla(Pantalla* pantalla, int indicePantalla, int 
                         printf(cancelar);
                     break;
                 case 4:
-                    if(utn_getFloat(&pantallaAuxiliar.precioPorDia, REINTENTOS, 1.0f, 1000000.0f, "Ingrese el precio por dia: ", "Rango del valor no aceptado. ") == 0)
+                    if(utn_getFloat(&pantallaAuxiliar.precioPorDia, RETRY, 1.0f, 1000000.0f, "Ingrese el precio por dia: ", "Rango del valor no aceptado. ") == 0)
                     {
                         pantalla[indicePantalla] = pantallaAuxiliar;
                         retorno = 0;

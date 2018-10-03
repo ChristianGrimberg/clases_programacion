@@ -23,11 +23,12 @@ int impresiones_menuPrincipal(void)
     printf("4. Contratar una Publicidad.\n");
     printf("5. Modificar condiciones de Publicacion.\n");
     printf("6. Cancelar Contratacion.\n");
+    printf("7. Consultar Contratacion por CUIT.\n");
     printf("8. Listar Contrataciones.\n");
     printf("9. Listar Pantallas.\n");
     printf("%d. Salir del programa.\n", SALIR_PROGRAMA);
     printf("=======================================\n");
-    if(utn_getInt(&opcionAuxiliar, REINTENTOS, 1, SALIR_PROGRAMA, "Indique la opcion deseada: ", "Seleccion no valida. ") == 0)
+    if(utn_getInt(&opcionAuxiliar, RETRY, 1, SALIR_PROGRAMA, "Indique la opcion deseada: ", "Seleccion no valida. ") == 0)
         retorno = opcionAuxiliar;
 
     return retorno;
@@ -47,7 +48,7 @@ int impresiones_menuModificarPantalla(Pantalla* pantalla, int indicePantalla)
         printf("4. Modificar Precio por dia.\n");
         printf("5. Cancelar.\n");
         printf("============================================\n");
-        if(utn_getInt(&opcionAuxiliar, REINTENTOS, 1, 5, "Indique la opcion deseada: ", "Seleccion no valida. ") == 0)
+        if(utn_getInt(&opcionAuxiliar, RETRY, 1, 5, "Indique la opcion deseada: ", "Seleccion no valida. ") == 0)
             retorno = opcionAuxiliar;
     }
 
@@ -192,7 +193,7 @@ int impresiones_imprimirContratacionesPorCuit(Contratacion* contrataciones, int 
     if(contrataciones != NULL && longitudContrataciones > 0 && pantallas != NULL && longitudPantallas > 0)
     {
         contadorContrataciones = 0;
-        if(utn_getCUIT(consultaCUIT, CUIT_MAX, REINTENTOS, "Ingrese el CUIT del Cliente a buscar: ", "Valor ingresado incorrecto. ") == 0)
+        if(utn_getCUIT(consultaCUIT, CUIT_MAX, RETRY, "Ingrese el CUIT del Cliente a buscar: ", "Valor ingresado incorrecto. ") == 0)
         {
             for(i = 0; i < longitudContrataciones; i++)
             {

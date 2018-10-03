@@ -78,11 +78,11 @@ int contratacion_altaContratacion(Contratacion* contrataciones, int indiceContra
     if(contrataciones != NULL && indiceContratacion >= 0 && pantallas != NULL && longitudPantallas > 0)
     {
         contratacionAuxiliar.contratacionID = getNuevoIdContratacion();
-        if(utn_getInt(&contratacionAuxiliar.pantallaID, REINTENTOS, 1, longitudPantallas, "Elija el ID de pantalla a cargar: ", error) == 0
+        if(utn_getInt(&contratacionAuxiliar.pantallaID, RETRY, 1, longitudPantallas, "Elija el ID de pantalla a cargar: ", error) == 0
             && pantalla_buscarPantallaPorId(pantallas, PANTALLAS, contratacionAuxiliar.pantallaID) != -1
-            && utn_getCUIT(contratacionAuxiliar.CUIT, CUIT_MAX, REINTENTOS, "Ingrese el CUIT del Cliente: ", error) == 0
-            && utn_getString(contratacionAuxiliar.video, VIDEO_MAX, REINTENTOS, "Ingrese el nombre del archivo de video: ", error, ALL_CHARACTERES) == 0
-            && utn_getInt(&contratacionAuxiliar.diasPublicacion, REINTENTOS, DIAS_MIN, DIAS_MAX, mensajeDias, error) == 0)
+            && utn_getCUIT(contratacionAuxiliar.CUIT, CUIT_MAX, RETRY, "Ingrese el CUIT del Cliente: ", error) == 0
+            && utn_getString(contratacionAuxiliar.video, VIDEO_MAX, RETRY, "Ingrese el nombre del archivo de video: ", error, ALL_CHARACTERES) == 0
+            && utn_getInt(&contratacionAuxiliar.diasPublicacion, RETRY, DIAS_MIN, DIAS_MAX, mensajeDias, error) == 0)
         {
             if(contratacion_buscarContratacionPorId(contrataciones, CONTRATACIONES, contratacionAuxiliar.contratacionID) == -1)
             {
@@ -140,8 +140,8 @@ int contratacion_modificarDiasPorIdPantallaMasCuit(Contratacion* contrataciones,
     char mensajeDias[64];
 
     sprintf(mensajeDias, "Ingrese la cantidad de dias a modificar (%d~%d): ", DIAS_MIN, DIAS_MAX);
-    indice = buscarContratacionPorIdPantallaMasCuit(contrataciones, longitud, idPantalla, cuitCliente);   
-    if(indice != -1 && utn_getInt(&dias, REINTENTOS, DIAS_MIN, DIAS_MAX, mensajeDias, "Valor fuera de rango. ") == 0)
+    indice = buscarContratacionPorIdPantallaMasCuit(contrataciones, longitud, idPantalla, cuitCliente);
+    if(indice != -1 && utn_getInt(&dias, RETRY, DIAS_MIN, DIAS_MAX, mensajeDias, "Valor fuera de rango. ") == 0)
     {
         (contrataciones+indice)->diasPublicacion = dias;
         retorno = 0;

@@ -17,13 +17,15 @@ static int getInt(int* number);
 static int getFloat(float* decimal);
 
 /** \brief
- *  Funcion que obtiene un puntero a un array de caracteres y valida su ingreso por teclado.
- *  \param imputString char* Array de caracteres para almacenar el valor ingreso por teclado.
- *  \param limit int Longitud del array de caracteres.
+ *  Funcion que obtiene un puntero a un array de caracteres y valida
+ *      su ingreso por teclado.
+ *  \param pString char* Array de caracteres para almacenar el
+ *      valor ingreso por teclado.
+ *  \param len int Longitud del array de caracteres.
  *  \return 0 si pudo obtener el valor de manera correcta, -1 si hubo un error.
  *
  */
-static int getString(char* imputString, int limit);
+static int getString(char* pString, int len);
 
 /** \brief
  *  Funcion que valida si la cadena ingresada es numerica entera o no.
@@ -49,162 +51,188 @@ static int isNotNumber(char* stringValue);
  */
 static int isFloat(char* stringValue);
 
+/**  \brief
+ *  Funcion que valida si la cadena ingresa tiene el formato de DNI
+ *      con separador de miles.
+ *  \param stringValue char* Cadena de caracteres a validar.
+ *  \return 0 si el formato DNI es correcto, -1 si no lo es.
+ */
 static int isFormatDNI(char* stringValue);
 
 /** \brief
- *  Funcion que valida si la cadena ingresada es alfanumerica o no.
- *  \param stringValue char* Cadena de caracteres a validar.
- *  \return 0 si es alfanumerica, -1 si no lo es.
+ *  La funcion obtiene un cadena por teclado y si es solo letras,
+ *      la referencia al parametro ingresado.
+ *  \param pString char* Array de caracteres para almacenar
+ *      el valor ingreso por teclado.
+ *  \param len int Longitud del array de caracteres.
+ *  \return 0 si pudo obtener el valor de manera correcta,
+ *      -1 si hubo un error.
  *
  */
-//static int isAlphaNumeric(char* stringValue);
+static int getStringOnlyLetters(char* pString, int len);
 
 /** \brief
- *  La funcion obtiene un cadena por teclado y si es solo letras la referencia al parametro ingresado.
- *  \param imputString char* Array de caracteres para almacenar el valor ingreso por teclado.
- *  \param limit int Longitud del array de caracteres.
- *  \return 0 si pudo obtener el valor de manera correcta, -1 si hubo un error.
+ *  La funcion obtiene un cadena por teclado y si es numerica,
+ *      la referencia al parametro ingresado.
+ *  \param pString char* Array de caracteres para almacenar
+ *      el valor ingreso por teclado.
+ *  \param len int Longitud del array de caracteres.
+ *  \return 0 si pudo obtener el valor de manera correcta,
+ *      -1 si hubo un error.
  *
  */
-static int getStringOnlyLetters(char* imputString, int limit);
+static int getStringOnlyNumbers(char* pString, int len);
 
-/** \brief
- *  La funcion obtiene un cadena por teclado y si es numerica la referencia al parametro ingresado.
- *  \param imputString char* Array de caracteres para almacenar el valor ingreso por teclado.
- *  \param limit int Longitud del array de caracteres.
- *  \return 0 si pudo obtener el valor de manera correcta, -1 si hubo un error.
- *
- */
-static int getStringOnlyNumbers(char* imputString, int limit);
-
-int utn_getInt(int* pNumero, int reintentos, int minimo, int maximo, char* mensaje, char* error)
+int utn_getInt(int* pNumber, int retry, int min, int max,
+    char* message, char* error)
 {
+    int returnValue = -1;
     int numeroAux;
-    int retorno = -1;
 
-    if(maximo >= minimo && reintentos >= 0 && pNumero != NULL && mensaje != NULL && error != NULL)
+    if(max >= min && retry >= 0 && pNumber != NULL
+    && message != NULL && error != NULL)
     {
         do
         {
-            reintentos--;
-            printf(mensaje);
-            if(getInt(&numeroAux) == 0 && numeroAux >= minimo && numeroAux <= maximo)
+            retry--;
+            printf(message);
+            if(getInt(&numeroAux) == 0
+            && numeroAux >= min && numeroAux <= max)
             {
-                *pNumero = numeroAux;
-                retorno = 0;
+                *pNumber = numeroAux;
+                returnValue = 0;
                 break;
             }
             else
+            {
                 printf(error);
-        }while(reintentos >= 0);
+            }
+        }while(retry >= 0);
     }
 
-    return retorno;
+    return returnValue;
 }
 
-int utn_getFloat(float* pNumero, int reintentos, float minimo, float maximo, char* mensaje, char* error)
+int utn_getFloat(float* pNumber, int retry, float min, float max,
+    char* message, char* error)
 {
-    int retorno = -1;
+    int returnValue = -1;
     float floatAux;
 
-    if(maximo >= minimo && reintentos >= 0 && pNumero != NULL && mensaje != NULL && error != NULL)
+    if(max >= min && retry >= 0 && pNumber != NULL
+    && message != NULL && error != NULL)
     {
         do
         {
-            reintentos--;
-            printf(mensaje);
-            if(getFloat(&floatAux) == 0 && floatAux >= minimo && floatAux <= maximo)
+            retry--;
+            printf(message);
+            if(getFloat(&floatAux) == 0
+            && floatAux >= min && floatAux <= max)
             {
-                *pNumero = floatAux;
-                retorno = 0;
+                *pNumber = floatAux;
+                returnValue = 0;
                 break;
             }
             else
-                printf("%s", error);
-        }while(reintentos >= 0);
+            {
+                printf(error);
+            }
+        }while(retry >= 0);
     }
 
-    return retorno;
+    return returnValue;
 }
 
-int utn_getChar(char* pCaracter, int reintentos, char* mensaje, char* mensajeError)
+int utn_getChar(char* pCharacter, int retry, char* message, char* error)
 {
-    int retorno = -1;
+    int returnValue = -1;
     char charAux;
 
-    if(pCaracter != NULL && reintentos >= 0 && mensaje != NULL && mensajeError != NULL)
+    if(pCharacter != NULL && retry >= 0
+    && message != NULL && error != NULL)
     {
-        printf(mensaje);
+        printf(message);
         __fpurge(stdin);
         fgets(&charAux, 2, stdin); /**< Por si esta el caracter \n en el buffer. */
         if(sizeof(charAux) == 1)
         {
-            strncpy(pCaracter, &charAux, 1);
-            retorno = 0;
+            strncpy(pCharacter, &charAux, 1);
+            returnValue = 0;
         }
         else
-            printf(mensajeError);
+        {
+            printf(error);
+        }
     }
 
-    return retorno;
+    return returnValue;
 }
 
-int utn_getString(char* pNombre, int limite, int reintentos, char* mensaje, char* mensajeError, int isOnlyLetters)
+int utn_getString(char* pString, int len, int retry,
+    char* message, char* error, int isOnlyLetters)
 {
-    int retorno = -1;
+    int returnValue = -1;
     char stringAux[STRING_MAX];
 
-    if(pNombre != NULL && limite > 0 && reintentos >= 0 && mensaje != NULL && mensajeError != NULL)
+    if(pString != NULL && len > 0 && retry >= 0
+    && message != NULL && error != NULL)
     {
         do
         {
-            reintentos--;
-            printf(mensaje);
-            if((isOnlyLetters == ALL_CHARACTERES && getString(stringAux, limite) == 0)
-                || (isOnlyLetters = ONLY_LETTERS && getStringOnlyLetters(stringAux, limite) == 0))
+            retry--;
+            printf(message);
+            if((isOnlyLetters == ALL_CHARACTERES
+                && getString(stringAux, len) == 0)
+            || (isOnlyLetters = ONLY_LETTERS
+                && getStringOnlyLetters(stringAux, len) == 0))
             {
-                strncpy(pNombre, stringAux, limite);
-                retorno = 0;
+                strncpy(pString, stringAux, len);
+                returnValue = 0;
                 break;
             }
             else
-                printf(mensajeError);
-        }while(reintentos >= 0);
+            {
+                printf(error);
+            }
+        }while(retry >= 0);
     }
 
-    return retorno;
+    return returnValue;
 }
 
-int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError)
+int utn_getPhone(char* pPhone, int len, int retry,
+    char* message, char* error)
 {
-    int retorno = -1;
-    char stringAux[cantDeNumerosMax];
-    char valorActual[2];
-    int cantGuiones;
+    int returnValue = -1;
+    char stringAux[len];
+    char currentValue[CURRENT_LEN];
+    int scriptQty;
     int i;
 
-    if(pTelefono != NULL && cantDeNumerosMax > 0 && reintentos >= 0 && mensaje != NULL && mensajeError != NULL)
+    if(pPhone != NULL && len > 0 && retry >= 0
+    && message != NULL && error != NULL)
     {
         do
         {
-            reintentos--;
-            printf(mensaje);
-            if(getString(stringAux, cantDeNumerosMax) == 0)
+            retry--;
+            printf(message);
+            if(getString(stringAux, len) == 0)
             {
                 i = 0;
-                cantGuiones = 0;
-                valorActual[1] = EXIT_BUFFER;
+                scriptQty = 0;
+                currentValue[1] = EXIT_BUFFER;
                 while(stringAux[i] != EXIT_BUFFER)
                 {
-                    valorActual[0] = stringAux[i];
-                    if(i > 0 && stringAux[i-1] == stringAux[i] && (stringAux[i] == '-' || stringAux[i] == '+'))
+                    currentValue[0] = stringAux[i];
+                    if(i > 0 && stringAux[i-1] == stringAux[i]
+                    && (stringAux[i] == '-' || stringAux[i] == '+'))
                     {
-                        retorno = -1;
+                        returnValue = -1;
                         break;
                     }
                     else if(stringAux[i] == '-')
                     {
-                        cantGuiones++;
+                        scriptQty++;
                         i++;
                         continue;
                     }
@@ -213,111 +241,190 @@ int utn_getPhone(char* pTelefono, int cantDeNumerosMax, int reintentos, char* me
                         i++;
                         continue;
                     }
-
-
-                    if((isNotNumber(valorActual) == 0 && stringAux[i] != '-') || cantGuiones > 2)
+                    if((isNotNumber(currentValue) == 0
+                    && stringAux[i] != '-') || scriptQty > 2)
                     {
-                        retorno = -1;
+                        returnValue = -1;
                         break;
                     }
-                    else if(isNumber(valorActual) == 0)
-                        retorno = 0;
+                    else if(isNumber(currentValue) == 0)
+                    {
+                        returnValue = 0;
+                    }
                     i++;
                 }
-                if(valorActual[0] == '-')
-                    retorno = -1;
+                if(currentValue[0] == '-')
+                {
+                    returnValue = -1;
+                }
             }
-            if(retorno == 0)
+            if(returnValue == 0)
             {
-                strncpy(pTelefono, stringAux, cantDeNumerosMax);
-                reintentos = -1;
+                strncpy(pPhone, stringAux, len);
+                retry = -1;
             }
             else
-                printf(mensajeError);
-        }while(reintentos >= 0);
+            {
+                printf(error);
+            }
+        }while(retry >= 0);
     }
 
-    return retorno;
+    return returnValue;
 }
 
-int utn_getDNI(char* pDNI, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError)
+int utn_getDNI(char* pDNI, int len, int retry,
+    char* message, char* error)
 {
-    int retorno = -1;
+    int returnValue = -1;
     char dniAux[DNI_MAX];
 
-    if(pDNI != NULL && reintentos > 0 && cantDeNumerosMax > 0 && mensaje != NULL && mensajeError != NULL)
+    if(pDNI != NULL && retry >= 0 && len > 0
+    && message != NULL && error != NULL)
     {
         do
         {
-            reintentos--;
-            printf(mensaje);
+            retry--;
+            printf(message);
             if(getString(dniAux, DNI_MAX) == 0 && isFormatDNI(dniAux) == 0)
             {
-                strncpy(pDNI, dniAux, cantDeNumerosMax);
-                retorno = 0;
+                strncpy(pDNI, dniAux, len);
+                returnValue = 0;
                 break;
             }
             else
-                printf(mensajeError);
-        }while(reintentos >= 0);
+            {
+                printf(error);
+            }
+        }while(retry >= 0);
     }
 
-    return retorno;
+    return returnValue;
 }
 
-int utn_getCUIT(char* pCUIT, int cantDeNumerosMax, int reintentos, char* mensaje, char* mensajeError)
+int utn_getCUIT(char* pCUIT, int len, int retry,
+    char* message, char* error)
 {
-    int retorno = -1;
-    char auxiliarCUIT[cantDeNumerosMax];
-    char cabeceraCUIT[3];
-    char dniCUIT[DNI_MAX];
-    char pieCUIT[2];
+    int returnValue = -1;
+    char cuitAux[len];
+    char cuitHeader[CUIT_HEADER];
+    char cuitDNI[DNI_MAX];
+    char cuitFooter[CUIT_FOOTER];
     int i;
     int j;
     int k;
 
-    if(pCUIT != NULL && cantDeNumerosMax > 0 && reintentos > 0 && mensaje != NULL && mensajeError != NULL)
+    if(pCUIT != NULL && len > 0 && retry >= 0
+    && message != NULL && error != NULL)
     {
          do
          {
-             reintentos--;
-             printf(mensaje);
-             if(getString(auxiliarCUIT, cantDeNumerosMax) == 0)
+             retry--;
+             printf(message);
+             if(getString(cuitDNI, len) == 0)
              {
                  for(i = 0; i < 2; i++)
                 {
-                    cabeceraCUIT[i] = auxiliarCUIT[i];
+                    cuitHeader[i] = cuitAux[i];
                 }
-                cabeceraCUIT[2] = '\0';
-                if(isNumber(cabeceraCUIT) == 0 && auxiliarCUIT[2] == '/')
+                cuitHeader[2] = '\0';
+                if(isNumber(cuitHeader) == 0 && cuitAux[2] == '/')
                 {
-                    for(j = 3; auxiliarCUIT[j] != '-'; j++)
+                    for(j = 3; cuitAux[j] != '-'; j++)
                     {
-                        dniCUIT[j-3] = auxiliarCUIT[j];
+                        cuitDNI[j-3] = cuitAux[j];
                     }
                     k = j-3;
-                    dniCUIT[k] = '\0';
-                    pieCUIT[0] = auxiliarCUIT[k+4];
-                    pieCUIT[1] = '\0';
-                    if(isFormatDNI(dniCUIT) == 0 && auxiliarCUIT[k+3] == '-' && isNumber(pieCUIT) == 0)
+                    cuitDNI[k] = '\0';
+                    cuitFooter[0] = cuitAux[k+4];
+                    cuitFooter[1] = '\0';
+                    if(isFormatDNI(cuitDNI) == 0 && cuitAux[k+3] == '-'
+                    && isNumber(cuitFooter) == 0)
                     {
-                        retorno = 0;
-                        strncpy(pCUIT, auxiliarCUIT, cantDeNumerosMax);
+                        returnValue = 0;
+                        strncpy(pCUIT, cuitAux, len);
                         break;
                     }
                 }
              }
-         }while(reintentos >= 0);
+         }while(retry >= 0);
     }
 
-    return retorno;
+    return returnValue;
 }
 
-int utn_getEmail(char* pEmail, int limite, int reintentos, char* mensaje, char* mensajeError)
+int utn_getEmail(char* pEmail, int len, int retry,
+    char* message, char* error)
 {
-    int retorno = -1;
-    printf("Sin implementacion.\n");
-    return retorno;
+    int returnValue = -1;
+    char emailAux[EMAIL_MAX];
+    char emailNickName[EMAIL_NICK];
+    char emailAt;
+    char emailDomain[EMAIL_DOMAIN];
+    char dotCounter;
+    int i;
+    int j;
+
+    if(pEmail != NULL && len > 0 && retry >= 0
+    && message != NULL && error != NULL)
+    {
+        do
+        {
+            i = 0;
+            j = 0;
+            dotCounter = 0;
+            retry--;
+            printf(message);
+            if(getString(emailAux, len) == 0)
+            {
+                while(emailAux[i] != '@' && emailAux[i] != EXIT_BUFFER)
+                {
+                    emailNickName[i] = emailAux[i];
+                    i++;
+                }
+                emailNickName[i] = EXIT_BUFFER;
+                if(emailAux[i] == '@' && i > 0)
+                {
+                    emailAt = emailAux[i];
+                    i++;
+                    j = i;
+                    if(emailAux[i] != '.')
+                    {
+                        while(emailAux[i] != EXIT_BUFFER)
+                        {
+                            if(dotCounter > 2
+                            || (emailAux[i] == '.' && emailAux[i-1] == '.')
+                            || emailAux[i] == '@')
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                emailDomain[i-j] = emailAux[i];
+                                if(emailAux[i] == '.')
+                                {
+                                    dotCounter++;
+                                }
+                                i++;
+                            }
+                        }
+                        emailDomain[i-j] = EXIT_BUFFER;
+                        if(dotCounter > 0 && dotCounter <= 2
+                        && emailAux[i-1] != '.' && emailAux[i] != '@')
+                        {
+                            sprintf(emailAux, "%s%c%s",
+                                    emailNickName, emailAt, emailDomain);
+                            strncpy(pEmail, emailAux, EMAIL_MAX);
+                            returnValue = 0;
+                            retry = -1;
+                        }
+                    }
+                }
+            }
+        }while(retry >= 0);
+    }
+
+    return returnValue;
 }
 
 static int getInt(int* number)
@@ -327,7 +434,8 @@ static int getInt(int* number)
     char stringAtoi[CHARACTERS_NUMBERS];
     int numberAux;
 
-    if(getStringOnlyNumbers(stringAux, CHARACTERS_NUMBERS) == 0 && isNumber(stringAux) == 0)
+    if(getStringOnlyNumbers(stringAux, CHARACTERS_NUMBERS) == 0
+    && isNumber(stringAux) == 0)
     {
         numberAux = atoi(stringAux);
         /**< Validating conversion functions in interger limits. */
@@ -364,20 +472,22 @@ static int getFloat(float* decimal)
     return returnValue;
 }
 
-static int getString(char* imputString, int limit)
+static int getString(char* pString, int len)
 {
     int returnValue = -1;
     char stringAux[STRING_MAX];
 
-    if(imputString != NULL && limit > 0)
+    if(pString != NULL && len > 0)
     {
         __fpurge(stdin);
         fgets(stringAux, sizeof(stringAux), stdin);
         if(stringAux[(strlen(stringAux))-1] == '\n')
-            stringAux[(strlen(stringAux))-1] = '\0';
-        if(strlen(stringAux) <= limit)
         {
-            sprintf(imputString, "%s", stringAux);
+            stringAux[(strlen(stringAux))-1] = '\0';
+        }
+        if(strlen(stringAux) <= len)
+        {
+            sprintf(pString, "%s", stringAux);
             returnValue = 0;
         }
 
@@ -396,10 +506,13 @@ static int isNumber(char* stringValue)
     {
         charAux = stringValue[i];
         if(i == 0 && (charAux == '-' || charAux == '+'))
+        {
             i = 1;
-
+        }
         if((int)charAux >= (int)'0' && (int)charAux <= (int)'9')
+        {
             returnValue = 0;
+        }
         else
         {
             returnValue = -1;
@@ -421,7 +534,9 @@ static int isNotNumber(char* stringValue)
     {
         charAux = stringValue[i];
         if((int)charAux < (int)'0' || (int)charAux > (int)'9')
+        {
             returnValue = 0;
+        }
         else
         {
             returnValue = -1;
@@ -441,13 +556,20 @@ static int isFloat(char* stringValue)
 
     while(stringValue[i] != (int)EXIT_BUFFER)
     {
-        if(i == 0 && ((int)stringValue[0] == (int)'-' || (int)stringValue[0] == (int)'+'))
+        if(i == 0 && ((int)stringValue[0] == (int)'-'
+        || (int)stringValue[0] == (int)'+'))
+        {
             i = 1;
-
+        }
         if(stringValue[i] == '.')
+        {
             pointerCounter++;
-        else if((int)stringValue[i] >= (int)'0' && (int)stringValue[i] <= (int)'9' && pointerCounter <= 1)
+        }
+        else if((int)stringValue[i] >= (int)'0'
+        && (int)stringValue[i] <= (int)'9' && pointerCounter <= 1)
+        {
             returnValue = 0;
+        }
         else
         {
             returnValue = -1;
@@ -474,13 +596,14 @@ static int isFormatDNI(char* stringValue)
     {
         currentValue[0] = dniAux[i];
         if((i == 0 && isNotNumber(currentValue) == 0)
-            || (i == 0 && isNumber(currentValue) == 0 && dniAux[i] == '0'))
+        || (i == 0 && isNumber(currentValue) == 0 && dniAux[i] == '0'))
         {
             returnValue = -1;
             break;
         }
         else if((dniAux[i] == '.' && pointSeparation%3 == 0)
-            || (dniAux[i] == '.' && (pointSeparation > 0 && pointSeparation < 3) && pointCounter == 0))
+        || (dniAux[i] == '.' && (pointSeparation > 0 && pointSeparation < 3)
+            && pointCounter == 0))
         {
             pointCounter++;
             pointSeparation = 0;
@@ -496,7 +619,6 @@ static int isFormatDNI(char* stringValue)
             pointSeparation++;
             returnValue = 0;
         }
-
         if(pointSeparation != 3)
         {
             returnValue = -1;
@@ -504,45 +626,23 @@ static int isFormatDNI(char* stringValue)
         i++;
     }
     if(returnValue == 0)
+    {
         strncpy(stringValue, dniAux, DNI_MAX);
-
-    return returnValue;
-}
-
-/*
-static int isAlphaNumeric(char* stringValue)
-{
-    int returnValue = -1;
-    int i = 0;
-
-    while(stringValue[i] != (int)EXIT_BUFFER)
-    {
-        if(((int)stringValue[i] >= (int)'0' && (int)stringValue[i] <= (int)'9')
-        || ((int)stringValue[i] >= (int)'a' && (int)stringValue[i] <= (int)'z')
-        || ((int)stringValue[i] >= (int)'A' && (int)stringValue[i] <= (int)'Z'))
-            returnValue = 0;
-        else
-        {
-            returnValue = -1;
-            break;
-        }
-        i++;
     }
 
     return returnValue;
 }
-*/
 
-static int getStringOnlyLetters(char* imputString, int limit)
+static int getStringOnlyLetters(char* pString, int len)
 {
     int returnValue = -1;
-    char stringAux[limit];
+    char stringAux[len];
 
-    if(imputString != NULL && limit > 0)
+    if(pString != NULL && len > 0)
     {
-        if(getString(stringAux, limit) == 0 && isNumber(stringAux) == -1)
+        if(getString(stringAux, len) == 0 && isNumber(stringAux) == -1)
         {
-            strncpy(imputString, stringAux, limit);
+            strncpy(pString, stringAux, len);
             returnValue = 0;
         }
     }
@@ -550,16 +650,16 @@ static int getStringOnlyLetters(char* imputString, int limit)
     return returnValue;
 }
 
-static int getStringOnlyNumbers(char* imputString, int limit)
+static int getStringOnlyNumbers(char* pString, int len)
 {
     int returnValue = -1;
-    char stringAux[limit];
+    char stringAux[len];
 
-    if(imputString != NULL && limit > 0)
+    if(pString != NULL && len > 0)
     {
-        if(getString(stringAux, limit) == 0 && isFloat(stringAux) == 0)
+        if(getString(stringAux, len) == 0 && isFloat(stringAux) == 0)
         {
-            strncpy(imputString, stringAux, limit);
+            strncpy(pString, stringAux, len);
             returnValue = 0;
         }
     }
