@@ -321,7 +321,7 @@ int utn_getCUIT(char* pCUIT, int len, int retry,
          {
              retry--;
              printf(message);
-             if(getString(cuitDNI, len) == 0)
+             if(getString(cuitAux, len) == 0)
              {
                  for(i = 0; i < 2; i++)
                 {

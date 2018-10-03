@@ -195,6 +195,7 @@ int impresiones_imprimirContratacionesPorCuit(Contratacion* contrataciones, int 
         contadorContrataciones = 0;
         if(utn_getCUIT(consultaCUIT, CUIT_MAX, RETRY, "Ingrese el CUIT del Cliente a buscar: ", "Valor ingresado incorrecto. ") == 0)
         {
+            printf("%s\n", consultaCUIT);
             for(i = 0; i < longitudContrataciones; i++)
             {
                 if(contrataciones[i].isEmpty == FULL && strncmp(contrataciones[i].CUIT, consultaCUIT, CUIT_MAX) == 0)
